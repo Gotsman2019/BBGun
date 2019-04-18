@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 63f434cfd2c184c4b9cca6b12a3c2763, type: 2}
+  - {fileID: 2100000, guid: 9e3ba44a8afe2452e8de5c5b99f54d20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,14 +123,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brush:
     brushTexture: {fileID: 2800000, guid: b8702b5a8624a114f82a6d09bc3ce746, type: 3}
-    brushNormalTexture: {fileID: 2800000, guid: b8702b5a8624a114f82a6d09bc3ce746,
+    brushNormalTexture: {fileID: 2800000, guid: f198c1c995ef08c478009b65a48af828,
       type: 3}
     brushHeightTexture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
     brushScale: 0.08
     rotateAngle: 0
     brushNormalBlend: 0.1
-    brushHeightBlend: 0
-    brushColor: {r: 0.9528302, g: 0.05882353, b: 0.022472408, a: 1}
+    brushHeightBlend: 0.05
+    brushColor: {r: 1, g: 0.14382534, b: 0.02352941, a: 1}
     colorBlendType: 0
     normalBlendType: 0
     heightBlendType: 0
