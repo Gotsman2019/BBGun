@@ -20,27 +20,27 @@ namespace FPS
 
 
            
-            if (Input.GetKey("right"))
-            {
-              transform.Rotate(new Vector3(0, 1, 0));
+            //if (Input.GetKey("right"))
+          // {
+          //   transform.Rotate(new Vector3(0, 1, 0));
                 
 
 
-            }
-            if (Input.GetKey("left"))
-            {
+           // }
+           // if (Input.GetKey("left"))
+          // {
 
-               transform.Rotate(new Vector3(0, -1, 0));
+           //    transform.Rotate(new Vector3(0, -1, 0));
 
-            }
-            if (Input.GetKey("up"))
+          // }
+            if (Input.GetKey("k"))
             {//離したら水平にもどした方が良いかな
-                transform.Rotate(new Vector3(-1, 0, 0));
+                transform.Rotate(new Vector3(0, 0, -1));
 
             }
-            if (Input.GetKey("down"))
+            if (Input.GetKey("m"))
             {
-                transform.Rotate(new Vector3(1, 0, 0));
+                transform.Rotate(new Vector3(0, 0, 1));
 
             }
 
