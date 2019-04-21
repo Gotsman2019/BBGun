@@ -27,7 +27,7 @@ public class Shooting : MonoBehaviour
 
                 //射撃されてから3秒後に銃弾のオブジェクトを破壊する.
 
-                Destroy(bullet, 3.0f);
+                Destroy(bullet, 1.5f);
             }
 
         }
