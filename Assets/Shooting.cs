@@ -14,13 +14,13 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetKey("e"))
         {
-
+           // GetComponent<AudioSource>().Play();
             shotInterval += 1;
 
             if (shotInterval % 5 == 0 && shotCount > 0)
             {
                 shotCount -= 1;
-                //この辺りが怪しい。打つとたまにZ正方向に勝手に飛んでいく
+               
                 GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.localEulerAngles.x, transform.parent.localEulerAngles.y, 0));
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
