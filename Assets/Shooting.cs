@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetKey("e"))
         {
-           // GetComponent<AudioSource>().Play();
+        
             shotInterval += 1;
 
             if (shotInterval % 5 == 0 && shotCount > 0)
@@ -25,9 +25,9 @@ public class Shooting : MonoBehaviour
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
 
-                //射撃されてから3秒後に銃弾のオブジェクトを破壊する.
+                GetComponent<AudioSource>().Play();
 
-                Destroy(bullet, 1.5f);
+
             }
 
         }

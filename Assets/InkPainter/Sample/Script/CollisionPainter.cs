@@ -4,22 +4,28 @@ using System.Collections.Generic;
 namespace Es.InkPainter.Sample
 {
 
+    public class HitPoint
+    {
+        public InkCanvas canvas;
+        public Vector3 point;
+        public int remainingFrame;
+    }
 
     [RequireComponent(typeof(Collider), typeof(MeshRenderer))]
     public class CollisionPainter : MonoBehaviour
     {
-        public List<Vector3> VecList = new List<Vector3>();
-
-
-
         [SerializeField]
         private Brush brush = null;
 
         [SerializeField]
         private int wait = 3;
-      
+
+        private List<HitPoint> hitPointList = new List<HitPoint>();
         private int waitCount;
         private int eraseNum = 0;
+
+        GameObject tama = GameObject.Find("shell");
+
         public void Awake()
         {
             GetComponent<MeshRenderer>().material.color = brush.Color;
@@ -28,7 +34,22 @@ namespace Es.InkPainter.Sample
         public void FixedUpdate()
         {
             ++waitCount;
-           
+
+            for (int i = 0; i < hitPointList.Count; i++)
+            {
+                HitPoint hitPoint = hitPointList[i];
+
+                hitPoint.remainingFrame--;
+
+                if (hitPoint.remainingFrame <= 0)
+                {
+                    hitPoint.canvas.Erase(brush, hitPoint.point);
+                    hitPointList.RemoveAt(i);
+
+                }
+            }
+            //GameObject tama = GameObject.Find("shell");
+            Destroy(tama);
         }
 
         public void OnCollisionStay(Collision collision)
@@ -42,28 +63,19 @@ namespace Es.InkPainter.Sample
 
             foreach (var p in collision.contacts)
             {
+                var canvas = p.otherCollider.GetComponent<InkCanvas>();
 
-                VecList.Add(p.point);
-               var canvas = p.otherCollider.GetComponent<InkCanvas>();
                 if (canvas != null)
                 {
                     canvas.Paint(brush, p.point);
 
-
-                    if (eraseNum > 10)
-                    {
-                        foreach(Vector3 i in VecList)
-                        {
-                            canvas.Erase(brush, i);
-
-                        }
-                    }
-
+                    HitPoint hitPont = new HitPoint();
+                    hitPont.canvas = canvas;
+                    hitPont.point = p.point;
+                    hitPont.remainingFrame = 30;
+                    hitPointList.Add(hitPont);
                 }
-
             }
-           
         }
-      
     }
 }

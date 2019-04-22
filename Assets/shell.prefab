@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1259da91c24a6d34ba000c2454d018a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VecList: []
   brush:
     brushTexture: {fileID: 2800000, guid: b8702b5a8624a114f82a6d09bc3ce746, type: 3}
     brushNormalTexture: {fileID: 2800000, guid: f198c1c995ef08c478009b65a48af828,
