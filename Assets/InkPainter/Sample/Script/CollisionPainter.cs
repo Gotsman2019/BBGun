@@ -14,6 +14,7 @@ namespace Es.InkPainter.Sample
     [RequireComponent(typeof(Collider), typeof(MeshRenderer))]
     public class CollisionPainter : MonoBehaviour
     {
+       　//GameObject tama = GameObject.Find("shell");
         [SerializeField]
         private Brush brush = null;
 
@@ -24,11 +25,11 @@ namespace Es.InkPainter.Sample
         private int waitCount;
         private int eraseNum = 0;
 
-        GameObject tama = GameObject.Find("shell");
 
         public void Awake()
         {
             GetComponent<MeshRenderer>().material.color = brush.Color;
+
         }
 
         public void FixedUpdate()
@@ -48,7 +49,7 @@ namespace Es.InkPainter.Sample
 
                 }
             }
-            //GameObject tama = GameObject.Find("shell");
+            GameObject tama = GameObject.Find("shell");
             Destroy(tama);
         }
 

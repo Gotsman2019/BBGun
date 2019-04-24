@@ -10,8 +10,17 @@ public class Shooting : MonoBehaviour
     public int shotCount = 30;
     private float shotInterval;
 
+
+
+    private void Start()
+
+    {
+
+    }
+
     void Update()
     {
+
         if (Input.GetKey("e"))
         {
         
@@ -25,7 +34,10 @@ public class Shooting : MonoBehaviour
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
 
+              
+
                 GetComponent<AudioSource>().Play();
+
 
 
             }
@@ -34,7 +46,7 @@ public class Shooting : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.R))
         {
             shotCount = 30;
-
+            GetComponent<AudioSource>().Play();
         }
 
     }

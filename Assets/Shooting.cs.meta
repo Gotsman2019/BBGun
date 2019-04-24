@@ -3,7 +3,10 @@ guid: aac25ea50c30a437b89fea069a4ccf94
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bulletPrefab: {instanceID: 0}
+  - sound01: {fileID: 8300000, guid: 812b50bb38b38c0429403c7a983720e0, type: 3}
+  - sound02: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
