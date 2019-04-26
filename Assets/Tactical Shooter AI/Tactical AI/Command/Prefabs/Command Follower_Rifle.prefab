@@ -3389,7 +3389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAcceptCommands: 1
-  canFlank: 1
+  canFlank: 0
   canSuppress: 1
 --- !u!1 &175184
 GameObject:
