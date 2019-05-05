@@ -50,13 +50,15 @@ namespace Es.InkPainter.Sample
                 }
             }
             GameObject tama = GameObject.Find("shell");
+            GameObject tama2 = GameObject.Find("BBball");
             Destroy(tama);
+            Destroy(tama2);
         }
 
         public void OnCollisionStay(Collision collision)
         {
             ++eraseNum;//当たった回数
-            Debug.Log(eraseNum);
+
             if (waitCount < wait)
                 return;
             waitCount = 0;

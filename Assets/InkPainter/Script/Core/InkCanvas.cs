@@ -279,7 +279,7 @@ namespace Es.InkPainter
 
 		private void OnDestroy()
 		{
-			Debug.Log("InkCanvas has been destroyed.");
+			//Debug.Log("InkCanvas has been destroyed.");
 			ReleaseRenderTexture();
 		}
 
@@ -407,7 +407,7 @@ namespace Es.InkPainter
 					if(p.normalTexture != null)
 						p.paintNormalTexture = SetupRenderTexture(p.normalTexture, p.normalTexturePropertyID, p.material);
 					else
-						Debug.LogWarning("To take advantage of the normal map paint must set normal map to materials.");
+					Debug.LogWarning("To take advantage of the normal map paint must set normal map to materials.");
 				}
 				if(p.useHeightPaint)
 				{
@@ -767,7 +767,7 @@ namespace Es.InkPainter
 				return PaintUVDirect(brush, uv, materialSelector);
 			else
 			{
-				Debug.LogWarning("Could not get the point on the surface.");
+			//	Debug.LogWarning("Could not get the point on the surface.");
 				return PaintNearestTriangleSurface(brush, worldPos, materialSelector, renderCamera);
 			}
 		}

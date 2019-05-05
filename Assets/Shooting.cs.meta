@@ -5,8 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - bulletPrefab: {instanceID: 0}
-  - sound01: {fileID: 8300000, guid: 812b50bb38b38c0429403c7a983720e0, type: 3}
-  - sound02: {instanceID: 0}
+  - shotSound: {fileID: 8300000, guid: 812b50bb38b38c0429403c7a983720e0, type: 3}
+  - reloadSound: {fileID: 8300000, guid: 1280b4d2829a85e44b0462f77a6f5694, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

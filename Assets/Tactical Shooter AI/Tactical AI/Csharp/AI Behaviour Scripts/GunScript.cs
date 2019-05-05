@@ -169,22 +169,22 @@ public class GunScript : MonoBehaviour {
 	{
 		//Fire
 		isFiring = true;
-		
-        //Wait for the animation transitioning the agent from hiding to a firing positiont o finish.
-		if(myAIBaseScript.inCover)
+
+            //エージェントが隠れて発射位置に遷移するアニメーションが終了するのを待ちます。
+            if (myAIBaseScript.inCover)
 			yield return new WaitForSeconds(coverTransitionTime*1.5f);
 
-        //Don't fire if the agent is unaware of the target or meleeing the target.
-        if (myAIBaseScript.IsEnaging() && !myAIBaseScript.isMeleeing && !myAIBaseScript.inParkour)
+            //エージェントがターゲットに気付いていない場合やターゲットに近接している場合は攻撃しないでください。
+            if (myAIBaseScript.IsEnaging() && !myAIBaseScript.isMeleeing && !myAIBaseScript.inParkour)
 			{
-                //If we have clear LoS to the LOSTargetTransform, fire
-                //You may want to check for line of sight to a position right above the target's head (for example)
-                //This will allow your agent to lay down suppressing fire even if they can't see the target.
-				if(LOSTargetTransform && !animationScript.isSprinting())
+                //LOSTargetTransformに明確なLoSがある場合は、発砲します。
+                //ターゲットの頭の真上の位置まで視線を確認したい場合があります（たとえば、
+                //たとえ彼らが目標を見ることができなくても彼はあなたのエージェントが射撃を抑制することを可能にするでしょう。
+                if (LOSTargetTransform && !animationScript.isSprinting())
 					{
-                        //See if we can use our secondary fire
-                        //While a grenade may not need LoS, a homing missile might
-						if(!Physics.Linecast(bulletSpawn.position, LOSTargetTransform.position, LOSLayermask) || !locatedNewGrenadeTargetYet)	
+                    //二度目の発砲を使用できるかどうかを確認
+                    //手榴弾がLoSを必要としないかもしれない間、ホーミングミサイルはそうするかもしれません
+                    if (!Physics.Linecast(bulletSpawn.position, LOSTargetTransform.position, LOSLayermask) || !locatedNewGrenadeTargetYet)	
 							{
 								lastPosTargetSeen = targetTransform.position;
                                 locatedNewGrenadeTargetYet = true;
@@ -200,13 +200,13 @@ public class GunScript : MonoBehaviour {
                                 canFireGrenadeAgain = true;	
 							}
 					}
-                //Create the sound that will be heard by Paragon AI agents
-                //This sound is not going to be heard by the player
-				if(soundRadius > 0)
+                //Paragon AIエージェントに聞こえるようなサウンドを作成する
+                //この音はプレイヤーには聞こえないでしょう
+                if (soundRadius > 0)
 					{
 						TacticalAI.ControllerScript.currentController.CreateSound(bulletSpawn.position, soundRadius, enemyTeams);
 					}
-                //Shoot regular bullets	
+                //通常の弾丸を撃つ
                 if (animationScript.currentlyRotating)
                 {
                     yield return StartCoroutine(Fire());
@@ -216,18 +216,18 @@ public class GunScript : MonoBehaviour {
 		//Transition
 		isWaiting = true;
 		isFiring = false;
-	
-					
-        //If we aren't reloading wait for a while before firing another burst
-		if(currentBulletsUntilReload > 0 && reloadTime > 0)
+
+
+            //リロードしていない場合は、しばらくの間待ってからもう一度バーストします。
+            if (currentBulletsUntilReload > 0 && reloadTime > 0)
 			{
 				yield return new WaitForSeconds(minPauseTime + Random.value * randomPauseTimeAdd);
 			}
 		else
 			{
                 isReloading = true;
-                //If we're out of ammo, reload.
-				if(reloadSound)
+                //弾薬不足の場合は、リロードしてください
+                if (reloadSound)
 					{
                         audioSource.volume = reloadSoundVolume;
                         audioSource.PlayOneShot(reloadSound);
@@ -253,19 +253,19 @@ public class GunScript : MonoBehaviour {
 
     //Check Distances
     float distSqr = Vector3.SqrMagnitude(bulletSpawn.position - LOSTargetTransform.position);
-    if(minimumDistToFireGun <= distSqr && maximumDistToFireGun >= distSqr)      
-        //Make sure we don't fire more bullets than the number remaining in the agent's magazine.
+    if(minimumDistToFireGun <= distSqr && maximumDistToFireGun >= distSqr)
+                //エージェントのマガジンに残っている数よりも多くの弾丸を発射しないようにしてください。
 		currentRoundsPerVolley = Mathf.Min(Random.Range(minBurstsPerVolley, maxBurstsPerVolley), currentBulletsUntilReload);
-	
-        //Make sure we have bullets left and stop firing if the agent is dead.
-		while(currentRoundsPerVolley > 0 && this.enabled && !animationScript.isSprinting() && !myAIBaseScript.inParkour)
+
+            //弾丸が残っていることを確認し、エージェントが死んだ場合は発砲を止めます
+            while (currentRoundsPerVolley > 0 && this.enabled && !animationScript.isSprinting() && !myAIBaseScript.inParkour)
 			{	
 				if(LOSTargetTransform && canCurrentlyFire)
-					{		
-						//Make sure ray is always facing "forward".
-                        //Make sure we have clear LoS to the target
-                        //Ray can be stopped short so that the agent will still fire at the target even if they are behind a thin layer of cover
-						rayDist	= Mathf.Max(0.00001f, Vector3.Distance(bulletSpawn.position, LOSTargetTransform.position) - distInFrontOfTargetAllowedForCover);		
+					{
+                    //光線が常に「前方」を向いていることを確認してください。
+                    //ターゲットに対して明確なLoSがあることを確認してください
+                    //彼らはカバーの薄い層の後ろにある場合でもエージェントがまだターゲットに発射するようにレイを短く停止することができます
+                    rayDist = Mathf.Max(0.00001f, Vector3.Distance(bulletSpawn.position, LOSTargetTransform.position) - distInFrontOfTargetAllowedForCover);		
 						if(rayDist == 0 || !Physics.Raycast(bulletSpawn.position, LOSTargetTransform.position-bulletSpawn.position, rayDist, LOSLayermask))	
 							{
                                 bool canFire = true;
@@ -282,8 +282,8 @@ public class GunScript : MonoBehaviour {
                                 }
                         if (canFire)
                             {
-                                //Fire a burst of a fixed number of bullets.  Usually this number is one.
-                                for (int i = 0; i < shotsPerBurst; i++)
+                            //決まった数の弾丸を爆発させます。 通常、この数は1です。
+                            for (int i = 0; i < shotsPerBurst; i++)
                                 {
                                     if (i < shotsPerBurst - 1)
                                         yield return new WaitForSeconds(timeBetweenBurstBullets);
@@ -309,14 +309,14 @@ public class GunScript : MonoBehaviour {
 	{
 		//Look At Target
 		if(targetTransform && !myAIBaseScript.inParkour)
-			{	
-                //Snap our aim to the target even if we're aiming slightly off
-                //This is because the RotateToAimGunScript will rarely point directly at the target- merely close enough
-			    bool amAtTarget = Vector3.Angle(bulletSpawn.forward, targetTransform.position - bulletSpawn.position) < maxFiringAngle;
-				
-				//Fire Shot
-                //Most bullets will have one bullet.  However, shotguns and similar weapons will have more.
-				for(int j = 0; j < pelletsPerShot; j++)
+			{
+                //少し離れている場合でも、目標を目標に合わせる
+                //これは、RotateToAimGunScriptがターゲットを直接指すことはめったにないためです。
+                bool amAtTarget = Vector3.Angle(bulletSpawn.forward, targetTransform.position - bulletSpawn.position) < maxFiringAngle;
+
+                //Fire Shot
+                //ほとんどの弾丸は1つの弾丸を持っています。 しかし、ショットガンやそれに類する武器にはもっと多くのものがあります。
+                for (int j = 0; j < pelletsPerShot; j++)
 					{
                         if (amAtTarget)
                         {
@@ -327,19 +327,19 @@ public class GunScript : MonoBehaviour {
                             fireRotation = Quaternion.LookRotation(bulletSpawn.forward);
                         }
 
-                        //Modify our aim by a random amound to simulate inaccuracy.
-                        fireRotation *= Quaternion.Euler(Random.Range(-inaccuracy, inaccuracy), Random.Range(-inaccuracy, inaccuracy), 0); 
+                    //正確さをシミュレートするために、ランダムな量で目標を変更してください。
+                    fireRotation *= Quaternion.Euler(Random.Range(-inaccuracy, inaccuracy), Random.Range(-inaccuracy, inaccuracy), 0); 
 
 						GameObject bullet = (GameObject)(Instantiate(bulletObject, bulletSpawn.position, fireRotation));
-                        //If this is using the TacticalAI Bullet Script and is a rocket launcher
-						if(isRocketLauncher && bullet.GetComponent<TacticalAI.BulletScript>())
+                    //これがTacticalAI Bullet Scriptを使用していてロケットランチャーの場合
+                    if (isRocketLauncher && bullet.GetComponent<TacticalAI.BulletScript>())
 							{
 								bullet.GetComponent<TacticalAI.BulletScript>().SetAsHoming(targetTransform);
 							}
 					}
-				
-                //Play the sound that is audible by the player
-				if(bulletSound)
+
+                //プレイヤーに聞こえる音を再生する
+                if (bulletSound)
 					{
                         audioSource.volume = bulletSoundVolume;
                         audioSource.PlayOneShot(bulletSound);
@@ -348,10 +348,10 @@ public class GunScript : MonoBehaviour {
 				if(animationScript)	
 					{
 						animationScript.PlayFiringAnimation();
-					}				
-				
-                //Createthe muzzle flash and then destroy it after a given amount of time
-				if(muzzleFlash)
+					}
+
+                //マズルフラッシュを作成してから、一定時間後にそれを破壊する
+                if (muzzleFlash)
 					{
 						GameObject flash = (GameObject)(Instantiate(muzzleFlash, muzzleFlashSpawn.position, muzzleFlashSpawn.rotation));
 						flash.transform.parent = muzzleFlashSpawn;

@@ -67,12 +67,17 @@ namespace TacticalAI
             Destroy(gameObject);
         }
 
+
+
+
         IEnumerator ApplyDamage()
         {
             //Reduce the enemy's health
             //Does NOT travel up the heirarchy.  
             if (hit.transform.tag != friendlyTag)
             {
+                Debug.Log(hit.transform.tag　+　"BulletSC");
+                
                 //Uncomment for RFPS
                 /*
                 if (hit.collider.gameObject.GetComponent<FPSPlayer>())
@@ -108,6 +113,10 @@ namespace TacticalAI
             //Linger around for a while to let the trail renderer dissipate (if the bullet has one.)
             Destroy(gameObject, timeToDestroyAfterHitting);
         }
+
+
+
+
 
         // Update is called once per frame
         void Update()
