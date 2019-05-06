@@ -39,9 +39,12 @@ public class HealthScript : MonoBehaviour {
             }
 			maxShields = shields;
 		}
-	
-	void Update()
-	{
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log(collision.gameObject.tag); 
+        }
+        void Update()
+	{ 
 		currentTimeBeforeShieldRegen -= Time.deltaTime;
         timeTillNextStagger -= Time.deltaTime;
 
@@ -66,8 +69,8 @@ public class HealthScript : MonoBehaviour {
 		{	
             //Look for the source of the damage.
 			if(myTargetScript)
-				myTargetScript.CheckForLOSAwareness(true);	
-		
+				myTargetScript.CheckForLOSAwareness(true);
+           
 			ReduceHealthAndShields(damage);
 			myAIBaseScript.CheckToSeeIfWeShouldDodge();
 				

@@ -13,7 +13,7 @@ namespace TacticalAI
 
         public string damageMethodName = "Damage";
 
-        public float speed = 1000;
+        public float speed = 800;
         public LayerMask layerMask;
         public float maxLifeTime = 3;
 
@@ -76,8 +76,8 @@ namespace TacticalAI
             //Does NOT travel up the heirarchy.  
             if (hit.transform.tag != friendlyTag)
             {
-                Debug.Log(hit.transform.tag　+　"BulletSC");
-                
+               
+
                 //Uncomment for RFPS
                 /*
                 if (hit.collider.gameObject.GetComponent<FPSPlayer>())
@@ -86,10 +86,10 @@ namespace TacticalAI
                 }
                 */
 
-#if FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
+//#if FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
                 hit.collider.SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
-#endif
-                hit.collider.SendMessage(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
+//#endif
+             //   hit.collider.SendMessage(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
             }
 
             //Produce the appropriate special effect
@@ -115,13 +115,15 @@ namespace TacticalAI
         }
 
 
-
-
-
+        private void OnCollisionEnter(Collision collision)
+            {
+          // Debug.Log(collision.tag);
+            }
         // Update is called once per frame
         void Update()
         {
             Move();
+
         }
 
         //Move is a seperate method as the bullet must move IMMEDIATELY.

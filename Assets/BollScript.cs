@@ -41,8 +41,7 @@ public class BollScript : MonoBehaviour
 
    void Awake()
    {
-     //   myTransform = transform;
-       // Move();
+     
        StartCoroutine(SetTimeToDestroy());
    }
 
@@ -67,14 +66,13 @@ public class BollScript : MonoBehaviour
         //Does NOT travel up the heirarchy.  
         if (hit.transform.tag != friendlyTag)
        {
-          
-          
+            SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
+            // FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
 
 
-// FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
-             //  hit.collider.SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
+            //  hit.collider.SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
 
-            hit.collider.SendMessage(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
+            // hit.collider.SendMessage(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
         }
 
         //Produce the appropriate special effect
@@ -107,7 +105,7 @@ public class BollScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "HitBox")
         {
             StartCoroutine(ApplyDamage());
            

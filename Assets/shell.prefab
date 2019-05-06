@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4799206971037707365}
   m_Layer: 0
   m_Name: shell
-  m_TagString: Untagged
+  m_TagString: tama
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 1904366101985901035}
   m_LocalRotation: {x: -0, y: 0.99627805, z: -0, w: -0.08619825}
   m_LocalPosition: {x: -0.116, y: 1.61, z: -7.49}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxLifeTime: 3
-  damage: 30
+  damage: 100
   bulletForce: 100
   hitEffect: {fileID: 100000, guid: 884ab6180a9d36b468297110bd1f6b17, type: 3}
   hitEffectDestroyTime: 1
@@ -191,3 +191,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f763448228dbe443cb1e2e1127c19b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartPoint: {fileID: 0}

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HitCount : MonoBehaviour
 {
+
+    public Transform StartPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,18 +14,18 @@ public class HitCount : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
-    void OnCollisionEnter(Collision collision)
-    {
 
-        if (collision.gameObject.tag == "enemy")
+    void OnCollisionEnter(Collision collision)
         {
 
-        }
+        if (collision.gameObject.tag == "HitBox")
+            {
 
-           
-    }
+                Debug.Log("ATARI" );
+               
+            }
+
+        
+     }
     }
 

@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 7909928305475669027}
   - component: {fileID: 8534968435257374373}
   - component: {fileID: 1997570167805610537}
+  - component: {fileID: 8623344143639915804}
   m_Layer: 0
   m_Name: BBball
-  m_TagString: Untagged
+  m_TagString: tama
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +143,7 @@ MonoBehaviour:
       type: 3}
     brushHeightTexture: {fileID: 2800000, guid: f198c1c995ef08c478009b65a48af828,
       type: 3}
-    brushScale: 0.8
+    brushScale: 0.486
     rotateAngle: 0
     brushNormalBlend: 0.123
     brushHeightBlend: 0.136
@@ -179,3 +180,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8623344143639915804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8690665552170125100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f763448228dbe443cb1e2e1127c19b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
