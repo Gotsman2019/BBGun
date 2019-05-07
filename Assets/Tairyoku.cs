@@ -8,16 +8,9 @@ public class Tairyoku : MonoBehaviour
     public int tairyoku = 100;
     public Transform StartPoint;
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-
     void OnCollisionEnter(Collision collision)
     {
-
+        Debug.Log(tairyoku);
         if (collision.gameObject.tag == "tama")
         {
 
@@ -33,5 +26,13 @@ public class Tairyoku : MonoBehaviour
 
 
     }
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+
+
 }
 

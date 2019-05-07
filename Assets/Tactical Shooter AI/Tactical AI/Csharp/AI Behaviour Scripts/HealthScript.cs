@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 /*
  * Manages the agent's health. 
  * Will trigger the suppresion state on agents using cover if shields are down.
@@ -24,13 +24,13 @@ public class HealthScript : MonoBehaviour {
 	public Collider[] collidersToEnable;
 	public TacticalAI.RotateToAimGunScript rotateToAimGunScript;
 	public Animator animator;
-	
 	public TacticalAI.GunScript gunScript;
-		
 	private bool beenHitYetThisFrame = false;
 
-    //Initiation stuff.
-	void Awake()
+
+
+        //Initiation stuff.
+        void Awake()
 		{
 			soundScript = gameObject.GetComponent<TacticalAI.SoundScript>();
             if (shields < 0)
@@ -39,13 +39,10 @@ public class HealthScript : MonoBehaviour {
             }
 			maxShields = shields;
 		}
-        private void OnCollisionEnter(Collision collision)
-        {
-            Debug.Log(collision.gameObject.tag); 
-        }
+      
         void Update()
-	{ 
-		currentTimeBeforeShieldRegen -= Time.deltaTime;
+	{
+        currentTimeBeforeShieldRegen -= Time.deltaTime;
         timeTillNextStagger -= Time.deltaTime;
 
          //Only let us take explosion damage once per frame. (could also be used for weapons that would pass through an agent's body)
@@ -73,7 +70,7 @@ public class HealthScript : MonoBehaviour {
            
 			ReduceHealthAndShields(damage);
 			myAIBaseScript.CheckToSeeIfWeShouldDodge();
-				
+           
 			if(health <= 0)
 				{
 					DeathCheck();
@@ -91,7 +88,7 @@ public class HealthScript : MonoBehaviour {
 			if(!beenHitYetThisFrame)
 				{
 					ReduceHealthAndShields(damage);
-									
+                		
 					if(health <= 0)
 						{
 							DeathCheck();

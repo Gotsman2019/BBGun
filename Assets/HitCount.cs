@@ -21,10 +21,10 @@ public class HitCount : MonoBehaviour
         if (collision.gameObject.tag == "HitBox")
             {
 
-                Debug.Log("ATARI" );
+                Debug.Log("ATARI");
                
             }
-
+        Debug.Log(collision.gameObject.tag);
         
      }
     }
