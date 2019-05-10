@@ -3654,6 +3654,14 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -3677,14 +3685,6 @@ PrefabInstance:
     - target: {fileID: 163172, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -4374,6 +4374,14 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -4389,14 +4397,6 @@ PrefabInstance:
     - target: {fileID: 128592, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -4992,14 +4992,6 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 114000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: m_TagString
-      value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 128592, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: m_TagString
-      value: HitBox
-      objectReference: {fileID: 0}
     - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: shieldsBlockDamage
       value: 0
@@ -5007,6 +4999,14 @@ PrefabInstance:
     - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: shields
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: m_TagString
+      value: HitBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 128592, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: m_TagString
+      value: HitBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -6703,6 +6703,14 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -6734,14 +6742,6 @@ PrefabInstance:
     - target: {fileID: 136818, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -10031,6 +10031,14 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 89
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.62
@@ -10050,14 +10058,6 @@ PrefabInstance:
     - target: {fileID: 128592, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -11134,6 +11134,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tairyoku: 10
   StartPoint: {fileID: 499245732}
+--- !u!114 &991608856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991608839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4b3964183ce4668aa4df78239a91b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goal: {fileID: 1100087748}
 --- !u!1 &1008940118
 GameObject:
   m_ObjectHideFlags: 0
@@ -15734,6 +15747,18 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -15749,18 +15774,6 @@ PrefabInstance:
     - target: {fileID: 128592, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -16144,6 +16157,14 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -16167,14 +16188,6 @@ PrefabInstance:
     - target: {fileID: 163172, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -17634,6 +17647,14 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -17649,14 +17670,6 @@ PrefabInstance:
     - target: {fileID: 128592, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
@@ -19959,7 +19972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11499510, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 14456124, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -20114,6 +20127,22 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
@@ -20141,22 +20170,6 @@ PrefabInstance:
     - target: {fileID: 136818, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108322, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
@@ -22282,6 +22295,14 @@ PrefabInstance:
       propertyPath: maxCoverDistFromEnemy
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shieldsBlockDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
+      propertyPath: shields
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 452342, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
@@ -22297,14 +22318,6 @@ PrefabInstance:
     - target: {fileID: 128592, guid: 4bfae102cc96d72418c1376305879165, type: 3}
       propertyPath: m_TagString
       value: HitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shieldsBlockDamage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447884, guid: 4bfae102cc96d72418c1376305879165, type: 3}
-      propertyPath: shields
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfae102cc96d72418c1376305879165, type: 3}
