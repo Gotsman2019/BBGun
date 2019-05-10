@@ -8,6 +8,8 @@ TagManager:
   - enemy
   - tama
   - route
+  - AI Controller
+  - Cover
   layers:
   - Default
   - TransparentFX

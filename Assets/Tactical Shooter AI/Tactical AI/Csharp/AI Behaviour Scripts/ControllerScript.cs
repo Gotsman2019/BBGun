@@ -32,7 +32,7 @@ namespace TacticalAI
         {
             currentController = this;
             transform.tag = "AI Controller";
-            GameObject[] tempCoverNodeObjects = GameObject.FindGameObjectsWithTag("Cover");
+         GameObject[] tempCoverNodeObjects = GameObject.FindGameObjectsWithTag("Cover");
 
             ControllerScript.pMode = usePerformanceMode;
 
