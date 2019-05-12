@@ -75,7 +75,7 @@ namespace Es.InkPainter.Sample
                     HitPoint hitPont = new HitPoint();
                     hitPont.canvas = canvas;
                     hitPont.point = p.point;
-                    hitPont.remainingFrame = 30;
+                    hitPont.remainingFrame = 5;
                     hitPointList.Add(hitPont);
                 }
             }

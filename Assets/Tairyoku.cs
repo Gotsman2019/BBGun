@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class Tairyoku : MonoBehaviour
 {
-    public int tairyoku ;
+    public int tairyoku;
+    public Transform FirstPoint;
     public Transform StartPoint;
     public Transform NextPoint;
+    public Transform Next2Point;
+    //  private int n = 0;
     // Start is called before the first frame update
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
+      // Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "tama")
         {
 
@@ -22,31 +25,56 @@ public class Tairyoku : MonoBehaviour
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
                 agent.destination = StartPoint.position;
 
+
+
             }
         }
 
     }
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
         if (tairyoku > 0)
         {
             if (other.gameObject.tag == "route")
             {
+
+                Debug.Log(tairyoku);
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-                agent.destination = NextPoint.position;
+                agent.destination = NextPoint.position; //No2Point
             }
 
+            if (other.gameObject.tag == "route2")
+            {
+
+                UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+                agent.destination = Next2Point.position;//No3Point
+
+            }
+            if (other.gameObject.tag == "route3")
+            {
+                UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+                agent.destination = StartPoint.position;//startPoint Restart
+
+            }
+            if (other.gameObject.tag == "route4")
+            {
+
+                UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+                agent.destination = FirstPoint.position;//No1Point
+
+
+            }
         }
+        if (other.gameObject.tag == "route4")
+        {
+            tairyoku = 80;
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.destination = FirstPoint.position;//No1Point
+
+        }
+
+
+
     }
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-
 
 }
-

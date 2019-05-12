@@ -10,6 +10,9 @@ TagManager:
   - route
   - AI Controller
   - Cover
+  - route2
+  - route3
+  - route4
   layers:
   - Default
   - TransparentFX

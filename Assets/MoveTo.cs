@@ -8,11 +8,11 @@ using UnityEngine;
 public class MoveTo : MonoBehaviour
 {
 
-    public Transform goal;
+    public Transform FirstPoint;
 
     void Start()
     {
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.destination = goal.position;
+        agent.destination = FirstPoint.position;
     }
 }
