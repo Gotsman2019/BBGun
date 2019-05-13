@@ -26,8 +26,7 @@ public class HealthScript : MonoBehaviour {
 	public Animator animator;
 	public TacticalAI.GunScript gunScript;
 	private bool beenHitYetThisFrame = false;
-
-
+    public Transform StartPoint;
 
         //Initiation stuff.
         void Awake()
@@ -73,8 +72,11 @@ public class HealthScript : MonoBehaviour {
            
 			if(health <= 0)
 				{
-					DeathCheck();
-				}	
+                UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+                agent.destination = StartPoint.position;//startPoint Restart
+
+                 //DeathCheck();
+            }	
 		}
 	
 	public IEnumerator SingleHitBoxDamage(float damage)
@@ -91,8 +93,11 @@ public class HealthScript : MonoBehaviour {
                 		
 					if(health <= 0)
 						{
-							DeathCheck();
-						}
+                    UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+                    agent.destination = StartPoint.position;//startPoint Restart
+                   
+                     //DeathCheck();
+                }
 					beenHitYetThisFrame = true;	
 				}
 					

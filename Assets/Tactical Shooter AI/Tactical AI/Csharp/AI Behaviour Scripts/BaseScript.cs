@@ -261,7 +261,7 @@ namespace TacticalAI
                     else
                     {
                         if (!isMeleeing && Vector3.SqrMagnitude(myTransform.position - currentBehaviour.targetVector) > distFromTargetToSprint && canSprint && engaging)
-                        {
+                        {StartCoroutine(AttackInMelee());
                             animationScript.StartSprinting();
                             SetSprintSpeed();
                             headLookScript.Deactivate();

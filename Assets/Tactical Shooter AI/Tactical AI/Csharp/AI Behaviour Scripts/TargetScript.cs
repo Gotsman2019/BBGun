@@ -49,7 +49,7 @@ namespace TacticalAI
 
         //public bool shouldUseLOSTargets = true;
 
-        private bool engaging = false;
+        private bool engaging = true;
 
         public TacticalAI.Target currentEnemyTarget;
 
@@ -148,7 +148,7 @@ namespace TacticalAI
                 if (engaging)
                     yield return new WaitForSeconds(timeBetweenTargetChecksIfEngaging);
                 else
-                    yield return new WaitForSeconds(timeBetweenTargetChecksIfNotEngaging);
+                    yield return new WaitForSeconds(timeBetweenTargetChecksIfEngaging);//timeBetweenTargetChecksIfNotEngaging);
 
                 ChooseTarget();
             }
@@ -214,7 +214,7 @@ namespace TacticalAI
                 }
                 else
                 {
-                    CheckForLOSAwareness(false);
+                    CheckForLOSAwareness(true);
                 }
 
                 ChooseTarget();
@@ -330,7 +330,7 @@ namespace TacticalAI
                 float enemyScoreCheckingNow = 0;
                 Transform enemyTransformCheckingNow = eyeTransform;
                 currentEnemyTarget = null;
-                bool foundTargetWithLoS = false;
+                bool foundTargetWithLoS =false;
                 int i = 0;
 
                 CheckIfWeStillHaveAwareness();
@@ -379,20 +379,20 @@ namespace TacticalAI
                 
                 //If all of the above fails, pick a random target- even if it's one we haven't seen
                 if (currentEnemyTarget == null && enemyTargets.Length > 0)
-                {
-                    currentEnemyTarget = enemyTargets[Random.Range(0, enemyTargets.Length - 1)];
+               {
+                   currentEnemyTarget = enemyTargets[Random.Range(0, enemyTargets.Length - 1)];
                 }
             
 				if(currentEnemyTarget != null)
-                {	
+               {	
                     myAIBaseScript.SetMyTarget(currentEnemyTarget.transform, currentEnemyTarget.targetScript.myLOSTarget);
                 }
-                if (currentEnemyTarget == null)
+               if (currentEnemyTarget == null)
                 
                 {
-                    myAIBaseScript.RemoveMyTarget();
+                   myAIBaseScript.RemoveMyTarget();
                 }
-            }
+           }
         }
 
         public void AlertAlliesOfEnemy_Shout()
@@ -439,7 +439,7 @@ namespace TacticalAI
                     //Debug
                     if (debugFieldOfView)
                         {
-                            UnityEngine.Debug.DrawRay(eyeTransform.position, eyeTransform.forward * 20, Color.green, timeBetweenLOSChecks);
+                            UnityEngine.Debug.DrawRay(eyeTransform.position, eyeTransform.forward * 100, Color.green, timeBetweenLOSChecks);
                             Vector3 tarVec = Quaternion.AngleAxis(effectiveFOV, Vector3.up) * eyeTransform.forward;
                             UnityEngine.Debug.DrawRay(eyeTransform.position, tarVec * 20, Color.green, timeBetweenLOSChecks);
                             tarVec = Quaternion.AngleAxis(-effectiveFOV, Vector3.up) * eyeTransform.forward;
@@ -450,7 +450,7 @@ namespace TacticalAI
 					//Sometimes we may not want to restrict the agent's senses to their field of view.	
                     //Stupid checks to make sure we still have the transforms because Unity can't pass a function telling us that a scene is about to be loaded
                     if (eyeTransform && enemyTargets[i].transform && (shouldCheck360Degrees || Vector3.Angle(eyeTransform.forward, enemyTargets[i].transform.position - eyeTransform.position) < effectiveFOV) && Vector3.SqrMagnitude(eyeTransform.position - enemyTargets[i].transform.position) < maxDistToNoticeTarget)
-                    {
+                   {
                     	//(Vector3.Angle(eyeTransform.forward, enemyTargets[i].transform.position - eyeTransform.position));
                     	//print(shouldCheck360Degrees);
                         if ( !Physics.Linecast(eyeTransform.position, enemyTargets[i].transform.position, layerMask))
