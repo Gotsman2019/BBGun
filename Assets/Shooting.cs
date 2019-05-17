@@ -13,6 +13,8 @@ public class Shooting : MonoBehaviour
     public AudioClip shotSound;
     public AudioClip reloadSound;
     private AudioSource audioSource;
+    private float waitingTime = 1.0f ;
+
 
     private void Start()
     {
@@ -21,13 +23,14 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-
+       
         if (Input.GetKey("e"))
         {
-
+            waitingTime -= 0.1f; 
+             
             shotInterval += 1;
 
-            if (shotInterval % 5 == 0 && shotCount > 0)
+            if (waitingTime <= 0 && shotCount > 0 && shotInterval %  5 == 0) 
             {
                 shotCount -= 1;
 
@@ -43,6 +46,11 @@ public class Shooting : MonoBehaviour
         {
             shotCount = 30;
            audioSource.PlayOneShot(reloadSound);
+        }
+
+        if (Input.GetKeyUp("e"))
+        {
+            waitingTime = 1.0f;
         }
 
     }

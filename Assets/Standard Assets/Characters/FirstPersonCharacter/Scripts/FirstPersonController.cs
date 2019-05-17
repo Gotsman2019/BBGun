@@ -28,6 +28,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+
+        public Transform spineBone;
+        float sensitive = 0.1f;
+        float Mini = 0.0f;
+        float Max = 90.0f;
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -42,6 +48,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+
+
         // Use this for initialization
         private void Start()
         {
@@ -55,12 +63,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+
         }
 
 
         // Update is called once per frame
         private void Update()
         {
+            if (Input.GetKey("m"))
+            {
+
+                float MouseMoveY = Input.GetAxis("Mouse Y") * sensitive;
+                float angle = Mathf.LerpAngle(Mini, Max, Time.time) * MouseMoveY;
+                spineBone.transform.eulerAngles = new Vector3(angle, 0, 0);
+                Debug.Log(angle);
+            }
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)

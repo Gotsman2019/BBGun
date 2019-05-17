@@ -7,6 +7,8 @@ public class PlayerAnimController : MonoBehaviour
 
     private Animator anim;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,30 @@ public class PlayerAnimController : MonoBehaviour
         if (Input.GetKey("e"))
         {
             anim.SetBool("StandAim", true);
-
+            if (Input.GetKey("s"))
+            {
+                anim.SetBool("StandToBackAim", true);
+            }
+            else
+            {
+                anim.SetBool("StandToBackAim", false);
+            }
+            if (Input.GetKey("w"))
+            {
+                anim.SetBool("StandToFrontAim", true);
+            }
+            else
+            {
+                anim.SetBool("StandToFrontAim", false);
+            }
+            if (Input.GetKey("a"))
+            {
+                anim.SetBool("StandToLeftAim",true);
+            }
+            else
+            {
+                anim.SetBool("StandToLeftAim",false);
+            }
         }
         else
         {
@@ -69,5 +94,18 @@ public class PlayerAnimController : MonoBehaviour
         {
             anim.SetBool("RightWalk", false);
         }
+
+        float migi = Input.GetAxis("Horizontal");
+        Debug.Log(migi);
+        if (migi > 0)
+        {
+
+           anim.SetBool("RigthWalk", true);
+        }
+
+
     }
+
+
+
 }
