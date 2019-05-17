@@ -94,10 +94,10 @@ public class PlayerAnimController : MonoBehaviour
         {
             anim.SetBool("RightWalk", false);
         }
-
+        //マウスで動いかしたいのに。。。。。
         float migi = Input.GetAxis("Horizontal");
         Debug.Log(migi);
-        if (migi > 0)
+        if (migi >=0)
         {
 
            anim.SetBool("RigthWalk", true);
