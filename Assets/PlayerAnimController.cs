@@ -19,6 +19,7 @@ public class PlayerAnimController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey("e"))
         {
             anim.SetBool("StandAim", true);
@@ -26,41 +27,33 @@ public class PlayerAnimController : MonoBehaviour
             {
                 anim.SetBool("StandToBackAim", true);
             }
-            else
-            {
-                anim.SetBool("StandToBackAim", false);
-            }
-            if (Input.GetKey("w"))
+
+            else if (Input.GetKey("w"))
             {
                 anim.SetBool("StandToFrontAim", true);
             }
-            else
+
+            else if (Input.GetKey("a"))
             {
-                anim.SetBool("StandToFrontAim", false);
+                anim.SetBool("StandToLeftAim", true);
             }
-            if (Input.GetKey("a"))
-            {
-                anim.SetBool("StandToLeftAim",true);
-            }
-            else
-            {
-                anim.SetBool("StandToLeftAim",false);
-            }
+
         }
         else
         {
             anim.SetBool("StandAim", false);
         }
 
+
         if (Input.GetKey("w"))
-        {
-            anim.SetBool("Walk", true);
-        }
+       {
+           anim.SetBool("Walk", true);
+       }
         else
-        {
-            anim.SetBool("Walk", false);
-        }
-      
+           {
+               anim.SetBool("Walk", false);
+           }
+ 
         if (Input.GetKey("s"))
         {
 
@@ -68,9 +61,9 @@ public class PlayerAnimController : MonoBehaviour
         }
      
         else
-        {
-            anim.SetBool("BackWalk", false);
-        }
+          {
+               anim.SetBool("BackWalk", false);
+          }
 
 
         if (Input.GetKey("a"))
@@ -80,9 +73,9 @@ public class PlayerAnimController : MonoBehaviour
         }
 
         else
-        {
-            anim.SetBool("LeftWalk", false);
-        }
+           {
+               anim.SetBool("LeftWalk", false);
+           }
 
         if (Input.GetKey("d"))
         {
@@ -91,13 +84,18 @@ public class PlayerAnimController : MonoBehaviour
         }
 
         else
-        {
-            anim.SetBool("RightWalk", false);
-        }
+           {
+               anim.SetBool("RightWalk", false);
+           }
         //マウスで動いかしたいのに。。。。。
-        float migi = Input.GetAxis("Horizontal");
+        if (Input.GetMouseButton(0))
+        {
+            anim.SetBool("RigthWalk", true);
+            Debug.Log("左クリック");
+        }
+            float migi = Input.GetAxis("Horizontal");
         Debug.Log(migi);
-        if (migi >=0)
+        if (migi > 0)
         {
 
            anim.SetBool("RigthWalk", true);

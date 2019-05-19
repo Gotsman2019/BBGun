@@ -47,8 +47,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private Quaternion CameraTargetRot;
+        private Transform NextTransform;
+        [Range(0.1f, 10f)]
 
+        public float lookSensitivity = 1f;
+        [Range(0.1f, 1f)]
 
+        public float lookSmooth = 0.0001f;
+
+        public Vector2 MinMaxAngle = new Vector2(-30, 30);
+
+        private float yRot;
+        private float xRot;
+
+        private float currentYRot;
+        private float currentXRot;
+
+        private float yRotVelocity;
+        private float xRotVelocity;
 
         // Use this for initialization
         private void Start()
@@ -63,22 +80,31 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+           
 
 
         }
+        private void LateUpdate()
+        {
+            yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
+            xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
 
+
+
+            xRot = Mathf.Clamp(xRot, MinMaxAngle.x, MinMaxAngle.y);//上下の角度移動の最大、最小.
+
+
+            currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
+            currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
+
+            spineBone.rotation = Quaternion.Euler(0, 90 + currentYRot, currentXRot-90);
+
+        }
 
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKey("m"))
-            {
 
-                float MouseMoveY = Input.GetAxis("Mouse Y") * sensitive;
-                float angle = Mathf.LerpAngle(Mini, Max, Time.time) * MouseMoveY;
-                spineBone.transform.eulerAngles = new Vector3(angle, 0, 0);
-                Debug.Log(angle);
-            }
 
             RotateView();
             // the jump state needs to read here to make sure it is not missed
@@ -107,7 +133,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
-            m_NextStep = m_StepCycle + .5f;
+            m_NextStep = m_StepCycle +0.5f;
         }
 
 
@@ -210,11 +236,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                       (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
+                newCameraPosition.z = -0.7f;
             }
             else
             {
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
+                newCameraPosition.z = -0.7f;
             }
             m_Camera.transform.localPosition = newCameraPosition;
         }
@@ -256,6 +284,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void RotateView()
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
+
+
         }
 
 
