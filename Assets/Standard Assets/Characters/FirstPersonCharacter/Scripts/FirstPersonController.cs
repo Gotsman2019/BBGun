@@ -48,7 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Transform NextTransform;
         [Range(0.1f, 10f)]
 
-        public float lookSensitivity = 10f;
+        public float lookSensitivity = 0.5f;
         [Range(0.1f, 1f)]
 
         public float lookSmooth = 1f;
