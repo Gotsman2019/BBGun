@@ -82,7 +82,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         private void LateUpdate()
         {
-           
+            yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
+            xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
+
+
+
+            currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
+            currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
+
+            spineBone.rotation = Quaternion.Euler(0, 90+yRot, xRot-90);
+
         }
 
         // Update is called once per frame
