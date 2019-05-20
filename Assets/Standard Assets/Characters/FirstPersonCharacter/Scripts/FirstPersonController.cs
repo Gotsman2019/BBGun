@@ -30,9 +30,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         public Transform spineBone;
-        float sensitive = 0.1f;
-        float Mini = 0.0f;
-        float Max = 90.0f;
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -51,13 +48,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Transform NextTransform;
         [Range(0.1f, 10f)]
 
-        public float lookSensitivity = 1f;
+        public float lookSensitivity = 10f;
         [Range(0.1f, 1f)]
 
-        public float lookSmooth = 0.0001f;
+        public float lookSmooth = 1f;
 
-        public Vector2 MinMaxAngle = new Vector2(-30, 30);
-
+        public Vector2 MinMaxAngle = new Vector2(-30, 90);
         private float yRot;
         private float xRot;
 
@@ -86,19 +82,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         private void LateUpdate()
         {
-            yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
-            xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
-
-
-
-            xRot = Mathf.Clamp(xRot, MinMaxAngle.x, MinMaxAngle.y);//上下の角度移動の最大、最小.
-
-
-            currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
-            currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
-
-            spineBone.rotation = Quaternion.Euler(0, 90 + currentYRot, currentXRot-90);
-
+           
         }
 
         // Update is called once per frame
