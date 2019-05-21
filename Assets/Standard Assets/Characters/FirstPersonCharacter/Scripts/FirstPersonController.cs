@@ -48,7 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Transform NextTransform;
         [Range(0.1f, 10f)]
 
-        public float lookSensitivity = 0.5f;
+        public float lookSensitivity = 1f;
         [Range(0.1f, 1f)]
 
         public float lookSmooth = 1f;
@@ -82,15 +82,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         private void LateUpdate()
         {
-            yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
-            xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
+            //  yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
+            //  xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
 
 
 
-            currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
-            currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
+            //   currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
+            //  currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
-            spineBone.rotation = Quaternion.Euler(0, 90+yRot, xRot-90);
+            //   Debug.Log(currentXRot);
+           //spineBone.rotation =  //Quaternion.Euler(0, 90+ currentYRot, currentXRot - 90);
 
         }
 
@@ -230,6 +231,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
                 newCameraPosition.z = -0.7f;
+             
             }
             else
             {
@@ -238,6 +240,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 newCameraPosition.z = -0.7f;
             }
             m_Camera.transform.localPosition = newCameraPosition;
+           
         }
 
 
