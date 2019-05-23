@@ -79,10 +79,28 @@ public class PlayerAnimController : MonoBehaviour
             {
                 anim.SetBool("RightWalk", false);
             }
-        
 
+        if (Input.GetKey("e"))
+        {
 
+            anim.SetBool("StandAim", true);
+            i += 1;
+
+            if (i > 1)
+            {
+                anim.SetBool("StandAim", true);
+            }
         }
+
+        if (Input.GetKeyUp("e"))
+        {
+            anim.SetBool("StandAim", false);
+            anim.SetBool("Standing", true);
+          
+            i = 0;
+        }
+
+    }
 
     }
 

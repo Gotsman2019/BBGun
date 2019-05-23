@@ -64,6 +64,41 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCursorLock();
         }
 
+        public void LookRotationSpine(Transform spine, Transform camera)
+        {
+            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+
+            m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+            m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+
+            if (clampVerticalRotation)
+                m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+            spineRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+
+            if (smooth)
+            {
+                spine.localRotation = Quaternion.Slerp(spine.localRotation, m_CharacterTargetRot,
+                    smoothTime * Time.deltaTime);
+                camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
+                    smoothTime * Time.deltaTime);
+                spineBone2.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
+
+
+            }
+            else
+            {
+                spine.localRotation = m_CharacterTargetRot;
+                camera.localRotation = m_CameraTargetRot;
+                spineBone2.localRotation = m_CameraTargetRot;
+
+            }
+
+            UpdateCursorLock();
+        }
+
+
         public void SetCursorLock(bool value)
         {
             lockCursor = value;

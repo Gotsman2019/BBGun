@@ -73,9 +73,9 @@ public class HealthScript : MonoBehaviour {
 			if(health <= 0)
 				{
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-                agent.destination = StartPoint.position;//startPoint Restart
+           //     agent.destination = StartPoint.position;//startPoint Restart 0522
 
-                 //DeathCheck();
+                 DeathCheck();
             }	
 		}
 	
