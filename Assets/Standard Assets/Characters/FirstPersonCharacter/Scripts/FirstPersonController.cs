@@ -30,7 +30,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         public Transform spineBone;
+       
 
+        public GameObject targetobject;
+
+        
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -53,7 +57,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public float lookSmooth = 1f;
 
-        public Vector2 MinMaxAngle = new Vector2(-30, 90);
+        public Vector2 MinMaxAngle = new Vector2(-60, 120);
         private float yRot;
         private float xRot;
 
@@ -82,16 +86,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         private void LateUpdate()
         {
-            //  yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
-            //  xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
 
+            //spineBone.LookAt(targetobject.transform);
+          
+              yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
+              xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
 
+               currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
+              currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
-            //   currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
-            //  currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
-
-            //   Debug.Log(currentXRot);
-           //spineBone.rotation =  //Quaternion.Euler(0, 90+ currentYRot, currentXRot - 90);
+          
+          //  spineBone.rotation = Quaternion.Euler(0, 90+yRot, currentXRot - 90);
 
         }
 
@@ -280,7 +285,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void RotateView()
         {
           m_MouseLook.LookRotation (transform, m_Camera.transform);
-          //  m_MouseLook.LookRotationSpine(spineBone, m_Camera.transform);
+          
 
         }
 
