@@ -52,12 +52,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Transform NextTransform;
         [Range(0.1f, 10f)]
 
-        public float lookSensitivity = 1f;
+        public float lookSensitivity = 2f;
         [Range(0.1f, 1f)]
 
-        public float lookSmooth = 1f;
+        public float lookSmooth = 100f;
 
-        public Vector2 MinMaxAngle = new Vector2(-60, 120);
+        public Vector2 MinMaxAngle = new Vector2(-180, 180);
         private float yRot;
         private float xRot;
 
@@ -92,11 +92,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
               yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
               xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
 
-               currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
-              currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
+              // currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
+             // currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
           
-          //  spineBone.rotation = Quaternion.Euler(0, 90+yRot, currentXRot - 90);
+            spineBone.rotation *= Quaternion.Euler(0, 0, xRot);
 
         }
 
