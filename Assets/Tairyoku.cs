@@ -19,7 +19,7 @@ public class Tairyoku : MonoBehaviour
         {
 
             tairyoku -= 50;
-
+            Debug.Log("BigMan" + tairyoku);
             if (tairyoku <= 0)
             {
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
