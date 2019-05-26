@@ -28,6 +28,21 @@ public class HealthScript : MonoBehaviour {
 	private bool beenHitYetThisFrame = false;
     public Transform StartPoint;
 
+        void OnCollisionEnter(Collision collision)
+        {
+
+            if (collision.gameObject.tag == "tama")
+            {
+
+                health -= 50;
+                Debug.Log("Testman" + health);
+
+            }
+
+        }
+
+
+
         //Initiation stuff.
         void Awake()
 		{
@@ -72,8 +87,6 @@ public class HealthScript : MonoBehaviour {
            
 			if(health <= 0)
 				{
-                UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-           //     agent.destination = StartPoint.position;//startPoint Restart 0522
 
                  DeathCheck();
             }	
@@ -93,10 +106,9 @@ public class HealthScript : MonoBehaviour {
                 		
 					if(health <= 0)
 						{
-                    UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-                    agent.destination = StartPoint.position;//startPoint Restart
                    
-                     //DeathCheck();
+                   
+                     DeathCheck();
                 }
 					beenHitYetThisFrame = true;	
 				}
@@ -187,7 +199,7 @@ public class HealthScript : MonoBehaviour {
                     //Enable the ragdoll
 					for(i = 0; i < rigidbodies.Length; i++)
 						{
-							rigidbodies[i].isKinematic = false;
+                    rigidbodies[i].isKinematic = true; //false;
 						}
 					for(i = 0; i < collidersToEnable.Length; i++)
 						{				
@@ -199,9 +211,10 @@ public class HealthScript : MonoBehaviour {
 					if(rotateToAimGunScript)
 						rotateToAimGunScript.enabled = false;
 
-                    if (animator && !useDeathAnimation)
+
+                if (animator && !useDeathAnimation)
                     {
-                        animator.enabled = false;
+                    animator.enabled = true; //false;
                     }
                     else
                     {
@@ -211,7 +224,9 @@ public class HealthScript : MonoBehaviour {
 					if(gunScript)
 						{
 							gunScript.enabled = false;
-						}
+                    UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+                    agent.destination = StartPoint.position;//startPoint Restart
+                }
 							
 					this.enabled = false;
 				}

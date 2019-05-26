@@ -291,7 +291,8 @@ namespace TacticalAI
         bool canOverrideBehaviour = true;
 
         public CustomAIBehaviour idleBehaviour;
-        public CustomAIBehaviour combatBehaviour;
+        public CustomAIBehaviour 
+        combatBehaviour;
         public CustomAIBehaviour tacticalBehaviour;
 
         //Set our idle behaviour.  If we are not using an override behaviour, start or restart the appropriate behaviour.

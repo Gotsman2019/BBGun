@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class Tairyoku : MonoBehaviour
 {
+    public Transform LeftArm;
+    public Transform RigthtArm;
+
     public int tairyoku;
     public Transform FirstPoint;
     public Transform StartPoint;
     public Transform NextPoint;
     public Transform Next2Point;
-    //  private int n = 0;
+   
     // Start is called before the first frame update
+
+   private Animation Anime;
+
+
     void OnCollisionEnter(Collision collision)
     {
-      // Debug.Log(collision.gameObject.tag);
+      
         if (collision.gameObject.tag == "tama")
         {
 
@@ -24,8 +31,8 @@ public class Tairyoku : MonoBehaviour
             {
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
                 agent.destination = StartPoint.position;
-
-
+               
+                 RigthtArm.rotation = Quaternion.Euler(100, RigthtArm.transform.localRotation.y, RigthtArm.transform.localRotation.z);
 
             }
         }
@@ -73,8 +80,21 @@ public class Tairyoku : MonoBehaviour
 
         }
 
+    }
 
+    void Start()
+    {
+        Anime = GetComponent<Animation>();
 
+    }
+
+    private void LateUpdate()
+    {
+        if (tairyoku <= 0)
+        {
+            RigthtArm.rotation = Quaternion.Euler(80, -50, RigthtArm.rotation.z);
+            LeftArm.rotation = Quaternion.Euler(-50, 50, LeftArm.rotation.z);
+        }
     }
 
 }
