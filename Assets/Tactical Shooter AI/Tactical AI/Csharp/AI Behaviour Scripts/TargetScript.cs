@@ -15,7 +15,8 @@ namespace TacticalAI
     {
 
         public Transform targetObjectTransform;
-
+        public HealthScript healthy;
+        public Tairyoku tairyoku2 ;
         public Transform myLOSTarget;
         public float targetPriority = 1;
         public TacticalAI.BaseScript myAIBaseScript;
@@ -74,6 +75,15 @@ namespace TacticalAI
 
 		public float maxDistToNoticeTarget = 9999f;
 
+        public void RemoveMine()//自分をリストから消す
+        {
+            TacticalAI.ControllerScript.currentController.RemoveTargetFromTargetList(myUniqueID);
+        }
+        public void SetMine()//リストに載せる
+        {
+            myUniqueID = TacticalAI.ControllerScript.currentController.AddTarget(myTeamID, targetObjectTransform, this);
+        }
+
         // Use this for initialization
         void Awake()
         {
@@ -125,7 +135,8 @@ namespace TacticalAI
                 //StartCoroutine(CountDownToTargetExperation());
             }
         }
-
+     
+       
         IEnumerator LoSLoop()
         {
             //Check to see if we can see enemy targets every x seconds
@@ -455,6 +466,7 @@ namespace TacticalAI
                     	//print(shouldCheck360Degrees);
                         if ( !Physics.Linecast(eyeTransform.position, enemyTargets[i].transform.position, layerMask))
                         {
+
                             NoticeATarget(enemyTargets[i]);
                         }
                     }

@@ -8,9 +8,12 @@ using System.Collections.Generic;
 
 namespace TacticalAI{
 public class HealthScript : MonoBehaviour {
-
-	public float health = 100;
-	public float shields = 25;	
+        public Transform LeftArm;
+        public Transform RigthtArm;
+        public Transform RArmUPER2;
+        public float health = 100;
+        private Animation Anime;
+        public float shields = 25;	
 	private float maxShields = 10;	
 	public bool shieldsBlockDamage = false;	
 	public float timeBeforeShieldRegen = 5;
@@ -28,20 +31,6 @@ public class HealthScript : MonoBehaviour {
 	private bool beenHitYetThisFrame = false;
     public Transform StartPoint;
 
-        void OnCollisionEnter(Collision collision)
-        {
-
-            if (collision.gameObject.tag == "tama")
-            {
-
-                health -= 50;
-                Debug.Log("Testman" + health);
-
-            }
-
-        }
-
-
 
         //Initiation stuff.
         void Awake()
@@ -53,7 +42,12 @@ public class HealthScript : MonoBehaviour {
             }
 			maxShields = shields;
 		}
-      
+        void Start()
+        {
+            Anime = GetComponent<Animation>();
+
+        }
+
         void Update()
 	{
         currentTimeBeforeShieldRegen -= Time.deltaTime;
@@ -75,8 +69,8 @@ public class HealthScript : MonoBehaviour {
                 }
 			}
 	}
-	
-	public void Damage(float damage)
+
+        public void Damage(float damage)
 		{	
             //Look for the source of the damage.
 			if(myTargetScript)
@@ -107,9 +101,8 @@ public class HealthScript : MonoBehaviour {
 					if(health <= 0)
 						{
                    
-                   
-                     DeathCheck();
-                }
+                          DeathCheck();
+                        }
 					beenHitYetThisFrame = true;	
 				}
 					
@@ -180,11 +173,12 @@ public class HealthScript : MonoBehaviour {
     //Check to see if we are dead.
    void DeathCheck()
 		{
+
 			KillAI();
 		
 			if(myAIBaseScript)
 				myAIBaseScript.KillAI();
-			this.enabled = false;
+			this.enabled = true;//0531trueへ
 		}
 
     public bool useDeathAnimation = false;
@@ -224,9 +218,8 @@ public class HealthScript : MonoBehaviour {
 					if(gunScript)
 						{
 							gunScript.enabled = false;
-                    UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-                    agent.destination = StartPoint.position;//startPoint Restart
-                }
+
+                        }
 							
 					this.enabled = false;
 				}

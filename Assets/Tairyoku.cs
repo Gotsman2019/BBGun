@@ -7,32 +7,31 @@ public class Tairyoku : MonoBehaviour
 {
     public Transform LeftArm;
     public Transform RigthtArm;
-
+    public Transform RArmUPER2;
+    public int teamid;
     public int tairyoku;
     public Transform FirstPoint;
     public Transform StartPoint;
     public Transform NextPoint;
     public Transform Next2Point;
-   
+
     // Start is called before the first frame update
 
-   private Animation Anime;
+    private Animation Anime;
 
 
     void OnCollisionEnter(Collision collision)
     {
-      
+
         if (collision.gameObject.tag == "tama")
         {
 
             tairyoku -= 50;
-            Debug.Log("BigMan" + tairyoku);
+
             if (tairyoku <= 0)
             {
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
                 agent.destination = StartPoint.position;
-               
-                 RigthtArm.rotation = Quaternion.Euler(100, RigthtArm.transform.localRotation.y, RigthtArm.transform.localRotation.z);
 
             }
         }
@@ -81,20 +80,30 @@ public class Tairyoku : MonoBehaviour
         }
 
     }
-
     void Start()
     {
-        Anime = GetComponent<Animation>();
+     Anime = GetComponent<Animation>();
+
+       
 
     }
+
+
 
     private void LateUpdate()
     {
         if (tairyoku <= 0)
         {
-            RigthtArm.rotation = Quaternion.Euler(80, -50, RigthtArm.rotation.z);
-            LeftArm.rotation = Quaternion.Euler(-50, 50, LeftArm.rotation.z);
+           this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
+            RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
+            LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
+            RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.destination = StartPoint.position;//startPoint Restart
         }
     }
-
+    public int GetTairyoku()
+    {
+        return tairyoku;
+    }
 }

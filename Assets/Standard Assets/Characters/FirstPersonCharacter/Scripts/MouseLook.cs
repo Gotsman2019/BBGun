@@ -57,7 +57,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 character.localRotation = m_CharacterTargetRot;
                 camera.localRotation = m_CameraTargetRot;
-                spineBone2.localRotation = m_CameraTargetRot;
+                //spineBone2.localRotation = m_CameraTargetRot;
 
             }
 
