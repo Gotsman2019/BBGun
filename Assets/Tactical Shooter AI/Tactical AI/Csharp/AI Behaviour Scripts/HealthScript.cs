@@ -178,10 +178,13 @@ public class HealthScript : MonoBehaviour {
 		
 			if(myAIBaseScript)
 				myAIBaseScript.KillAI();
-			this.enabled = true;//0531trueへ
-		}
+			this.enabled = true;
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.destination = StartPoint.position;
 
-    public bool useDeathAnimation = false;
+        }
+
+        public bool useDeathAnimation = false;
 
 	void KillAI()
 		{
@@ -193,7 +196,7 @@ public class HealthScript : MonoBehaviour {
                     //Enable the ragdoll
 					for(i = 0; i < rigidbodies.Length; i++)
 						{
-                    rigidbodies[i].isKinematic = true; //false;
+                    rigidbodies[i].isKinematic = true;
 						}
 					for(i = 0; i < collidersToEnable.Length; i++)
 						{				
@@ -220,9 +223,12 @@ public class HealthScript : MonoBehaviour {
 							gunScript.enabled = false;
 
                         }
-							
-					this.enabled = false;
+
+                this.enabled = true; //false;
 				}
-		}
-}
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.destination = StartPoint.position;
+
+        }
+    }
 }

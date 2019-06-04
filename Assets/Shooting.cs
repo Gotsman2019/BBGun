@@ -18,7 +18,7 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
-       audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()

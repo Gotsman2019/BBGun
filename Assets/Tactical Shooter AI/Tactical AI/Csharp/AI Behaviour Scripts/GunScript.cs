@@ -14,8 +14,11 @@ public class GunScript : MonoBehaviour {
 	public TacticalAI.AnimationScript animationScript;
     public TacticalAI.SoundScript soundScript;
     public AudioSource audioSource;
+    public GameObject bulletPrefab;
+    public float shotSpeed;
+    public AudioClip shotSound;
 
-	int[] enemyTeams;	
+        int[] enemyTeams;	
 
 	//Bullet stuff	
 	public GameObject bulletObject;
@@ -289,7 +292,9 @@ public class GunScript : MonoBehaviour {
                                         yield return new WaitForSeconds(timeBetweenBurstBullets);
                                     currentBulletsUntilReload--;
                                     FireOneShot();
-                                }
+                               
+                               
+                            }
                             }
 					    }															
 						currentRoundsPerVolley--;

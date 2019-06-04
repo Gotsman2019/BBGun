@@ -10,6 +10,10 @@ namespace TacticalAI
 {
     public class BulletScript : MonoBehaviour
     {
+        private AudioSource audioSource;
+        public GameObject bulletPrefab;
+        public float shotSpeed;
+        public AudioClip shotSound;
 
         public string damageMethodName = "Damage";
 
@@ -43,7 +47,10 @@ namespace TacticalAI
         private float minDistToDetonateSqr;
 
         public string friendlyTag;
-
+        public void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         void Awake()
         {
@@ -62,6 +69,7 @@ namespace TacticalAI
             if (target)
             {
                 Instantiate(hitEffect, myTransform.position, myTransform.rotation);
+
             }
 
             Destroy(gameObject);
