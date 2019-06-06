@@ -76,7 +76,9 @@ public class Tairyoku : MonoBehaviour
             tairyoku = 80;
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.destination = FirstPoint.position;//No1Point
+           // this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
             this.GetComponent<TacticalAI.TargetScript>().SetMine();
+
 
         }
 
@@ -101,6 +103,7 @@ public class Tairyoku : MonoBehaviour
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.destination = StartPoint.position;//startPoint Restart
+           // this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
             this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
         }
     }

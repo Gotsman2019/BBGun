@@ -118,6 +118,18 @@ namespace TacticalAI
                 myAIBaseScript.SetTargetObj(this);
             }
         }
+        public void ChangeTeamID()
+        {
+            if(enemyTeamsIDs[0] == 1)
+            {
+                enemyTeamsIDs[0] = 2;
+            }
+            else if(enemyTeamsIDs[0] == 2)
+            {
+                enemyTeamsIDs[0] = 1;
+                
+            }
+        }
 
         public void SetNewTeam(int newTeam)
         {
