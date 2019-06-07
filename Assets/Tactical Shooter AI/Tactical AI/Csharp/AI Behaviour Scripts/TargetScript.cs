@@ -122,12 +122,21 @@ namespace TacticalAI
         {
             if(enemyTeamsIDs[0] == 1)
             {
-                enemyTeamsIDs[0] = 2;
+                enemyTeamsIDs[0] = 3;
+                
             }
             else if(enemyTeamsIDs[0] == 2)
             {
-                enemyTeamsIDs[0] = 1;
+                enemyTeamsIDs[0] = 4;
                 
+            }
+            else if (enemyTeamsIDs[0] == 3)
+             {
+                enemyTeamsIDs[0] = 1;
+            }
+            else if (enemyTeamsIDs[0] == 4)
+             {
+                enemyTeamsIDs[0] = 2;
             }
         }
 
