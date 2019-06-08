@@ -46,7 +46,7 @@ namespace TacticalAI
         public float cycleTime = 0.2f;
 
         //Searching Stuff
-        public float radiusToCallOffSearch = 5.0f;
+        public float radiusToCallOffSearch = 10.0f;
         public Vector3 lastHeardNoisePos;
 
         //Cover

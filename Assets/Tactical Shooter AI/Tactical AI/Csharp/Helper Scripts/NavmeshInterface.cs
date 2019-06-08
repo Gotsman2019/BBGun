@@ -48,6 +48,7 @@ public class NavmeshInterface : MonoBehaviour
 
         void Update()
         {
+            myTransform = gameObject.GetComponent<AnimationScript>().myAIBodyTransform;
             if (Time.timeScale > 0.0f)
             {
                 returnVel = (myTransform.position - lastPos) / Time.deltaTime;

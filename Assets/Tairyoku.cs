@@ -73,12 +73,12 @@ public class Tairyoku : MonoBehaviour
         }
         if (other.gameObject.tag == "route4")
         {
-
+            tairyoku = 80;
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.destination = FirstPoint.position;//No1Point
             this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
             this.GetComponent<TacticalAI.TargetScript>().SetMine();
-            tairyoku = 80;
+
 
         }
 

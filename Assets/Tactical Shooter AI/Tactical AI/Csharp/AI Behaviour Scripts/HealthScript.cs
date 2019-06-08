@@ -226,8 +226,8 @@ public class HealthScript : MonoBehaviour {
 
                 this.enabled = true; //false;
 				}
-            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            agent.destination = StartPoint.position;
+           UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+           agent.destination = StartPoint.position;
 
         }
     }
