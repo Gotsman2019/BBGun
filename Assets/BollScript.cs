@@ -60,38 +60,38 @@ public class BollScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator ApplyDamage()
+    IEnumerator ApplyDamage(Collision other)
     {
         //Reduce the enemy's health
         //Does NOT travel up the heirarchy.  
-     //  if (hit.transform.tag != friendlyTag)
-     //  {
-     //      SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
+       if (other.transform.tag != friendlyTag)
+       {
+           SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
             // FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
 
 
             //  hit.collider.SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
 
             // hit.collider.SendMessage(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
-    //   }
+       }
 
         //Produce the appropriate special effect
-        if (hit.transform.tag == hitEffectTag && hitEffect)
+        if (other.transform.tag == hitEffectTag && hitEffect)
         {
-            GameObject currentHitEffect = (GameObject)(Instantiate(hitEffect, hit.point, myTransform.rotation));
-            GameObject.Destroy(currentHitEffect, hitEffectDestroyTime);
+           // GameObject currentHitEffect = (GameObject)(Instantiate(hitEffect, hit.point, myTransform.rotation));
+           // GameObject.Destroy(currentHitEffect, hitEffectDestroyTime);
         }
         else if (missEffect)
         {
-            GameObject currentMissEffect = (GameObject)(Instantiate(missEffect, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(hit.normal)));
-            GameObject.Destroy(currentMissEffect, missEffectDestroyTime);
+            //GameObject currentMissEffect = (GameObject)(Instantiate(missEffect, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(hit.normal)));
+            //GameObject.Destroy(currentMissEffect, missEffectDestroyTime);
         }
         this.enabled = false;
         yield return null;
 
         //Wait a fram to apply forces as we need to make sure the thing is dead
-        if (hit.rigidbody)
-            hit.rigidbody.AddForceAtPosition(myTransform.forward * bulletForce, hit.point, ForceMode.Impulse);
+        if (other.rigidbody)
+        //   other.rigidbody.AddForceAtPosition(myTransform.forward * bulletForce, hit.point, ForceMode.Impulse);
 
         //Linger around for a while to let the trail renderer dissipate (if the bullet has one.)
         Destroy(gameObject, timeToDestroyAfterHitting);
@@ -107,7 +107,7 @@ public class BollScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "HitBox")
         {
-           StartCoroutine(ApplyDamage());
+           StartCoroutine(ApplyDamage(collision));
            
         }
     }

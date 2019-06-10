@@ -587,7 +587,7 @@ namespace TacticalAI
                     //Only do it if we're not in cover.
                     if (timeUntilNextDodge < 0)
                     {
-                        CheckToSeeIfWeShouldDodge();
+                      // CheckToSeeIfWeShouldDodge();
                         timeUntilNextDodge = Random.value * timeBetweenLoSDodges;
                     }
                     else

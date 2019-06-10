@@ -14237,7 +14237,7 @@ MonoBehaviour:
   LeftArm: {fileID: 0}
   RigthtArm: {fileID: 0}
   RArmUPER2: {fileID: 0}
-  health: 100
+  health: 500
   shields: 0
   shieldsBlockDamage: 0
   timeBeforeShieldRegen: 5

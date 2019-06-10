@@ -111,6 +111,7 @@ public class Tairyoku : MonoBehaviour
     {
         if (tairyoku <= 0)
         {
+            Debug.Log(transform.name);
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
