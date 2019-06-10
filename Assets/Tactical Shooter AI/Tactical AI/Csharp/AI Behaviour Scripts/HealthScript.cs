@@ -143,7 +143,7 @@ public class HealthScript : MonoBehaviour {
 								soundScript.PlaySuppressedAudio();
 
                             //If the agent's shields go down, become suppressed (ie: agent will stay in cover as much as possible, and will avoid standing up to fire)
-							myAIBaseScript.ShouldFireFromCover(false);
+							//myAIBaseScript.ShouldFireFromCover(false);
 						}	
 				    
 	                //Do the same amount of damage to shields AND health.
@@ -178,9 +178,9 @@ public class HealthScript : MonoBehaviour {
 		
 			if(myAIBaseScript)
 				myAIBaseScript.KillAI();
-			this.enabled = true;
-            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            agent.destination = StartPoint.position;
+			
+            this.GetComponent<Tairyoku>().backAI();
+            this.enabled = true;
 
         }
 
@@ -226,9 +226,7 @@ public class HealthScript : MonoBehaviour {
 
                 this.enabled = true; //false;
 				}
-           UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-           agent.destination = StartPoint.position;
-
+             this.GetComponent<Tairyoku>().backAI();
         }
     }
 }

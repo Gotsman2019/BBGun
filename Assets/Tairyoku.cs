@@ -44,7 +44,6 @@ public class Tairyoku : MonoBehaviour
             if (other.gameObject.tag == "route")
             {
 
-                Debug.Log(tairyoku);
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
                 agent.destination = NextPoint.position; //No2Point
             }
@@ -87,8 +86,6 @@ public class Tairyoku : MonoBehaviour
     {
      Anime = GetComponent<Animation>();
 
-       
-
     }
 
 
@@ -97,7 +94,6 @@ public class Tairyoku : MonoBehaviour
     {
         if (tairyoku <= 0)
         {
-           
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
@@ -110,5 +106,18 @@ public class Tairyoku : MonoBehaviour
     public int GetTairyoku()
     {
         return tairyoku;
+    }
+    public void backAI()
+    {
+        if (tairyoku <= 0)
+        {
+            RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
+            LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
+            RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.destination = StartPoint.position;//startPoint Restart
+            this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
+            this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
+        }
     }
 }

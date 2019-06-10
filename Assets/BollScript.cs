@@ -64,16 +64,16 @@ public class BollScript : MonoBehaviour
     {
         //Reduce the enemy's health
         //Does NOT travel up the heirarchy.  
-        if (hit.transform.tag != friendlyTag)
-       {
-            SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
+     //  if (hit.transform.tag != friendlyTag)
+     //  {
+     //      SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
             // FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
 
 
             //  hit.collider.SendMessageUpwards(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
 
             // hit.collider.SendMessage(damageMethodName, damage, SendMessageOptions.DontRequireReceiver);
-        }
+    //   }
 
         //Produce the appropriate special effect
         if (hit.transform.tag == hitEffectTag && hitEffect)
@@ -107,7 +107,7 @@ public class BollScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "HitBox")
         {
-            StartCoroutine(ApplyDamage());
+           StartCoroutine(ApplyDamage());
            
         }
     }

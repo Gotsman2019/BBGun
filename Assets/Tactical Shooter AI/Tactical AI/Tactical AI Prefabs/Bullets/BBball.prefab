@@ -108,6 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c3760cc8fdb244ea78cac7423a034a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  shotSpeed: 0
+  shotSound: {fileID: 0}
   damageMethodName: Damage
   speed: 300
   layerMask:
@@ -116,10 +119,10 @@ MonoBehaviour:
   maxLifeTime: 3
   damage: 16
   bulletForce: 100
-  hitEffect: {fileID: 100000, guid: 884ab6180a9d36b468297110bd1f6b17, type: 3}
+  hitEffect: {fileID: 0}
   hitEffectDestroyTime: 1
   hitEffectTag: HitBox
-  missEffect: {fileID: 100000, guid: fae4939dad26e8541b455bb557aada6a, type: 3}
+  missEffect: {fileID: 0}
   missEffectDestroyTime: 1
   timeToDestroyAfterHitting: 0.5
   homingTrackingSpeed: 3
