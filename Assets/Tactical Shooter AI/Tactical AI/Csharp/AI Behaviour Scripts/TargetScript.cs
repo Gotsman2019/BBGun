@@ -201,6 +201,7 @@ namespace TacticalAI
         bool isPlaying = true;
         void OnApplicationQuit()
         {
+
             isPlaying = false;
         }
 
@@ -216,6 +217,7 @@ namespace TacticalAI
                 //If we don't have any targets left, exit the engaging state
                 if (enemyTargets.Length == 0)
                 {
+
                     myAIBaseScript.EndEngage();
                     engaging = false;
                 }

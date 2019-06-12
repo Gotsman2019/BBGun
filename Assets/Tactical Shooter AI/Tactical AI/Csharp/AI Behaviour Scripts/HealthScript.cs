@@ -77,7 +77,7 @@ public class HealthScript : MonoBehaviour {
 				myTargetScript.CheckForLOSAwareness(true);
            
 			ReduceHealthAndShields(damage);
-			myAIBaseScript.CheckToSeeIfWeShouldDodge();
+			//myAIBaseScript.CheckToSeeIfWeShouldDodge();
            
 			if(health <= 0)
 				{
@@ -220,7 +220,7 @@ public class HealthScript : MonoBehaviour {
                     				
 					if(gunScript)
 						{
-							gunScript.enabled = false;
+                    gunScript.enabled = true; //false;
 
                         }
 

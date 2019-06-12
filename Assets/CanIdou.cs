@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Tairyoku : MonoBehaviour
+public class CanIdou : MonoBehaviour
 {
-    public Transform LeftArm;
-    public Transform RigthtArm;
-    public Transform RArmUPER2;
-    public int teamid;
+
     public int tairyoku;
     public Transform FirstPoint;
     public Transform StartPoint;
@@ -33,7 +30,7 @@ public class Tairyoku : MonoBehaviour
 
 
                     backAI();
-                        
+
                 }
             }
         }
@@ -87,8 +84,8 @@ public class Tairyoku : MonoBehaviour
     private int deathNo;
     void Start()
     {
-     Anime = GetComponent<Animation>();
-     deathNo = 0;
+        Anime = GetComponent<Animation>();
+       
     }
 
 
@@ -99,17 +96,13 @@ public class Tairyoku : MonoBehaviour
         if (tairyoku <= 0)
 
         {
-        
-               
-                RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
-                LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
-               RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
-               UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-               agent.destination = StartPoint.position;//startPoint Restart
-               this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
-               this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
-               deathNo += 1;
-            
+
+
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.destination = StartPoint.position;//startPoint Restart
+            this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
+            this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
+
         }
     }
     public int GetTairyoku()
@@ -120,10 +113,8 @@ public class Tairyoku : MonoBehaviour
     {
         if (tairyoku <= 0)
         {
-            Debug.Log(transform.name + tairyoku +"backAI");
-            RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
-            LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
-            RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
+            Debug.Log(transform.name + tairyoku + "CanIdou");
+
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.destination = StartPoint.position;//startPoint Restart
             this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
