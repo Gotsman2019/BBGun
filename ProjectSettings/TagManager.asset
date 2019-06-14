@@ -13,6 +13,7 @@ TagManager:
   - route2
   - route3
   - route4
+  - friend
   layers:
   - Default
   - TransparentFX

@@ -99,17 +99,18 @@ public class Tairyoku : MonoBehaviour
         if (tairyoku <= 0)
 
         {
-        
-               
+
                 RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
                 LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
-               RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
-               UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-               agent.destination = StartPoint.position;//startPoint Restart
-               this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
-               this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
-               deathNo += 1;
-            
+                RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
+                UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+                agent.destination = StartPoint.position;//startPoint Restart
+            if (deathNo == 0)
+            {
+                this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
+                this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
+                deathNo += 1;
+            }
         }
     }
     public int GetTairyoku()
@@ -126,10 +127,12 @@ public class Tairyoku : MonoBehaviour
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.destination = StartPoint.position;//startPoint Restart
-            this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
-
-            this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
-
+            if (deathNo == 0)
+            {
+                this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
+                this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
+                deathNo += 1;
+            }
         }
     }
 }
