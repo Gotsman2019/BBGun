@@ -120,6 +120,7 @@ namespace TacticalAI
         }
         public void ChangeTeamID()
         {
+
             if(enemyTeamsIDs[0] == 1)
             {
                 enemyTeamsIDs[0] = 3;
@@ -138,6 +139,7 @@ namespace TacticalAI
              {
                 enemyTeamsIDs[0] = 2;
             }
+
         }
 
         public void SetNewTeam(int newTeam)

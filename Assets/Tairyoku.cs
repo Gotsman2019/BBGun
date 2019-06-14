@@ -127,6 +127,7 @@ public class Tairyoku : MonoBehaviour
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.destination = StartPoint.position;//startPoint Restart
             this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
+
             this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
 
         }

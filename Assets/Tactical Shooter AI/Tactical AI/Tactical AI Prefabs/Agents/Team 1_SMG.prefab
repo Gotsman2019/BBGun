@@ -1526,6 +1526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befcbacdd85921349939ab0fed558806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftArm: {fileID: 0}
+  RigthtArm: {fileID: 0}
+  RArmUPER2: {fileID: 0}
   health: 10
   shields: 2.5
   shieldsBlockDamage: 1
@@ -1561,6 +1564,7 @@ MonoBehaviour:
   rotateToAimGunScript: {fileID: 11404538}
   animator: {fileID: 9502450}
   gunScript: {fileID: 11415032}
+  StartPoint: {fileID: 0}
   staggerThreshhold: 1
   canStagger: 1
   staggerOdds: 1
@@ -1643,6 +1647,9 @@ MonoBehaviour:
   animationScript: {fileID: 11452876}
   soundScript: {fileID: 0}
   audioSource: {fileID: 8289622}
+  bulletPrefab: {fileID: 0}
+  shotSpeed: 0
+  shotSound: {fileID: 0}
   bulletObject: {fileID: 100000, guid: 39af26669c46d8f48964e1f7a13ff5ac, type: 3}
   bulletSound: {fileID: 8300000, guid: 356cd6bb5ed863b46aee7b7a92e515c5, type: 3}
   bulletSoundVolume: 0.462
@@ -1733,6 +1740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObjectTransform: {fileID: 494764}
+  healthy: {fileID: 0}
+  tairyoku2: {fileID: 0}
   myLOSTarget: {fileID: 0}
   targetPriority: 1
   myAIBaseScript: {fileID: 11499510}
