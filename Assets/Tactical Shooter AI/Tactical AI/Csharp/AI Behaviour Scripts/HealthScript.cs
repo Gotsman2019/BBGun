@@ -177,7 +177,7 @@ public class HealthScript : MonoBehaviour {
 			KillAI();
 		
 			if(myAIBaseScript)
-				myAIBaseScript.KillAI();
+			//	myAIBaseScript.KillAI();
 			
             this.GetComponent<Tairyoku>().backAI();
             this.enabled = true;
@@ -226,7 +226,7 @@ public class HealthScript : MonoBehaviour {
 
                 this.enabled = true; //false;
 				}
-             this.GetComponent<Tairyoku>().backAI();
+           //  this.GetComponent<Tairyoku>().backAI();
         }
     }
 }

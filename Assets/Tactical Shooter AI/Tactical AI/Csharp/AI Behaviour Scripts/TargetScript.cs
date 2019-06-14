@@ -139,7 +139,7 @@ namespace TacticalAI
              {
                 enemyTeamsIDs[0] = 2;
             }
-            UnityEngine.Debug.Log(transform.name + enemyTeamsIDs[0]);
+          //  UnityEngine.Debug.Log(transform.name + enemyTeamsIDs[0]);
         }
 
         public void SetNewTeam(int newTeam)

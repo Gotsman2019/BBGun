@@ -34,7 +34,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public GameObject targetobject;
 
-        
+        private float CameraChangeY;
+        private float CameraChangeZ;
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -221,8 +223,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void UpdateCameraPosition(float speed)
+        private void UpdateCameraPosition(float speed)//カメラポジション設定
+
         {
+            if (Input.GetKey("q"))
+            {
+                CameraChangeY = -0.6f;
+                CameraChangeZ = 0.7f;
+            }
+            else
+            {
+                CameraChangeY = 0.0f;
+                CameraChangeZ = 0.0f;
+            }
+
+
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
             {
@@ -234,15 +249,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
                                       (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
-                newCameraPosition.z = -0.7f;
-             
+                newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset() + CameraChangeY;//-0.5fぐらいで狙位置
+                newCameraPosition.z = -0.7f+CameraChangeZ;
+                newCameraPosition.x = 0.25f;
             }
             else
             {
                 newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
-                newCameraPosition.z = -0.7f;
+                newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset() + CameraChangeY;//-0.5fぐらいで狙位置
+                newCameraPosition.z = -0.7f+CameraChangeZ;
+                newCameraPosition.x = 0.25f;
             }
             m_Camera.transform.localPosition = newCameraPosition;
            
