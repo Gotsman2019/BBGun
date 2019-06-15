@@ -7,16 +7,11 @@ public class DaethNoPointCheck : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.transform.tag == "friend")
-        {
-            enemyDeathPoint += 10;
-
-        }
         if (other.transform.tag == "enemy")
         {
             PlayerDeathPoint += 10;
         }
-        Debug.Log("Enemy Point" + enemyDeathPoint + "Player Point" + PlayerDeathPoint);
+        Debug.Log("Player Point" + PlayerDeathPoint);
     }
 
     private int enemyDeathPoint;

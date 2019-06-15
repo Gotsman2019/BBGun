@@ -7,7 +7,7 @@ public class Shooting : MonoBehaviour
 
     public GameObject bulletPrefab;
     public float shotSpeed;
-    public int shotCount = 300;
+    public int shotCount = 50;
     private float shotInterval;
     private RaycastHit hit;
     public AudioClip shotSound;
@@ -30,7 +30,7 @@ public class Shooting : MonoBehaviour
              
             shotInterval += 1;
 
-            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 10 == 0) 
+            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 5 == 0) 
             {
                 shotCount -= 1;
 
@@ -44,7 +44,7 @@ public class Shooting : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            shotCount = 300;
+            shotCount = 50;
            audioSource.PlayOneShot(reloadSound);
         }
 
