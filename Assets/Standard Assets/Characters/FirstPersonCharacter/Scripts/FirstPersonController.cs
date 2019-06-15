@@ -229,7 +229,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (Input.GetKey("q"))
             {
                 CameraChangeY = -0.6f;
-                CameraChangeZ = 0.7f;
+                CameraChangeZ = 0.8f;
             }
             else
             {
