@@ -93,11 +93,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
           
               yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
               xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
+              yRot = CrossPlatformInputManager.GetAxis("Mouse X");
+              xRot = CrossPlatformInputManager.GetAxis("Mouse Y");
 
-              // currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
-             // currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
+            // currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
+            // currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
-          
+
             spineBone.rotation *= Quaternion.Euler(0, 0, xRot);
 
         }
@@ -226,7 +228,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void UpdateCameraPosition(float speed)//カメラポジション設定
 
         {
-            if (Input.GetKey("q"))
+            if (Input.GetKeyDown("q"))
                 {
                 kirikae = -1 * kirikae;
                 }

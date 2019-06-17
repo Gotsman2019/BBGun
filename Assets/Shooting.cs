@@ -23,35 +23,35 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-       
+
         if (Input.GetKey("e"))
         {
-            waitingTime -= 0.08f; 
-             
+            waitingTime -= 0.08f;
+
             shotInterval += 1;
 
-            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 5 == 0) 
+            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 5 == 0)
             {
                 shotCount -= 1;
 
-               GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.localEulerAngles.x, transform.parent.localEulerAngles.y, 0));
-               Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-               bulletRb.AddForce(transform.forward * shotSpeed);
+                GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.localEulerAngles.x, transform.parent.localEulerAngles.y, 0));
+                Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+                bulletRb.AddForce(transform.forward * shotSpeed);
 
-               audioSource.PlayOneShot(shotSound);
+                audioSource.PlayOneShot(shotSound);
             }
 
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
             shotCount = 50;
-           audioSource.PlayOneShot(reloadSound);
+            audioSource.PlayOneShot(reloadSound);
         }
 
         if (Input.GetKeyUp("e"))
         {
             waitingTime = 1.0f;
         }
-
     }
+
 }
