@@ -5,37 +5,33 @@ public class moveController : MonoBehaviour
 {
 
     public float speed = 8.0f;
-    private GameObject gun;
+    private GameObject player;
     void Update()
     {
 
-        gun = GameObject.Find("MachineGun_01");
-        float basho = gun.transform.position.y;
-
-        if (gun.transform.position.y > 1 && gun.transform.position.y < 3)
-        {
-            //範囲を超えたら戻す必要あり
+        player = GameObject.Find("Player");
+        float basho = player.transform.position.y;
 
 
-            if (Input.GetKey("w"))
+            if (Input.GetKey("i"))
             {
 
                 transform.position += transform.forward * speed * Time.deltaTime;
                 //yだけ変えたくない
             }
-            if (Input.GetKey("s"))
+            if (Input.GetKey("m"))
             {
                 transform.position -= transform.forward * speed * Time.deltaTime;
             }
-            if (Input.GetKey("d"))
+            if (Input.GetKey("k"))
             {
                 transform.position += transform.right * speed * Time.deltaTime;
             }
-            if (Input.GetKey("a"))
+            if (Input.GetKey("j"))
             {
                 transform.position -= transform.right * speed * Time.deltaTime;
             }
-        }
+        
       
     }
 }

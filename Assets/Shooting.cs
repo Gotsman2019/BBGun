@@ -26,7 +26,7 @@ public class Shooting : MonoBehaviour
        
         if (Input.GetKey("e"))
         {
-            waitingTime -= 0.1f; 
+            waitingTime -= 0.08f; 
              
             shotInterval += 1;
 
