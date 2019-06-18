@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    private bool isShotButtonDown = false;
+    private bool isReloadButtonDown = false;
 
     public GameObject bulletPrefab;
     public float shotSpeed;
@@ -14,17 +16,25 @@ public class Shooting : MonoBehaviour
     public AudioClip reloadSound;
     private AudioSource audioSource;
     private float waitingTime = 1.0f ;
-
+   
+     public void GetMyReloadButtonDown()
+        {
+        this.isReloadButtonDown = true;
+        }
+    public void GetMyshotButtonDown()
+    {
+        this.isShotButtonDown = true;
+    }
 
     private void Start()
-    {
+       {
         audioSource = GetComponent<AudioSource>();
-    }
+       }
 
     void Update()
     {
 
-        if (Input.GetKey("e"))
+        if (Input.GetKey("e")||(isShotButtonDown))
         {
             waitingTime -= 0.08f;
 
@@ -42,7 +52,7 @@ public class Shooting : MonoBehaviour
             }
 
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.R)||(isReloadButtonDown))
         {
             shotCount = 50;
             audioSource.PlayOneShot(reloadSound);
