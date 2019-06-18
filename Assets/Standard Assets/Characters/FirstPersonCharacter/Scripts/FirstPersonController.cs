@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         public Transform spineBone;
-       
+        private bool isKirikaeButtonDown = false;
 
         public GameObject targetobject;
 
@@ -223,31 +223,43 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FootstepSounds[n] = m_FootstepSounds[0];
             m_FootstepSounds[0] = m_AudioSource.clip;
         }
+        public void Kirikae()
+        {
+            if (Input.GetKeyDown("q")||(isKirikaeButtonDown))
+            {
+                kirikae = -1 * kirikae;
+            }
+
+
+            if (kirikae == -1)
+            {
+                CameraChangeY = -0.6f;
+                CameraChangeZ = 0.8f;
+            }
+
+
+            if (kirikae == 1)
+            {
+                CameraChangeY = 0.0f;
+                CameraChangeZ = 0.0f;
+            }
+
+        }
+
+        public void GetKirikaeButtonDown()
+        {
+            this.isKirikaeButtonDown = true;
+        }
+        public void GetKirikaeButtonUp()
+        {
+            this.isKirikaeButtonDown = false;
+        }
 
 
         private void UpdateCameraPosition(float speed)//カメラポジション設定
 
         {
-            if (Input.GetKeyDown("q"))
-                {
-                kirikae = -1 * kirikae;
-                }
-
-
-            if (kirikae == -1) 
-                 { 
-                    CameraChangeY = -0.6f;
-                    CameraChangeZ = 0.8f;
-                 }
-
-
-            if (kirikae == 1)
-                {
-                   CameraChangeY = 0.0f;
-                   CameraChangeZ = 0.0f;
-                }
-
-
+            Kirikae();
 
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
