@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Tairyoku2 : MonoBehaviour
 {
@@ -10,13 +10,13 @@ public class Tairyoku2 : MonoBehaviour
     public Transform RArmUPER2;
     public Transform StartPoint;
     public int tairyoku;
-
+    public float time = 60;
 
     // Start is called before the first frame update
 
     private Animation Anime;
-
-
+    private GameObject LimitTime;
+    
     void OnCollisionEnter(Collision collision)
     {
         if (tairyoku > 0)
@@ -58,14 +58,19 @@ public class Tairyoku2 : MonoBehaviour
     void Start()
     {
         Anime = GetComponent<Animation>();
-
+        this.LimitTime = GameObject.Find("LimitTime");
     }
 
 
 
     private void LateUpdate()
     {
-
+        time -= 1f * Time.deltaTime;
+        this.LimitTime.GetComponent<Text>().text = ((int)time).ToString()+"Sec";
+        if (time <= 0)
+        {
+            tairyoku = 0;
+        }
         if (tairyoku <= 0)
 
         {

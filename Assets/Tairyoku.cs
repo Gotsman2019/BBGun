@@ -15,6 +15,7 @@ public class Tairyoku : MonoBehaviour
     public Transform NextPoint;
     public Transform Next2Point;
 
+
     // Start is called before the first frame update
 
     private Animation Anime;
@@ -89,6 +90,8 @@ public class Tairyoku : MonoBehaviour
     {
      Anime = GetComponent<Animation>();
      deathNo = 0;
+      
+
     }
 
 

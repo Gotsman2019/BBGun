@@ -65,7 +65,7 @@ public class Shooting : MonoBehaviour
             }
         }
        
-       if (Input.GetKeyDown(KeyCode.R)||(isReloadButtonDown))
+       if (Input.GetKey(KeyCode.R)||(isReloadButtonDown))
         {
             shotCount = 50;
             audioSource.PlayOneShot(reloadSound);
