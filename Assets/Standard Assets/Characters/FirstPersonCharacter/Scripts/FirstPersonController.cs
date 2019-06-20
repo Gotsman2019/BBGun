@@ -91,16 +91,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //spineBone.LookAt(targetobject.transform);
           
-              yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
-              xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
-              yRot = CrossPlatformInputManager.GetAxis("Mouse X") * lookSensitivity;
-              xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * lookSensitivity;
+            //  yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
+            //  xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
+             yRot += CrossPlatformInputManager.GetAxis("Mouse X") * lookSensitivity;
+              xRot += CrossPlatformInputManager.GetAxis("Mouse Y") * lookSensitivity;
 
             // currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
             // currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
 
-            spineBone.rotation *= Quaternion.Euler(0, 0, xRot*5);
+            spineBone.rotation *= Quaternion.Euler(0, 0, xRot*2);
 
         }
 
