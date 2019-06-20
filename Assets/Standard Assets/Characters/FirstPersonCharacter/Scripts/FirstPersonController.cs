@@ -59,7 +59,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public float lookSmooth = 100f;
 
-        public Vector2 MinMaxAngle = new Vector2(-180, 180);
+        public Vector2 MinMaxAngle = new Vector2(-45, 45);
         private float yRot;
         private float xRot;
 
@@ -93,14 +93,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
           
               yRot += Input.GetAxis("Mouse X") * lookSensitivity; //マウスの移動.
               xRot += Input.GetAxis("Mouse Y") * lookSensitivity; //マウスの移動.
-              yRot = CrossPlatformInputManager.GetAxis("Mouse X");
-              xRot = CrossPlatformInputManager.GetAxis("Mouse Y");
+              yRot = CrossPlatformInputManager.GetAxis("Mouse X") * lookSensitivity;
+              xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * lookSensitivity;
 
             // currentXRot = Mathf.SmoothDamp(currentXRot, xRot, ref xRotVelocity, lookSmooth);
             // currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
 
-            spineBone.rotation *= Quaternion.Euler(0, 0, xRot);
+            spineBone.rotation *= Quaternion.Euler(0, 0, xRot*5);
 
         }
 
@@ -225,7 +225,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         public void Kirikae()
         {
-            if (Input.GetKeyDown("q")||(isKirikaeButtonDown))
+            if (Input.GetKeyDown("f")||(isKirikaeButtonDown))
             {
                 kirikae = -1 * kirikae;
             }
@@ -233,7 +233,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (kirikae == -1)
             {
-                CameraChangeY = -0.6f;
+                CameraChangeY = -0.28f;
                 CameraChangeZ = 0.8f;
             }
 
@@ -292,7 +292,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float vertical = CrossPlatformInputManager.GetAxis("Vertical") ;
 
             bool waswalking = m_IsWalking;
 

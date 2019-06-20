@@ -66,10 +66,14 @@ public class Tairyoku2 : MonoBehaviour
     private void LateUpdate()
     {
         time -= 1f * Time.deltaTime;
-        this.LimitTime.GetComponent<Text>().text = ((int)time).ToString()+"Sec";
+        if (time > 0)
+        {
+            this.LimitTime.GetComponent<Text>().text = ((int)time).ToString() + "Sec";
+        }
         if (time <= 0)
         {
             tairyoku = 0;
+
         }
         if (tairyoku <= 0)
 
@@ -94,7 +98,7 @@ public class Tairyoku2 : MonoBehaviour
     {
         if (tairyoku <= 0)
         {
-            Debug.Log(transform.name + tairyoku + "BackAI");
+
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);

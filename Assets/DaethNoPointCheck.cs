@@ -11,7 +11,7 @@ public class DaethNoPointCheck : MonoBehaviour
         {
             PlayerDeathPoint += 10;
         }
-        Debug.Log("Player Point" + PlayerDeathPoint);
+
     }
 
     private int enemyDeathPoint;
