@@ -20,9 +20,11 @@ public class PlayerAnimController : MonoBehaviour
         float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
         float vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
-        Debug.Log(horizontal + " " + vertical);
 
-        if (Input.GetKey("w"))
+           
+
+
+        if (Input.GetKey("w")|| vertical > 0)
         {
 
                 anim.SetBool("StandAim", true);
@@ -35,7 +37,7 @@ public class PlayerAnimController : MonoBehaviour
             }
         }
 
-       if (Input.GetKeyUp("w") )
+       if (Input.GetKeyUp("w")|| vertical <= 0 && vertical > -0.05f)
         {
             anim.SetBool("StandToFrontAim", false);
             anim.SetBool("StandAim", false);
@@ -50,7 +52,7 @@ public class PlayerAnimController : MonoBehaviour
                 anim.SetBool("StandToFrontAim", true);
             }
         }
-        if (Input.GetKey("s") )
+        if (Input.GetKey("s")|| vertical < 0)
         {
 
             anim.SetBool("StandAim", true);
@@ -63,7 +65,7 @@ public class PlayerAnimController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp("s") )
+        if (Input.GetKeyUp("s") || vertical > 0 && vertical < 0.05f)
         {
             anim.SetBool("StandToBackAim", false);
             anim.SetBool("StandAim", false);
@@ -78,29 +80,32 @@ public class PlayerAnimController : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown("a") )
+        if (Input.GetKeyDown("a")|| horizontal < 0)
             {
             anim.SetBool("StandAim", false);
             anim.SetBool("LeftWalk", true);
             }
 
-        if (Input.GetKeyUp("a") || horizontal <= 0 )
+        if (Input.GetKeyUp("a") || horizontal > 0 && horizontal < 0.05f )
            {
                 anim.SetBool("LeftWalk", false);
 
             }
 
            
-        if (Input.GetKey("d") || horizontal < 1.0f && horizontal > 0)
+        if (Input.GetKeyDown("d") || horizontal > 0)
             {
             anim.SetBool("StandAim", false);
             anim.SetBool("RightWalk", true);
             }
 
-        if (Input.GetKey("d") || horizontal > -1.0f && horizontal < 0)
+        if (Input.GetKeyUp("d") ||horizontal < 0 && horizontal > -0.05f)
            {
                 anim.SetBool("RightWalk", false);
             }
+       
+
+          anim.SetBool("StandAim", true);
 
         if (Input.GetKey("e"))
         {
