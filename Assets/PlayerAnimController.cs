@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.CrossPlatformInput;
 public class PlayerAnimController : MonoBehaviour
 {
     private int i = 0;
@@ -17,9 +17,10 @@ public class PlayerAnimController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xdata = Input.GetAxis("Mouse X");
-        float ydata = Input.GetAxis("Mouse Y");
+        float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+        float vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
+        Debug.Log(horizontal + " " + vertical);
 
         if (Input.GetKey("w"))
         {
@@ -83,20 +84,20 @@ public class PlayerAnimController : MonoBehaviour
             anim.SetBool("LeftWalk", true);
             }
 
-        if (Input.GetKeyUp("a") || xdata <= 0 )
+        if (Input.GetKeyUp("a") || horizontal <= 0 )
            {
                 anim.SetBool("LeftWalk", false);
 
             }
 
            
-        if (Input.GetKey("d") || xdata < 1.0f && xdata > 0)
+        if (Input.GetKey("d") || horizontal < 1.0f && horizontal > 0)
             {
             anim.SetBool("StandAim", false);
             anim.SetBool("RightWalk", true);
             }
 
-        if (Input.GetKey("d") || xdata > -1.0f && xdata < 0)
+        if (Input.GetKey("d") || horizontal > -1.0f && horizontal < 0)
            {
                 anim.SetBool("RightWalk", false);
             }
