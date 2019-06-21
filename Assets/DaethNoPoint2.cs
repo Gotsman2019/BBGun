@@ -13,7 +13,7 @@ public class DaethNoPoint2: MonoBehaviour
             enemyDeathPoint += 10;
 
         }
-        Debug.Log("Enemy Point" + enemyDeathPoint);
+       
     }
 
     private int enemyDeathPoint;

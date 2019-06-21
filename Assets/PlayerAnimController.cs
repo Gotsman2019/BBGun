@@ -6,9 +6,7 @@ public class PlayerAnimController : MonoBehaviour
 {
     private int i = 0;
     private Animator anim;
-
-
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +19,9 @@ public class PlayerAnimController : MonoBehaviour
     {
         float xdata = Input.GetAxis("Mouse X");
         float ydata = Input.GetAxis("Mouse Y");
-       
-        if (Input.GetKey("w") || ydata > 0f && ydata < 1.0f)
+
+
+        if (Input.GetKey("w"))
         {
 
                 anim.SetBool("StandAim", true);
@@ -31,10 +30,11 @@ public class PlayerAnimController : MonoBehaviour
             if (i > 1)
             {
                 anim.SetBool("StandToFrontAim", true);
+               
             }
         }
 
-       if (Input.GetKeyUp("w") || ydata < 0f && ydata > -1.0f)
+       if (Input.GetKeyUp("w") )
         {
             anim.SetBool("StandToFrontAim", false);
             anim.SetBool("StandAim", false);
@@ -49,7 +49,7 @@ public class PlayerAnimController : MonoBehaviour
                 anim.SetBool("StandToFrontAim", true);
             }
         }
-        if (Input.GetKey("s") || ydata < 0f && ydata > -1.0f)
+        if (Input.GetKey("s") )
         {
 
             anim.SetBool("StandAim", true);
@@ -58,10 +58,11 @@ public class PlayerAnimController : MonoBehaviour
             if (i > 1)
             {
                 anim.SetBool("StandToBackAim", true);
+
             }
         }
 
-        if (Input.GetKeyUp("s") || ydata > 0f && ydata < 1.0f)
+        if (Input.GetKeyUp("s") )
         {
             anim.SetBool("StandToBackAim", false);
             anim.SetBool("StandAim", false);
@@ -76,25 +77,27 @@ public class PlayerAnimController : MonoBehaviour
 
 
 
-        if (Input.GetKey("a") || xdata > -1.0f && xdata < 0)
+        if (Input.GetKeyDown("a") )
             {
-
-                anim.SetBool("LeftWalk", true);
+            anim.SetBool("StandAim", false);
+            anim.SetBool("LeftWalk", true);
             }
 
-            else
-            {
+        if (Input.GetKeyUp("a") || xdata <= 0 )
+           {
                 anim.SetBool("LeftWalk", false);
+
             }
 
-            if (Input.GetKey("d") || xdata < 1.0f && xdata > 0)
+           
+        if (Input.GetKey("d") || xdata < 1.0f && xdata > 0)
             {
-
-                anim.SetBool("RightWalk", true);
+            anim.SetBool("StandAim", false);
+            anim.SetBool("RightWalk", true);
             }
 
-            else
-            {
+        if (Input.GetKey("d") || xdata > -1.0f && xdata < 0)
+           {
                 anim.SetBool("RightWalk", false);
             }
 
@@ -117,7 +120,7 @@ public class PlayerAnimController : MonoBehaviour
           
             i = 0;
         }
-
+       
     }
 
 

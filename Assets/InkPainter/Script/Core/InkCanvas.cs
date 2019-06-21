@@ -758,7 +758,7 @@ namespace Es.InkPainter
 		{
 			Vector2 uv;
 
-			if(renderCamera == null)
+			if(renderCamera == null)//インクを写すカメラを選択:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 				renderCamera = Camera.main;
 
 			Vector3 p = transform.InverseTransformPoint(worldPos);
