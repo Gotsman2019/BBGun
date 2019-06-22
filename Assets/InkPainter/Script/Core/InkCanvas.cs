@@ -757,9 +757,18 @@ namespace Es.InkPainter
 		public bool Paint(Brush brush, Vector3 worldPos, Func<PaintSet, bool> materialSelector = null, Camera renderCamera = null)
 		{
 			Vector2 uv;
+           
+            GameObject SubCamera;
+            Camera cam;
+            SubCamera = GameObject.FindGameObjectWithTag("SubCamera");
+            cam = SubCamera.GetComponent<Camera>();
 
-			if(renderCamera == null)//インクを写すカメラを選択:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-				renderCamera = Camera.main;
+            if (renderCamera == null)//インクを写すカメラを選択:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                if (Camera.main)
+                    renderCamera = Camera.main;
+                else
+                    renderCamera = cam;
+                
 
 			Vector3 p = transform.InverseTransformPoint(worldPos);
 			Matrix4x4 mvp = renderCamera.projectionMatrix * renderCamera.worldToCameraMatrix * transform.localToWorldMatrix;

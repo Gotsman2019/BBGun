@@ -14,6 +14,7 @@ TagManager:
   - route3
   - route4
   - friend
+  - SubCamera
   layers:
   - Default
   - TransparentFX

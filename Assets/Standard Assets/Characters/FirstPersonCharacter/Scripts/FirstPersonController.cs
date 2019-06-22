@@ -57,7 +57,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float lookSensitivity = 2f;
         [Range(0.1f, 1f)]
 
-        public float lookSmooth = 100f;
+        public float lookSmooth = 10f;
 
         public Vector2 MinMaxAngle = new Vector2(-45, 45);
         private float yRot;
@@ -100,7 +100,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
 
-            spineBone.rotation *= Quaternion.Euler(0, 0, xRot*2);
+            spineBone.rotation *= Quaternion.Euler(0, 0, xRot);
 
         }
 
