@@ -16,6 +16,10 @@ public class Tairyoku2 : MonoBehaviour
 
     private Animation Anime;
     private GameObject LimitTime;
+    private GameObject showgameover;
+    private GameObject textgameover;
+
+
     
     void OnCollisionEnter(Collision collision)
     {
@@ -59,6 +63,12 @@ public class Tairyoku2 : MonoBehaviour
     {
         Anime = GetComponent<Animation>();
         this.LimitTime = GameObject.Find("LimitTime");
+        this.showgameover = GameObject.Find("RedGameover");
+        this.textgameover = GameObject.Find("GameOverText");
+        showgameover.GetComponent<Image>().enabled = false;
+        textgameover.GetComponent<Text>().enabled = false;
+
+
     }
 
 
@@ -72,6 +82,8 @@ public class Tairyoku2 : MonoBehaviour
         }
         if (time <= 0)
         {
+            ShowGameover();
+            TextGameEnd();
             tairyoku = 0;
 
         }
@@ -90,6 +102,15 @@ public class Tairyoku2 : MonoBehaviour
 
         }
     }
+    public void ShowGameover()
+    {
+        showgameover.GetComponent<Image>().enabled = true;
+    }
+    public void TextGameEnd()
+    {
+        textgameover.GetComponent<Text>().enabled = true;
+    }
+
     public int GetTairyoku()
     {
         return tairyoku;

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8623344143639915804}
   m_Layer: 0
   m_Name: BBball
-  m_TagString: tama
+  m_TagString: tama2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

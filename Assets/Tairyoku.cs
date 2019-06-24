@@ -28,15 +28,15 @@ public class Tairyoku : MonoBehaviour
             if (collision.gameObject.tag == "tama")
             {
 
-                tairyoku -= 30;
+                tairyoku -= 50;
 
                 {
-
-
                     backAI();
-                        
                 }
             }
+
+            if (collision.gameObject.tag == "tama2")
+                tairyoku -= 30;
         }
     }
     void OnTriggerEnter(Collider other)

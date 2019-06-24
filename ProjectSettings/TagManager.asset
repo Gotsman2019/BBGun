@@ -15,6 +15,7 @@ TagManager:
   - route4
   - friend
   - SubCamera
+  - tama2
   layers:
   - Default
   - TransparentFX
