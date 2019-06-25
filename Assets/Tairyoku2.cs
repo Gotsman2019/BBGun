@@ -18,6 +18,8 @@ public class Tairyoku2 : MonoBehaviour
     private Animation Anime;
     private GameObject LimitTime;
     private GameObject showgameover;
+    private GameObject restartbutton;
+    private GameObject restartimage;
     private GameObject textgameover;
 
 
@@ -65,8 +67,11 @@ public class Tairyoku2 : MonoBehaviour
         Anime = GetComponent<Animation>();
         this.LimitTime = GameObject.Find("LimitTime");
         this.showgameover = GameObject.Find("RedGameover");
+        this.restartimage = GameObject.Find("Restart");
+        this.restartbutton = GameObject.Find("RestartText");
         this.textgameover = GameObject.Find("GameOverText");
         showgameover.GetComponent<Image>().enabled = false;
+       // restartbutton.GetComponent<Image>().enabled = false;
         textgameover.GetComponent<Text>().enabled = false;
 
 
@@ -92,7 +97,8 @@ public class Tairyoku2 : MonoBehaviour
 
         {
 
-
+            RestertImage();
+            Restertext();
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
@@ -103,9 +109,21 @@ public class Tairyoku2 : MonoBehaviour
 
         }
     }
+    public void RestertImage()
+    {
+       
+        restartimage.GetComponent<Image>().enabled = true;
+    }
+    public void Restertext()
+    {
+        restartbutton.GetComponent<Text>().enabled = true;
+    }
+
+
     public void ShowGameover()
     {
         showgameover.GetComponent<Image>().enabled = true;
+       
     }
     public void TextGameEnd()
     {
