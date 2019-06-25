@@ -30,14 +30,10 @@ public class Tairyoku2 : MonoBehaviour
         {
             if (collision.gameObject.tag == "tama")
             {
-
                 tairyoku -= 30;
 
                 {
-
-
                     BackAI();
-
                 }
             }
         }
@@ -71,7 +67,6 @@ public class Tairyoku2 : MonoBehaviour
         this.restartbutton = GameObject.Find("RestartText");
         this.textgameover = GameObject.Find("GameOverText");
         showgameover.GetComponent<Image>().enabled = false;
-       // restartbutton.GetComponent<Image>().enabled = false;
         textgameover.GetComponent<Text>().enabled = false;
 
 
@@ -96,7 +91,6 @@ public class Tairyoku2 : MonoBehaviour
         if (tairyoku <= 0)
 
         {
-
             RestertImage();
             Restertext();
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
@@ -106,8 +100,13 @@ public class Tairyoku2 : MonoBehaviour
             this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
             this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
 
-
         }
+    }
+
+
+    public void RestertButtonDown()
+    {
+        SceneManager.LoadScene("GameScene");
     }
     public void RestertImage()
     {
@@ -128,6 +127,7 @@ public class Tairyoku2 : MonoBehaviour
     public void TextGameEnd()
     {
         textgameover.GetComponent<Text>().enabled = true;
+
     }
 
     public int GetTairyoku()

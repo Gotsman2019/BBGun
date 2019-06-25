@@ -123,7 +123,7 @@ namespace Es.InkPainter
 		{
 			List<Vector3> ret = new List<Vector3>();
 
-			int nearestIndex = triangles[0];
+			int nearestIndex = triangles[5];
 			float nearestDistance = Vector3.Distance(vertices[nearestIndex], p);
 
 			for(int i = 0; i < vertices.Length; ++i)
