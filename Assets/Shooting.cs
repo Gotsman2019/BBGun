@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     private bool isShotButtonDown = false;
 
     private bool isReloadButtonDown = false;
-
+    private int ReloadCount= 0;
     public GameObject bulletPrefab;
     public float shotSpeed;
     public int shotCount = 50;
@@ -22,10 +22,12 @@ public class Shooting : MonoBehaviour
     public void GetMyReloadButtonDown()
     {
         this.isReloadButtonDown = true;
+        ReloadCount = 0;
     }
     public void GetMyReloadUp()
     {
         this.isReloadButtonDown = false;
+        ReloadCount = 1;
     }
 
     public void GetMyshotButtonDown()
@@ -49,7 +51,7 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetKey("e") || (isShotButtonDown))
         {
-            waitingTime -= 0.08f;
+            waitingTime -= 0.2f;
 
             shotInterval += 1;
 
@@ -62,13 +64,20 @@ public class Shooting : MonoBehaviour
                 bulletRb.AddForce(transform.forward * shotSpeed);
 
                 audioSource.PlayOneShot(shotSound);
+                if (shotCount <= 0)
+                    ReloadCount = 0;
             }
         }
-       
-       if (Input.GetKey(KeyCode.R)||(isReloadButtonDown))
+
+        if (Input.GetKey(KeyCode.R) || (isReloadButtonDown))
         {
+
+            if (ReloadCount == 0)
+             { 
             shotCount = 50;
             audioSource.PlayOneShot(reloadSound);
+               
+             }
         }
 
         if (Input.GetKeyUp("e"))

@@ -25,7 +25,7 @@ public class BollScript : MonoBehaviour
     public float missEffectDestroyTime = 1;
     public float timeToDestroyAfterHitting = 0.5f;
     private RaycastHit hit;
-    private Transform myTransform;
+   private Transform myTransform;
 
     //Rotation
     private Quaternion targetRotation;

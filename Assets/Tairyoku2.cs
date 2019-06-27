@@ -23,12 +23,12 @@ public class Tairyoku2 : MonoBehaviour
     private GameObject textgameover;
 
 
-    
+
     void OnCollisionEnter(Collision collision)
     {
         if (tairyoku > 0)
         {
-            if (collision.gameObject.tag == "tama")
+            if (collision.gameObject.tag == "tama2")
             {
                 tairyoku -= 30;
 
@@ -86,13 +86,14 @@ public class Tairyoku2 : MonoBehaviour
             ShowGameover();
             TextGameEnd();
             tairyoku = 0;
+            RestertImage();
+            Restertext();
 
         }
         if (tairyoku <= 0)
 
         {
-            RestertImage();
-            Restertext();
+
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);

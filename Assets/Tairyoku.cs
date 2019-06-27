@@ -15,7 +15,6 @@ public class Tairyoku : MonoBehaviour
     public Transform NextPoint;
     public Transform Next2Point;
 
-
     // Start is called before the first frame update
 
     private Animation Anime;
@@ -90,7 +89,7 @@ public class Tairyoku : MonoBehaviour
     {
      Anime = GetComponent<Animation>();
      deathNo = 0;
-      
+     
 
     }
 
@@ -124,6 +123,7 @@ public class Tairyoku : MonoBehaviour
     {
         if (tairyoku <= 0)
         {
+
          //  Debug.Log(transform.name + tairyoku +"backAI");
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
