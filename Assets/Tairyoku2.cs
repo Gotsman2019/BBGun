@@ -12,7 +12,8 @@ public class Tairyoku2 : MonoBehaviour
     public Transform StartPoint;
     public int tairyoku;
     public float time = 60;
-
+    public AudioClip KillSound;
+    private AudioSource audioSource;
     // Start is called before the first frame update
 
     private Animation Anime;
@@ -68,7 +69,7 @@ public class Tairyoku2 : MonoBehaviour
         this.textgameover = GameObject.Find("GameOverText");
         showgameover.GetComponent<Image>().enabled = false;
         textgameover.GetComponent<Text>().enabled = false;
-
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -93,7 +94,7 @@ public class Tairyoku2 : MonoBehaviour
         if (tairyoku <= 0)
 
         {
-
+           
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
@@ -137,9 +138,10 @@ public class Tairyoku2 : MonoBehaviour
     }
     public void BackAI()
     {
+
         if (tairyoku <= 0)
         {
-
+            audioSource.PlayOneShot(KillSound);
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);

@@ -14,6 +14,8 @@ public class Tairyoku : MonoBehaviour
     public Transform StartPoint;
     public Transform NextPoint;
     public Transform Next2Point;
+    public AudioClip KillSounds;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
 
@@ -89,7 +91,7 @@ public class Tairyoku : MonoBehaviour
     {
      Anime = GetComponent<Animation>();
      deathNo = 0;
-     
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -101,8 +103,8 @@ public class Tairyoku : MonoBehaviour
         if (tairyoku <= 0)
 
         {
-
-                RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
+            audioSource.PlayOneShot(KillSounds);
+            RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
                 LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
                 RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -121,10 +123,11 @@ public class Tairyoku : MonoBehaviour
     }
     public void backAI()
     {
+        audioSource.PlayOneShot(KillSounds);
         if (tairyoku <= 0)
         {
 
-         //  Debug.Log(transform.name + tairyoku +"backAI");
+            //  Debug.Log(transform.name + tairyoku +"backAI");
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);

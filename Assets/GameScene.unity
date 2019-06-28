@@ -2811,7 +2811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.59
+      value: 31.29
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5449,6 +5449,7 @@ MonoBehaviour:
   StartPoint: {fileID: 1406437884}
   NextPoint: {fileID: 37135392}
   Next2Point: {fileID: 1120541635}
+  KillSounds: {fileID: 8300000, guid: 5270efdb06b164fc49083fe35cf7f060, type: 3}
 --- !u!114 &648333455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7352,6 +7353,7 @@ MonoBehaviour:
   StartPoint: {fileID: 251069675}
   NextPoint: {fileID: 946040339}
   Next2Point: {fileID: 1153086278}
+  KillSounds: {fileID: 8300000, guid: b285a70fe4f284306b726c10a966d272, type: 3}
 --- !u!65 &1189477274
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7690,6 +7692,7 @@ MonoBehaviour:
   StartPoint: {fileID: 251069675}
   tairyoku: 300
   time: 120
+  KillSound: {fileID: 8300000, guid: b285a70fe4f284306b726c10a966d272, type: 3}
 --- !u!1 &1224163254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 173934, guid: 2b3290ed7401d804aa113f503ee4124f,
@@ -7730,6 +7733,7 @@ MonoBehaviour:
   StartPoint: {fileID: 251069675}
   NextPoint: {fileID: 946040339}
   Next2Point: {fileID: 1153086278}
+  KillSounds: {fileID: 8300000, guid: b285a70fe4f284306b726c10a966d272, type: 3}
 --- !u!65 &1224163257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8765,6 +8769,7 @@ MonoBehaviour:
   StartPoint: {fileID: 251069675}
   NextPoint: {fileID: 946040339}
   Next2Point: {fileID: 1153086278}
+  KillSounds: {fileID: 8300000, guid: b285a70fe4f284306b726c10a966d272, type: 3}
 --- !u!65 &1363061426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10972,6 +10977,7 @@ MonoBehaviour:
   StartPoint: {fileID: 1406437884}
   NextPoint: {fileID: 37135392}
   Next2Point: {fileID: 1120541635}
+  KillSounds: {fileID: 8300000, guid: 5270efdb06b164fc49083fe35cf7f060, type: 3}
 --- !u!114 &1742385849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11105,6 +11111,7 @@ MonoBehaviour:
   StartPoint: {fileID: 1406437884}
   NextPoint: {fileID: 37135392}
   Next2Point: {fileID: 1120541635}
+  KillSounds: {fileID: 8300000, guid: 5270efdb06b164fc49083fe35cf7f060, type: 3}
 --- !u!114 &1751083676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11920,6 +11927,7 @@ MonoBehaviour:
   StartPoint: {fileID: 1406437884}
   NextPoint: {fileID: 1788969256}
   Next2Point: {fileID: 1120541635}
+  KillSounds: {fileID: 8300000, guid: 5270efdb06b164fc49083fe35cf7f060, type: 3}
 --- !u!114 &1927002094
 MonoBehaviour:
   m_ObjectHideFlags: 0
