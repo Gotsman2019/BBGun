@@ -22,8 +22,9 @@ public class Tairyoku2 : MonoBehaviour
     private GameObject restartbutton;
     private GameObject restartimage;
     private GameObject textgameover;
+    private GameObject killscore;
     private bool soundcheck;
-
+    private int Score;
 
 
     void OnCollisionEnter(Collision collision)
@@ -42,10 +43,7 @@ public class Tairyoku2 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (tairyoku > 0)
-        {
-
-        }
+       
         if (other.gameObject.tag == "route4")
         {
             tairyoku = 80;
@@ -68,8 +66,10 @@ public class Tairyoku2 : MonoBehaviour
         this.restartimage = GameObject.Find("Restart");
         this.restartbutton = GameObject.Find("RestartText");
         this.textgameover = GameObject.Find("GameOverText");
+        this.killscore = GameObject.Find("KillScore");
         showgameover.GetComponent<Image>().enabled = false;
         textgameover.GetComponent<Text>().enabled = false;
+        //killscore.GetComponent<Text>().enabled = false;
         audioSource = GetComponent<AudioSource>();
         soundcheck = false;
 
@@ -79,6 +79,7 @@ public class Tairyoku2 : MonoBehaviour
 
     private void LateUpdate()
     {
+        this.killscore.GetComponent<Text>().text = (Score + "Kills");
         time -= 1f * Time.deltaTime;
         if (time > 0)
         {
@@ -110,6 +111,13 @@ public class Tairyoku2 : MonoBehaviour
 
         }
     }
+
+
+    public void ScoreCount()
+      {
+        Score += 1;
+      }
+
 
 
     public void RestertButtonDown()
@@ -147,7 +155,12 @@ public class Tairyoku2 : MonoBehaviour
 
         if (tairyoku <= 0)
         {
-            audioSource.PlayOneShot(KillSound);
+            if (!soundcheck)
+            {
+                audioSource.PlayOneShot(KillSound);
+                soundcheck = true;
+            }
+
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);

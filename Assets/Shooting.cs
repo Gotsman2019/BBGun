@@ -18,7 +18,7 @@ public class Shooting : MonoBehaviour
     public AudioClip reloadSound;
     private AudioSource audioSource;
     private float waitingTime = 1.0f ;
-
+    private bool reloadcheck;
     public void GetMyReloadButtonDown()
     {
         this.isReloadButtonDown = true;
@@ -44,6 +44,7 @@ public class Shooting : MonoBehaviour
     private void Start()
        {
         audioSource = GetComponent<AudioSource>();
+        reloadcheck = false;
        }
 
     void Update()
@@ -52,7 +53,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetKey("e") || (isShotButtonDown))
         {
             waitingTime -= 0.2f;
-
+            reloadcheck = false;
             shotInterval += 1;
 
             if (waitingTime <= 0 && shotCount > 0 && shotInterval % 5 == 0)
@@ -73,9 +74,13 @@ public class Shooting : MonoBehaviour
         {
 
             if (ReloadCount == 0)
-             { 
-            shotCount = 50;
-            audioSource.PlayOneShot(reloadSound);
+            {
+                if (!reloadcheck)
+                {
+                    shotCount = 50;
+                    audioSource.PlayOneShot(reloadSound);
+                    reloadcheck = true;
+                }
                
              }
         }

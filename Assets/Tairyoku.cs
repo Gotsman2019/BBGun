@@ -17,6 +17,10 @@ public class Tairyoku : MonoBehaviour
     public AudioClip KillSounds;
     private AudioSource audioSource;
     private bool soundcheck;
+    public GameObject plyr;
+    public Tairyoku2 tairyoku2;
+    
+
     
     // Start is called before the first frame update
 
@@ -33,7 +37,7 @@ public class Tairyoku : MonoBehaviour
                 tairyoku -= 50;
 
                 {
-                    Debug.Log("atari");
+                   
                     backAI();
                 }
             }
@@ -95,7 +99,8 @@ public class Tairyoku : MonoBehaviour
         deathNo = 0;
         audioSource = GetComponent<AudioSource>();
         soundcheck = false;
-
+        plyr = GameObject.Find("Player");
+        tairyoku2 = plyr.GetComponent<Tairyoku2>();
 
     }
 
@@ -111,6 +116,8 @@ public class Tairyoku : MonoBehaviour
             {
                 audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
+                tairyoku2.ScoreCount();
+
             }
 
                 RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
@@ -136,6 +143,7 @@ public class Tairyoku : MonoBehaviour
         if (tairyoku <= 0)
         {
             audioSource.PlayOneShot(KillSounds);
+            tairyoku2.ScoreCount();
             //  Debug.Log(transform.name + tairyoku +"backAI");
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
