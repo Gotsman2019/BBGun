@@ -4,49 +4,60 @@ using System.Collections;
 public class CameraChange : MonoBehaviour
 {
 
-    private bool isKirikaeButtonDown = false;
+  
+    private bool isKirikaeButtonUp = false;
+    private bool modosu = false;
     public Camera mainCamera;
     public Camera subCamera;
-    private int kirikae = 1;
+    public int kirikae;
+    private int i=1;
 
-    public void GetKirikaeButtonDown()
-    {
-        this.isKirikaeButtonDown = true;
-    }
+
     public void GetKirikaeButtonUp()
     {
-        this.isKirikaeButtonDown = false;
+        this.isKirikaeButtonUp = true;
+        this.modosu = false;
+    }
+
+    public void GetModosuButtonUp()
+    {
+        this.modosu = true;
+        this.isKirikaeButtonUp = false;
     }
 
 
     void Start()
     {
+
         subCamera.enabled = false;
+
     }
-    public void KirikaeCamera()
-    {
-        if (Input.GetKeyDown("q") || (isKirikaeButtonDown))
-        {
-            kirikae = -1 * kirikae;
-        }
 
 
-        if (kirikae == -1)
-        {
 
-            mainCamera.enabled = false;
-            subCamera.enabled = true;
-        }
-        if (kirikae == 1)
-        {
-            mainCamera.enabled = true;
-            subCamera.enabled = false;
-        }
-    }
+
 
     void Update()
     {
-        KirikaeCamera();
+
+        if (Input.GetKeyDown("q") || (isKirikaeButtonUp))
+        
+            {
+                mainCamera.enabled = false;
+                subCamera.enabled = true;
+            }
+
+
+
+
+          if (modosu)
+            {
+                mainCamera.enabled = true;
+                subCamera.enabled = false;
+            }
+
+       
+       
            
 
     }
