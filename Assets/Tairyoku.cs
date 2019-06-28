@@ -16,7 +16,8 @@ public class Tairyoku : MonoBehaviour
     public Transform Next2Point;
     public AudioClip KillSounds;
     private AudioSource audioSource;
-
+    private bool soundcheck;
+    
     // Start is called before the first frame update
 
     private Animation Anime;
@@ -32,6 +33,7 @@ public class Tairyoku : MonoBehaviour
                 tairyoku -= 50;
 
                 {
+                    Debug.Log("atari");
                     backAI();
                 }
             }
@@ -89,9 +91,11 @@ public class Tairyoku : MonoBehaviour
     private int deathNo;
     void Start()
     {
-     Anime = GetComponent<Animation>();
-     deathNo = 0;
+        Anime = GetComponent<Animation>();
+        deathNo = 0;
         audioSource = GetComponent<AudioSource>();
+        soundcheck = false;
+
 
     }
 
@@ -103,8 +107,13 @@ public class Tairyoku : MonoBehaviour
         if (tairyoku <= 0)
 
         {
-            audioSource.PlayOneShot(KillSounds);
-            RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
+            if (!soundcheck)
+            {
+                audioSource.PlayOneShot(KillSounds);
+                soundcheck = true;
+            }
+
+                RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
                 LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
                 RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
                 UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -123,10 +132,10 @@ public class Tairyoku : MonoBehaviour
     }
     public void backAI()
     {
-        audioSource.PlayOneShot(KillSounds);
+
         if (tairyoku <= 0)
         {
-
+            audioSource.PlayOneShot(KillSounds);
             //  Debug.Log(transform.name + tairyoku +"backAI");
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
