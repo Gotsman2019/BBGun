@@ -67,7 +67,7 @@ public class GunScript : MonoBehaviour {
 	float timeBetweenBurstBullets;
 	
 	//Reloading
-	public int bulletsUntilReload = 60;
+	public int bulletsUntilReload = 50;
 	public AudioClip reloadSound;	
 	[Range (0.0f, 1.0f)]
 	public float reloadSoundVolume = 1;

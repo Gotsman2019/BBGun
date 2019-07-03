@@ -38,7 +38,7 @@ public class Tairyoku : MonoBehaviour
 
                 {
                    
-                    backAI();
+                    backAI2();
                 }
             }
 
@@ -116,7 +116,7 @@ public class Tairyoku : MonoBehaviour
             {
                 audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
-                tairyoku2.ScoreCount();
+
 
             }
 
@@ -142,8 +142,16 @@ public class Tairyoku : MonoBehaviour
 
         if (tairyoku <= 0)
         {
-            audioSource.PlayOneShot(KillSounds);
-            tairyoku2.ScoreCount();
+
+            if (!soundcheck)
+            {
+                audioSource.PlayOneShot(KillSounds);
+                soundcheck = true;
+
+
+            }
+            //audioSource.PlayOneShot(KillSounds);
+
             //  Debug.Log(transform.name + tairyoku +"backAI");
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
@@ -158,4 +166,35 @@ public class Tairyoku : MonoBehaviour
             }
         }
     }
+    public void backAI2()
+    {
+
+        if (tairyoku <= 0)
+        {
+
+            if (!soundcheck)
+            {
+                audioSource.PlayOneShot(KillSounds);
+                soundcheck = true;
+                tairyoku2.ScoreCount();
+
+            }
+            //audioSource.PlayOneShot(KillSounds);
+
+            //  Debug.Log(transform.name + tairyoku +"backAI");
+            RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
+            LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
+            RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
+            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.destination = StartPoint.position;//startPoint Restart
+            if (deathNo == 0)
+            {
+                this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
+                this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
+                deathNo += 1;
+            }
+        }
+    }
+
+
 }

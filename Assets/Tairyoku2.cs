@@ -20,6 +20,7 @@ public class Tairyoku2 : MonoBehaviour
     private GameObject LimitTime;
     private GameObject showgameover;
     private GameObject restartbutton;
+
     private GameObject restartimage;
     private GameObject textgameover;
     private GameObject killscore;

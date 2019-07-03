@@ -273,14 +273,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                       (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset() + CameraChangeY;//-0.5fぐらいで狙位置
-                newCameraPosition.z = -0.7f+CameraChangeZ;
+                newCameraPosition.z = -2.7f+CameraChangeZ;
                 newCameraPosition.x = 0.25f;
             }
             else
             {
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset() + CameraChangeY;//-0.5fぐらいで狙位置
-                newCameraPosition.z = -0.7f+CameraChangeZ;
+                newCameraPosition.z = -2.7f+CameraChangeZ;
                 newCameraPosition.x = 0.25f;
             }
             m_Camera.transform.localPosition = newCameraPosition;

@@ -6,11 +6,31 @@ public class PlayerAnimController : MonoBehaviour
 {
     private int i = 0;
     private Animator anim;
-   
+    private bool isSitButtonDown = false;
+    private bool isSitButtonUp = false;
     // Start is called before the first frame update
+    private bool SitCheck;
+    public void GetMySitButtonDown()
+    {
+        this.isSitButtonDown = true;
+        this.isSitButtonUp = false;
+        SitCheck = false;
+    }
+    public void GetMySitButtonUp()
+    {
+        this.isSitButtonUp = true;
+        this.isSitButtonDown = false;
+        SitCheck = false;
+    }
+
+
     void Start()
     {
     anim = GetComponent<Animator>();
+        SitCheck = false;
+        isSitButtonDown = false;
+        isSitButtonUp = true;
+
 
     }
 
@@ -39,6 +59,7 @@ public class PlayerAnimController : MonoBehaviour
 
        if (Input.GetKeyUp("w")|| vertical <= 0 && vertical > -0.05f)
         {
+            anim.SetBool("SitAim", false);
             anim.SetBool("StandToFrontAim", false);
             anim.SetBool("StandAim", false);
             i = 0;
@@ -54,14 +75,14 @@ public class PlayerAnimController : MonoBehaviour
         }
         if (Input.GetKey("s")|| vertical < 0)
         {
-
+            anim.SetBool("SitAim", false);
             anim.SetBool("StandAim", true);
             i += 1;
 
             if (i > 1)
             {
                 anim.SetBool("StandToBackAim", true);
-
+             
             }
         }
 
@@ -69,11 +90,13 @@ public class PlayerAnimController : MonoBehaviour
         {
             anim.SetBool("StandToBackAim", false);
             anim.SetBool("StandAim", false);
+            anim.SetBool("SitAim", false);
             anim.SetBool("StandAim", true);
             i += 1;
 
             if (i > 1)
             {
+                anim.SetBool("SitAim", false);
                 anim.SetBool("StandToFrontAim", true);
             }
         }
@@ -82,6 +105,7 @@ public class PlayerAnimController : MonoBehaviour
 
         if (Input.GetKeyDown("a")|| horizontal < 0)
             {
+            anim.SetBool("SitAim", false);
             anim.SetBool("StandAim", false);
             anim.SetBool("LeftWalk", true);
             }
@@ -89,20 +113,23 @@ public class PlayerAnimController : MonoBehaviour
         if (Input.GetKeyUp("a") || horizontal > 0 && horizontal < 0.05f )
            {
                 anim.SetBool("LeftWalk", false);
+               anim.SetBool("SitAim", false);
 
-            }
+        }
 
            
         if (Input.GetKeyDown("d") || horizontal > 0)
             {
             anim.SetBool("StandAim", false);
+            anim.SetBool("SitAim", false);
             anim.SetBool("RightWalk", true);
             }
 
         if (Input.GetKeyUp("d") ||horizontal < 0 && horizontal > -0.05f)
            {
-                anim.SetBool("RightWalk", false);
-            }
+            anim.SetBool("RightWalk", false);
+            anim.SetBool("SitAim", false);
+        }
        
 
           anim.SetBool("StandAim", true);
@@ -126,7 +153,29 @@ public class PlayerAnimController : MonoBehaviour
           
             i = 0;
         }
-       
+
+
+        if (Input.GetKeyDown("p")|| isSitButtonDown)
+        {
+
+                anim.SetBool("SitAim", true);
+                SitCheck = true;
+
+
+
+        }
+
+        if (Input.GetKeyUp("p")|| isSitButtonUp)
+        {
+            if (!SitCheck)
+            {
+
+                anim.SetBool("SitAim", false);
+                SitCheck = true;
+            }
+
+        }
+
     }
 
 
