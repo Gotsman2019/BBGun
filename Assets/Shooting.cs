@@ -32,6 +32,7 @@ public class Shooting : MonoBehaviour
 
     public void GetMyshotButtonDown()
     {
+
         this.isShotButtonDown = true;
     }
     public void GetMyshotButtonUp()
@@ -52,6 +53,7 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetKey("e") || (isShotButtonDown))
         {
+
             waitingTime -= 0.2f;
             reloadcheck = false;
             shotInterval += 1;
