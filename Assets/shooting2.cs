@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class shooting2 : MonoBehaviour
 {
 
     private bool isShotButtonDown = false;
 
     private bool isReloadButtonDown = false;
-    private int ReloadCount= 0;
+    private int ReloadCount = 0;
     public GameObject bulletPrefab;
     public float shotSpeed;
-    public int shotCount = 50;
+    public int shotCount = 5;
     private float shotInterval;
     private RaycastHit hit;
     public AudioClip shotSound;
     public AudioClip reloadSound;
     private AudioSource audioSource;
-    private float waitingTime = 1.0f ;
+    private float waitingTime = 1.0f;
     private bool reloadcheck;
     public void GetMyReloadButtonDown()
     {
-      
+
         this.isReloadButtonDown = true;
         ReloadCount = 0;
     }
@@ -33,7 +33,7 @@ public class Shooting : MonoBehaviour
 
     public void GetMyshotButtonDown()
     {
-       
+
         this.isShotButtonDown = true;
     }
     public void GetMyshotButtonUp()
@@ -44,10 +44,10 @@ public class Shooting : MonoBehaviour
 
 
     private void Start()
-       {
+    {
         audioSource = GetComponent<AudioSource>();
         reloadcheck = false;
-       }
+    }
 
     void Update()
     {
@@ -59,7 +59,7 @@ public class Shooting : MonoBehaviour
             reloadcheck = false;
             shotInterval += 1;
 
-            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 5 == 0)
+            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 20 == 0)
             {
                 shotCount -= 1;
 
@@ -80,12 +80,12 @@ public class Shooting : MonoBehaviour
             {
                 if (!reloadcheck)
                 {
-                    shotCount = 50;
+                    shotCount = 5;
                     audioSource.PlayOneShot(reloadSound);
                     reloadcheck = true;
                 }
-               
-             }
+
+            }
         }
 
         if (Input.GetKeyUp("e"))
