@@ -8,6 +8,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
+
+
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking=false;
@@ -34,8 +36,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public GameObject targetobject;
 
-        private float CameraChangeY;
-        private float CameraChangeZ;
+        private float CameraChangeY = 0.008f;
+        private float CameraChangeZ = 0.01f;
         private int kirikae = 1;
         private Camera m_Camera;
         private bool m_Jump;
@@ -101,6 +103,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
             spineBone.rotation *= Quaternion.Euler(0, 0, xRot);
+
+            if (isKirikaeButtonDown)
+            {
+                Shockcamera();
+            }
 
         }
 
@@ -178,6 +185,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
+
             m_MouseLook.UpdateCursorLock();
         }
 
@@ -223,9 +231,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FootstepSounds[n] = m_FootstepSounds[0];
             m_FootstepSounds[0] = m_AudioSource.clip;
         }
+        public void Shockcamera()
+        {
+           // CameraChangeY = -CameraChangeY;
+           // CameraChangeZ = -CameraChangeZ;
+        }
+
+
         public void Kirikae()
         {
-            if (Input.GetKeyDown("f")||(isKirikaeButtonDown))
+
+
+            if (Input.GetKeyDown("f"))
             {
                 kirikae = -1 * kirikae;
             }
@@ -233,15 +250,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (kirikae == -1)
             {
-                CameraChangeY = -0.28f;
-                CameraChangeZ = 0.8f;
+              // CameraChangeY = -0.28f;
+               //CameraChangeZ = 0.8f;
             }
 
 
             if (kirikae == 1)
             {
-                CameraChangeY = 0.0f;
-                CameraChangeZ = 0.0f;
+               //CameraChangeY = 0.0f;
+              // CameraChangeZ = 0.0f;
             }
 
         }
@@ -256,10 +273,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void UpdateCameraPosition(float speed)//カメラポジション設定
+        public void UpdateCameraPosition(float speed)//カメラポジション設定
 
         {
-            Kirikae();
+            //Kirikae();
 
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)

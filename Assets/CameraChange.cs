@@ -10,7 +10,7 @@ public class CameraChange : MonoBehaviour
     public Camera mainCamera;
     public Camera subCamera;
     public int kirikae;
-    private int i=1;
+  // private int i=1;
 
 
     public void GetKirikaeButtonUp()
