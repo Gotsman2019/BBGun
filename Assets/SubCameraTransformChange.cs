@@ -30,10 +30,6 @@ public class SubCameraTransformChange : MonoBehaviour
        
         RArmHandPos.transform.localPosition = Pos;
              
-
-
-
-
     }
     public void GetSubShockButtonDown()
     {
@@ -45,6 +41,12 @@ public class SubCameraTransformChange : MonoBehaviour
         this.isShockButtonDown = true;
     }
 
+    public void Shock2()
+    {
+
+        ShockSubcamera();
+        SubCameraPosition();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -58,8 +60,7 @@ public class SubCameraTransformChange : MonoBehaviour
        
         if (!isShockButtonDown)
         {
-            ShockSubcamera();
-            SubCameraPosition();
+            Shock2();
         }
 
     }

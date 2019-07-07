@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class shooting2 : MonoBehaviour
 {
-
+    public SubCameraTransformChange2 subCameraTransformChange2;
     private bool isShotButtonDown = false;
-
+    private GameObject bazooka;
     private bool isReloadButtonDown = false;
     private int ReloadCount = 0;
     public GameObject bulletPrefab;
@@ -47,19 +47,22 @@ public class shooting2 : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         reloadcheck = false;
-    }
+        bazooka = GameObject.Find("bazooka");
+        subCameraTransformChange2 = bazooka.GetComponent<SubCameraTransformChange2>();
 
-    void Update()
+}
+
+void Update()
     {
 
         if (Input.GetKey("e") || (isShotButtonDown))
         {
 
-            waitingTime -= 0.2f;
+            waitingTime -= 0.1f;
             reloadcheck = false;
             shotInterval += 1;
 
-            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 20 == 0)
+            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 30 == 0)
             {
                 shotCount -= 1;
 
@@ -67,6 +70,7 @@ public class shooting2 : MonoBehaviour
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
 
+                subCameraTransformChange2.Shock();
                 audioSource.PlayOneShot(shotSound);
                 if (shotCount <= 0)
                     ReloadCount = 0;

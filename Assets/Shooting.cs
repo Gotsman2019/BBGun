@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public SubCameraTransformChange subCameraTransformChange;
+    private GameObject M4;
 
     private bool isShotButtonDown = false;
 
@@ -47,6 +49,9 @@ public class Shooting : MonoBehaviour
        {
         audioSource = GetComponent<AudioSource>();
         reloadcheck = false;
+        M4 = GameObject.Find("M4MB");
+        subCameraTransformChange = M4.GetComponent<SubCameraTransformChange>();
+
        }
 
     void Update()
@@ -66,6 +71,8 @@ public class Shooting : MonoBehaviour
                 GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.localEulerAngles.x, transform.parent.localEulerAngles.y, 0));
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
+
+            //    subCameraTransformChange.Shock2();
 
                 audioSource.PlayOneShot(shotSound);
                 if (shotCount <= 0)
