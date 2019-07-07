@@ -2820,6 +2820,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &352826199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352826200}
+  - component: {fileID: 352826201}
+  m_Layer: 0
+  m_Name: SubCamera2
+  m_TagString: SubCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &352826200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352826199}
+  m_LocalRotation: {x: -0.076290876, y: 0.09690391, z: -0.13594773, w: -0.98300946}
+  m_LocalPosition: {x: 12, y: 21, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 379344228}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 100.56598, y: 52.407997, z: 66.899994}
+--- !u!20 &352826201
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352826199}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 26.991467
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!4 &368159670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 496868, guid: 4bfae102cc96d72418c1376305879165,
@@ -2987,18 +3061,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1304967175}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &379344229
-MonoBehaviour:
+--- !u!65 &379344229
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379344227}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24434ed42c6fe45efa9a0ba6f26230ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 13.58, y: 32.1, z: 131}
+  m_Center: {x: 10.315126, y: 0.0000940757, z: 0.25689858}
 --- !u!1 &380744057
 GameObject:
   m_ObjectHideFlags: 0
@@ -7254,7 +7329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1126167883309973213, guid: 540397bcfa9724f70ac4eddec4017603,
     type: 3}
-  shotSpeed: 2500
+  shotSpeed: 3000
   shotCount: 5
   shotSound: {fileID: 8300000, guid: 356cd6bb5ed863b46aee7b7a92e515c5, type: 3}
   reloadSound: {fileID: 8300000, guid: 1280b4d2829a85e44b0462f77a6f5694, type: 3}
@@ -11644,6 +11719,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: GetSubShockButtonDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 3
@@ -11684,6 +11770,17 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1528703981}
+          m_MethodName: GetSubShockButtonUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
           m_MethodName: GetSubShockButtonUp
           m_Mode: 1
           m_Arguments:
@@ -12158,8 +12255,7 @@ Transform:
   m_LocalRotation: {x: 0.37296128, y: 0.38833657, z: 0.84030116, w: 0.06315552}
   m_LocalPosition: {x: -0.27417952, y: 0.06765047, z: 0.05909402}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1899399264}
+  m_Children: []
   m_Father: {fileID: 449870117}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13134,13 +13230,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899399263}
-  m_LocalRotation: {x: 0.33493772, y: 0.9230655, z: -0.18848257, w: 0.015532066}
-  m_LocalPosition: {x: -0.053, y: 0.238, z: 0.047}
-  m_LocalScale: {x: 0.010000134, y: 0.010000043, z: 0.010000115}
+  m_LocalRotation: {x: 0.7313743, y: -0.14499627, z: 0.03261771, w: 0.6655853}
+  m_LocalPosition: {x: 0.005, y: 0.218, z: 0.181}
+  m_LocalScale: {x: 0.010000172, y: 0.010000052, z: 0.010000157}
   m_Children: []
-  m_Father: {fileID: 1745125674}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 21, y: 186, z: 41}
+  m_Father: {fileID: 318453185}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 100.56598, y: 52.407997, z: 66.899994}
 --- !u!20 &1899399266
 Camera:
   m_ObjectHideFlags: 0

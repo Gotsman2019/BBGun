@@ -8,8 +8,8 @@ public class SubCameraTransformChange : MonoBehaviour
     public Transform RArmHandPos;
     private GameObject RArmHand;
 
-    private float CameraChangeY = 0.08f;
-    private float CameraChangeZ = 0.08f;
+    private float CameraChangeY = 0.008f;
+    private float CameraChangeZ = 0.008f;
     private bool isShockButtonDown = true;
 
     public void ShockSubcamera()
@@ -50,7 +50,7 @@ public class SubCameraTransformChange : MonoBehaviour
     void Start()
     {
 
-        RArmHand = GameObject.Find("RArmHand");
+      //  RArmHand = GameObject.Find("RArmHand");
 
     }// Update is called once per frame
     void Update()
