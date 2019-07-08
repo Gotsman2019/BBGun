@@ -18,7 +18,9 @@ public class Tairyoku : MonoBehaviour
     private AudioSource audioSource;
     private bool soundcheck;
     public GameObject plyr;
+    public GameObject plyr2;
     public Tairyoku2 tairyoku2;
+    public TextUp TextUp;
     
 
     
@@ -100,7 +102,9 @@ public class Tairyoku : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         soundcheck = false;
         plyr = GameObject.Find("Player");
+        plyr2 = GameObject.Find("TextHit");
         tairyoku2 = plyr.GetComponent<Tairyoku2>();
+        TextUp = plyr2.GetComponent<TextUp>();
 
     }
 
@@ -114,6 +118,7 @@ public class Tairyoku : MonoBehaviour
         {
             if (!soundcheck)
             {
+                TextUp.TextShow();
                 audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
 
@@ -146,6 +151,7 @@ public class Tairyoku : MonoBehaviour
             if (!soundcheck)
             {
                 audioSource.PlayOneShot(KillSounds);
+                TextUp.TextShow();
                 soundcheck = true;
 
 
@@ -174,6 +180,7 @@ public class Tairyoku : MonoBehaviour
 
             if (!soundcheck)
             {
+                TextUp.TextShow();
                 audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
                 tairyoku2.ScoreCount();
