@@ -9,8 +9,19 @@ using System.Collections;
 namespace TacticalAI{
 public class GunScript : MonoBehaviour {
 
-	//Stuff
-	public TacticalAI.BaseScript myAIBaseScript;
+        //Stuff
+    public TextUp TextUp;
+    public TextUp TextUp2;
+    public TextUp TextUp3;
+    public TextUp TextUp4;
+
+
+    public GameObject textobject;
+    public GameObject textobject2;
+    public GameObject textobject3;
+    public GameObject textobject4;
+
+    public TacticalAI.BaseScript myAIBaseScript;
 	public TacticalAI.AnimationScript animationScript;
     public TacticalAI.SoundScript soundScript;
     public AudioSource audioSource;
@@ -142,7 +153,17 @@ public class GunScript : MonoBehaviour {
 	// Stuff we need done after all other stuff is set up
 	void Start () {
 		enemyTeams = myAIBaseScript.GetEnemyTeamIDs();
-	}
+        textobject = GameObject.Find("WordUp");
+        textobject2 = GameObject.Find("WordUp2");
+        textobject3 = GameObject.Find("WordUp3");
+        textobject4 = GameObject.Find("WordUp4");
+
+        TextUp = textobject.GetComponent<TextUp>();
+        TextUp2 = textobject2.GetComponent<TextUp>();
+        TextUp3 = textobject3.GetComponent<TextUp>();
+        TextUp4 = textobject4.GetComponent<TextUp>();
+
+        }
 
      float timer = 30;
 	// Update is called once per frame
@@ -154,7 +175,12 @@ public class GunScript : MonoBehaviour {
 						if(!isFiring && !isWaiting && bulletObject)
 							{						
 								StartCoroutine(BulletFiringCycle());
-							}	
+                                TextUp.TextShow();
+                                TextUp2.TextShow();
+                                TextUp3.TextShow();
+                                TextUp4.TextShow();
+
+                }	
 						else if(!bulletObject)	
 							{
 								Debug.LogWarning("Can't fire because there is no bullet object selected!");
@@ -209,7 +235,7 @@ public class GunScript : MonoBehaviour {
 					{
 						TacticalAI.ControllerScript.currentController.CreateSound(bulletSpawn.position, soundRadius, enemyTeams);
 					}
-                //通常の弾丸を撃つ
+                //通常の弾丸を撃つ>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 if (animationScript.currentlyRotating)
                 {
                     yield return StartCoroutine(Fire());
@@ -251,7 +277,7 @@ public class GunScript : MonoBehaviour {
 		isWaiting= false;
 	}
 	
-	IEnumerator Fire()
+	IEnumerator Fire()//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	{
 
     //Check Distances
@@ -314,7 +340,9 @@ public class GunScript : MonoBehaviour {
 	{
 		//Look At Target
 		if(targetTransform && !myAIBaseScript.inParkour)
-			{
+            {
+
+
                 //少し離れている場合でも、目標を目標に合わせる
                 //これは、RotateToAimGunScriptがターゲットを直接指すことはめったにないためです。
                 bool amAtTarget = Vector3.Angle(bulletSpawn.forward, targetTransform.position - bulletSpawn.position) < maxFiringAngle;
@@ -348,7 +376,12 @@ public class GunScript : MonoBehaviour {
 					{
                         audioSource.volume = bulletSoundVolume;
                         audioSource.PlayOneShot(bulletSound);
-					}
+                    TextUp.TextShow();
+                    TextUp2.TextShow();
+                    TextUp3.TextShow();
+                    TextUp4.TextShow();
+                   
+                }
 					
 				if(animationScript)	
 					{
@@ -444,9 +477,10 @@ public class GunScript : MonoBehaviour {
 	}		
 
 	public bool IsFiring()
-	{
-		return isFiring;
-	}	
+        {
+
+            return isFiring;
+	    }	
         
     public bool IsReloading()
 	{
