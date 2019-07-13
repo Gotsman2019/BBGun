@@ -11,15 +11,10 @@ public class GunScript : MonoBehaviour {
 
         //Stuff
     public TextUp TextUp;
-    public TextUp TextUp2;
-    public TextUp TextUp3;
-    public TextUp TextUp4;
 
-
-    public GameObject textobject;
-    public GameObject textobject2;
-    public GameObject textobject3;
-    public GameObject textobject4;
+    private GameObject Textobject;
+    private Transform texttreansform;
+    
 
     public TacticalAI.BaseScript myAIBaseScript;
 	public TacticalAI.AnimationScript animationScript;
@@ -36,10 +31,14 @@ public class GunScript : MonoBehaviour {
 	public AudioClip bulletSound;
 	[Range (0.0f, 1.0f)]
 	public float bulletSoundVolume = 1;	
-	public Transform  bulletSpawn;	
-	public GameObject muzzleFlash;
+	public Transform  bulletSpawn;
+    
+    public GameObject muzzleFlash;
+    
 	public Transform muzzleFlashSpawn;
-	public float flashDestroyTime = 0.3f;
+   
+
+    public float flashDestroyTime = 0.3f;
 	bool canCurrentlyFire = true;
 
 	
@@ -111,7 +110,7 @@ public class GunScript : MonoBehaviour {
 	
 	//Cover	
 	public float distInFrontOfTargetAllowedForCover = 3;
-	public float coverTransitionTime = 0.45f;
+	public float coverTransitionTime = 0.2f;
 	float rayDist;
 
 	//Sound
@@ -153,34 +152,28 @@ public class GunScript : MonoBehaviour {
 	// Stuff we need done after all other stuff is set up
 	void Start () {
 		enemyTeams = myAIBaseScript.GetEnemyTeamIDs();
-        textobject = GameObject.Find("WordUp");
-        textobject2 = GameObject.Find("WordUp2");
-        textobject3 = GameObject.Find("WordUp3");
-        textobject4 = GameObject.Find("WordUp4");
+            //textobject = GameObject.Find("WordUp");
 
-        TextUp = textobject.GetComponent<TextUp>();
-        TextUp2 = textobject2.GetComponent<TextUp>();
-        TextUp3 = textobject3.GetComponent<TextUp>();
-        TextUp4 = textobject4.GetComponent<TextUp>();
+            Textobject = transform.Find("WordUp").gameObject;
+            TextUp = Textobject.GetComponent<TextUp>();
 
-        }
+
+            }
 
      float timer = 30;
 	// Update is called once per frame
 	void LateUpdate ()
         {
 				if(aware)
-					{             
-                        //If we're not doing anythingm start the bullet firing cycle
-						if(!isFiring && !isWaiting && bulletObject)
-							{						
-								StartCoroutine(BulletFiringCycle());
-                                TextUp.TextShow();
-                                TextUp2.TextShow();
-                                TextUp3.TextShow();
-                                TextUp4.TextShow();
+					{
+                      //TextUp.TextShow();
+                //If we're not doing anythingm start the bullet firing cycle
+                      if (!isFiring && !isWaiting && bulletObject)
+							{
+                               TextUp.TextShow();
+                               StartCoroutine(BulletFiringCycle());
 
-                }	
+                            }	
 						else if(!bulletObject)	
 							{
 								Debug.LogWarning("Can't fire because there is no bullet object selected!");
@@ -196,12 +189,13 @@ public class GunScript : MonoBehaviour {
 	//Shooting////////////////////////////////////////////////////////	
 	IEnumerator BulletFiringCycle()
 	{
-		//Fire
-		isFiring = true;
+            TextUp.TextShow();
+            //Fire
+            isFiring = true;
 
             //エージェントが隠れて発射位置に遷移するアニメーションが終了するのを待ちます。
             if (myAIBaseScript.inCover)
-			yield return new WaitForSeconds(coverTransitionTime*1.5f);
+			yield return new WaitForSeconds(coverTransitionTime*0.5f);
 
             //エージェントがターゲットに気付いていない場合やターゲットに近接している場合は攻撃しないでください。
             if (myAIBaseScript.IsEnaging() && !myAIBaseScript.isMeleeing && !myAIBaseScript.inParkour)
@@ -237,7 +231,10 @@ public class GunScript : MonoBehaviour {
 					}
                 //通常の弾丸を撃つ>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 if (animationScript.currentlyRotating)
+
                 {
+                    TextUp.TextShow();
+
                     yield return StartCoroutine(Fire());
                 }
 			}
@@ -279,9 +276,10 @@ public class GunScript : MonoBehaviour {
 	
 	IEnumerator Fire()//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	{
-
-    //Check Distances
-    float distSqr = Vector3.SqrMagnitude(bulletSpawn.position - LOSTargetTransform.position);
+           for( int GAA = 5;GAA<0 ;GAA--)
+           TextUp.TextShow();
+            //Check Distances
+            float distSqr = Vector3.SqrMagnitude(bulletSpawn.position - LOSTargetTransform.position);
     if(minimumDistToFireGun <= distSqr && maximumDistToFireGun >= distSqr)
                 //エージェントのマガジンに残っている数よりも多くの弾丸を発射しないようにしてください。
 		currentRoundsPerVolley = Mathf.Min(Random.Range(minBurstsPerVolley, maxBurstsPerVolley), currentBulletsUntilReload);
@@ -318,8 +316,10 @@ public class GunScript : MonoBehaviour {
                                         yield return new WaitForSeconds(timeBetweenBurstBullets);
                                     currentBulletsUntilReload--;
                                     FireOneShot();
-                               
-                               
+                                TextUp.TextShow();
+                                TextUp.TextShow();
+
+
                             }
                             }
 					    }															
@@ -376,25 +376,27 @@ public class GunScript : MonoBehaviour {
 					{
                         audioSource.volume = bulletSoundVolume;
                         audioSource.PlayOneShot(bulletSound);
-                    TextUp.TextShow();
-                    TextUp2.TextShow();
-                    TextUp3.TextShow();
-                    TextUp4.TextShow();
+                        TextUp.TextShow();
+
                    
                 }
 					
 				if(animationScript)	
 					{
 						animationScript.PlayFiringAnimation();
-					}
+                        TextUp.TextShow();
+                }
 
                 //マズルフラッシュを作成してから、一定時間後にそれを破壊する
                 if (muzzleFlash)
 					{
 						GameObject flash = (GameObject)(Instantiate(muzzleFlash, muzzleFlashSpawn.position, muzzleFlashSpawn.rotation));
-						flash.transform.parent = muzzleFlashSpawn;
-						GameObject.Destroy(flash, flashDestroyTime);	
-					}
+                        
+                        flash.transform.parent = muzzleFlashSpawn;
+                        
+						GameObject.Destroy(flash, flashDestroyTime);
+                        
+                }
 			}
 	}
 	

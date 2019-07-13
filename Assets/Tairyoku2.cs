@@ -123,7 +123,7 @@ public class Tairyoku2 : MonoBehaviour
 
     public void RestertButtonDown()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("StartBBun");
     }
     public void RestertImage()
     {

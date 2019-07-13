@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/StartBBun.unity
+    guid: 8f52b916eec0e453dbfdfc7cfc176fd0
+  - enabled: 1
     path: Assets/GameScene.unity
     guid: 5bbdc003b1e794b56a403d3fcea7bf4b
   - enabled: 0
     path: Assets/GameChoice.unity
     guid: 7bfd65445b94042c4a28d5be721be9a2
+  - enabled: 1
+    path: Assets/NightGame.unity
+    guid: b2c7f8a7055f14237a0e202813924709
   m_configObjects: {}
