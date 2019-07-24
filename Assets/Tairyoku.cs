@@ -18,16 +18,22 @@ public class Tairyoku : MonoBehaviour
     private AudioSource audioSource;
     private bool soundcheck;
     public GameObject plyr;
-  
+
     public Tairyoku2 tairyoku2;
 
-    
-
-    
-    // Start is called before the first frame update
 
     private Animation Anime;
+    private Animator animator;
+    private IEnumerator wait()
+    {
+        yield return new WaitForSeconds(2.0f);
+    }
 
+        public void DeathAnim()
+    {
+        this.animator.SetBool("DeathCheck",true);
+
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -97,12 +103,12 @@ public class Tairyoku : MonoBehaviour
     private int deathNo;
     void Start()
     {
-        Anime = GetComponent<Animation>();
+        animator = gameObject.GetComponent<Animator>();
         deathNo = 0;
         audioSource = GetComponent<AudioSource>();
         soundcheck = false;
-        plyr = GameObject.Find("Player");
 
+        plyr = GameObject.Find("Player");
         tairyoku2 = plyr.GetComponent<Tairyoku2>();
 
 
@@ -121,14 +127,15 @@ public class Tairyoku : MonoBehaviour
 
                 audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
-
-
+                DeathAnim();
             }
 
+           
+           
                 RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
                 LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
                 RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
-                UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+               UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
                 agent.destination = StartPoint.position;//startPoint Restart
             if (deathNo == 0)
             {
@@ -153,12 +160,12 @@ public class Tairyoku : MonoBehaviour
                 audioSource.PlayOneShot(KillSounds);
 
                 soundcheck = true;
-
+                StartCoroutine("Wait");
 
             }
-            //audioSource.PlayOneShot(KillSounds);
+            audioSource.PlayOneShot(KillSounds);
 
-            //  Debug.Log(transform.name + tairyoku +"backAI");
+              Debug.Log(transform.name + tairyoku +"backAI");
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);

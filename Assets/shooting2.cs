@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class shooting2 : MonoBehaviour
 {
+    private GunShock gunShock;
     public SubCameraTransformChange2 subCameraTransformChange2;
     private bool isShotButtonDown = false;
     private GameObject bazooka;
@@ -17,7 +18,8 @@ public class shooting2 : MonoBehaviour
     public AudioClip shotSound;
     public AudioClip reloadSound;
     private AudioSource audioSource;
-    private float waitingTime = 1.0f;
+    public AudioClip Sound1;
+    private float waitingTime = 0f;
     private bool reloadcheck;
     public void GetMyReloadButtonDown()
     {
@@ -33,7 +35,7 @@ public class shooting2 : MonoBehaviour
 
     public void GetMyshotButtonDown()
     {
-
+      //  audioSource.PlayOneShot(Sound1);
         this.isShotButtonDown = true;
     }
     public void GetMyshotButtonUp()
@@ -50,6 +52,7 @@ public class shooting2 : MonoBehaviour
         bazooka = GameObject.Find("bazooka");
         subCameraTransformChange2 = bazooka.GetComponent<SubCameraTransformChange2>();
 
+
 }
 
 void Update()
@@ -58,7 +61,7 @@ void Update()
         if (Input.GetKey("e") || (isShotButtonDown))
         {
 
-            waitingTime -= 0.1f;
+            waitingTime -= 0.5f;
             reloadcheck = false;
             shotInterval += 1;
 
@@ -72,6 +75,11 @@ void Update()
 
                 subCameraTransformChange2.Shock();
                 audioSource.PlayOneShot(shotSound);
+                if (gunShock)
+                {
+                    gunShock.GunyureData();
+                    gunShock.Gunyure();
+                }
                 if (shotCount <= 0)
                     ReloadCount = 0;
             }

@@ -14,6 +14,10 @@ public class start : MonoBehaviour
     {
         SceneManager.LoadScene("NightGame");
     }
+    public void StartDefense()
+    {
+        SceneManager.LoadScene("difense");
+    }
     // Start is called before the first frame update
     void Start()
     {

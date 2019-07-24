@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5580335956624999360}
   - component: {fileID: 8439610429240763618}
   - component: {fileID: 5472281326756543037}
+  - component: {fileID: -5031489098707158623}
   m_Layer: 0
   m_Name: shell 1
   m_TagString: tama
@@ -105,7 +106,7 @@ Rigidbody:
   m_GameObject: {fileID: 1126167883309973213}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -192,3 +193,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 0}
+--- !u!114 &-5031489098707158623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126167883309973213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12ef70f5caa7419c865d8972ca449f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChangeRotation: 300

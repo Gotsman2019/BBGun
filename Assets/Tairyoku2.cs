@@ -15,7 +15,7 @@ public class Tairyoku2 : MonoBehaviour
     public AudioClip KillSound;
     private AudioSource audioSource;
     // Start is called before the first frame update
-
+    private Animator animator;
     private Animation Anime;
     private GameObject LimitTime;
     private GameObject showgameover;
@@ -26,6 +26,13 @@ public class Tairyoku2 : MonoBehaviour
     private GameObject killscore;
     private bool soundcheck;
     private int Score;
+   
+   public void DeathAnim()
+    {
+        this.animator.SetBool("DeathCheck", true);
+
+
+    }
 
 
     void OnCollisionEnter(Collision collision)
@@ -103,10 +110,11 @@ public class Tairyoku2 : MonoBehaviour
                 audioSource.PlayOneShot(KillSound);
                 soundcheck = true;
             }
+
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
-
+            DeathAnim();
             this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
             this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
 
@@ -161,7 +169,7 @@ public class Tairyoku2 : MonoBehaviour
                 audioSource.PlayOneShot(KillSound);
                 soundcheck = true;
             }
-
+            DeathAnim();
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);

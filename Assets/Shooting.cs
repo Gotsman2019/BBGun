@@ -5,6 +5,11 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public MainCameraShock mainCameraShock;
+    private GameObject Guns;
+    private GameObject Spine;
+    private GunShock gunShock;
+
+
     private GameObject MainCamera;
 
     private bool isShotButtonDown = false;
@@ -18,6 +23,7 @@ public class Shooting : MonoBehaviour
     private RaycastHit hit;
     public AudioClip shotSound;
     public AudioClip reloadSound;
+    public AudioClip Sound1;
     private AudioSource audioSource;
     private float waitingTime = 1.0f ;
     private bool reloadcheck;
@@ -35,24 +41,32 @@ public class Shooting : MonoBehaviour
 
     public void GetMyshotButtonDown()
     {
-       
+        audioSource.PlayOneShot(Sound1);
         this.isShotButtonDown = true;
+
     }
     public void GetMyshotButtonUp()
     {
         this.isShotButtonDown = false;
-    }
 
+    }
 
 
     private void Start()
        {
+
+
         audioSource = GetComponent<AudioSource>();
         reloadcheck = false;
         MainCamera = GameObject.Find("FirstPersonCharacter");
         mainCameraShock = MainCamera.GetComponent<MainCameraShock>();
+       
+        Guns = GameObject.Find("shooting");
 
-       }
+        gunShock = Guns.GetComponent<GunShock>();
+
+
+    }
 
     void Update()
     {
@@ -64,7 +78,7 @@ public class Shooting : MonoBehaviour
             reloadcheck = false;
             shotInterval += 1;
 
-            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 5 == 0)
+            if (waitingTime <= 0 && shotCount > 0 && shotInterval % 10 == 0)
             {
                 shotCount -= 1;
 
@@ -75,6 +89,12 @@ public class Shooting : MonoBehaviour
                // mainCameraShock.ShockMain();
 
                 audioSource.PlayOneShot(shotSound);
+
+                gunShock.MoveGunShock();
+
+                    
+                   
+
                 if (shotCount <= 0)
                     ReloadCount = 0;
             }
