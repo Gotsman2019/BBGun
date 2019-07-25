@@ -24,7 +24,7 @@ public class Tairyoku : MonoBehaviour
 
     private Animation Anime;
     private Animator animator;
-    private IEnumerator wait()
+    private IEnumerator Wait()
     {
         yield return new WaitForSeconds(2.0f);
     }
@@ -128,6 +128,7 @@ public class Tairyoku : MonoBehaviour
                 audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
                 DeathAnim();
+
             }
 
            
@@ -139,6 +140,8 @@ public class Tairyoku : MonoBehaviour
                 agent.destination = StartPoint.position;//startPoint Restart
             if (deathNo == 0)
             {
+                StartCoroutine("Wait");
+                this.animator.SetBool("DeathCheck", false);
                 this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
                 this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
                 deathNo += 1;
@@ -160,12 +163,13 @@ public class Tairyoku : MonoBehaviour
                 audioSource.PlayOneShot(KillSounds);
 
                 soundcheck = true;
-                StartCoroutine("Wait");
+
 
             }
             audioSource.PlayOneShot(KillSounds);
 
-              Debug.Log(transform.name + tairyoku +"backAI");
+       
+
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
@@ -173,6 +177,10 @@ public class Tairyoku : MonoBehaviour
             agent.destination = StartPoint.position;//startPoint Restart
             if (deathNo == 0)
             {
+                DeathAnim();
+                StartCoroutine("Wait");
+                this.animator.SetBool("DeathCheck", false);
+
                 this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
                 this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
                 deathNo += 1;
@@ -203,6 +211,7 @@ public class Tairyoku : MonoBehaviour
             agent.destination = StartPoint.position;//startPoint Restart
             if (deathNo == 0)
             {
+                DeathAnim();Debug.Log("tairyoku");
                 this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
                 this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
                 deathNo += 1;
