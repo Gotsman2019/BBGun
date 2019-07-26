@@ -30,7 +30,7 @@ public class Tairyoku2 : MonoBehaviour
     private bool deathcheckcount;
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
     }
 
     public void DeathAnim()
@@ -126,10 +126,13 @@ public class Tairyoku2 : MonoBehaviour
 
 
             if (!deathcheckcount)
-             { 
-             DeathAnim(); Debug.Log("tairyoku2"+deathcheckcount);
+            {
+                DeathAnim(); Debug.Log("update");
+
+                this.animator.SetTrigger("DeathCheck");
+                StartCoroutine("Wait");
                 deathcheckcount = true;
-             }
+            }
 
             this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
             this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
@@ -187,9 +190,10 @@ public class Tairyoku2 : MonoBehaviour
             }
             if (!deathcheckcount)
             {
-                DeathAnim();
-                StartCoroutine("Wait");
+                DeathAnim();Debug.Log("BackAI");
+
                 this.animator.SetTrigger("DeathCheck");
+                StartCoroutine("Wait");
                 deathcheckcount = true;
             }
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
