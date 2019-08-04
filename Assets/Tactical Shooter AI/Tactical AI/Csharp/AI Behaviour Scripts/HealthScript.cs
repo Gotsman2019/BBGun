@@ -206,7 +206,7 @@ public class HealthScript : MonoBehaviour {
 						
                     //Disable scripts
 					if(rotateToAimGunScript)
-						rotateToAimGunScript.enabled = false;
+						rotateToAimGunScript.enabled = true;//true
 
 
                 if (animator && !useDeathAnimation)

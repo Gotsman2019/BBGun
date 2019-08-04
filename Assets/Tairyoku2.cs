@@ -28,16 +28,40 @@ public class Tairyoku2 : MonoBehaviour
     private int Score;
     private int i;
     private bool deathcheckcount;
+    private bool ShootingAnim;
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(10.0f);
+    }
+
+
+
+    public void ShotAnim()
+    {
+        this.animator.SetBool("Shot",true);
+        Debug.Log("ShotAnim");
+    }
+
+    public void ShotStopAnim()
+    {
+        this.animator.SetBool("Shot", false);
+    }
+    public void ShotAnim2()
+    {
+        this.animator.SetBool("Shooting", true);
+        Debug.Log("ShotAnim");
+    }
+
+    public void ShotStopAnim2()
+    {
+        this.animator.SetBool("Shooting", false);
     }
 
     public void DeathAnim()
     {
         this.animator.SetTrigger("DeathCheck");
         i += 1;
-        Debug.Log(i);
+      
 
     }
 
@@ -72,6 +96,7 @@ public class Tairyoku2 : MonoBehaviour
         }
 
     }
+   
 
     void Start()
     {
@@ -127,10 +152,10 @@ public class Tairyoku2 : MonoBehaviour
 
             if (!deathcheckcount)
             {
-                DeathAnim(); Debug.Log("update");
+                DeathAnim(); 
 
-                this.animator.SetTrigger("DeathCheck");
-                StartCoroutine("Wait");
+               // this.animator.SetTrigger("DeathCheck");
+               //StartCoroutine("Wait");
                 deathcheckcount = true;
             }
 
@@ -190,8 +215,7 @@ public class Tairyoku2 : MonoBehaviour
             }
             if (!deathcheckcount)
             {
-                DeathAnim();Debug.Log("BackAI");
-
+               
                 this.animator.SetTrigger("DeathCheck");
                 StartCoroutine("Wait");
                 deathcheckcount = true;

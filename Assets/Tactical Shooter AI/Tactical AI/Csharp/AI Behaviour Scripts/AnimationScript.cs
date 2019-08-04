@@ -151,7 +151,7 @@ namespace TacticalAI
 
 
         //Animations
-        void AnimateAI()
+        void AnimateAI()//..........................................................................................................................
         {
             //Correctly blend strafing and forwards/backwards movement
             if (!onLink && !myBaseScript.isStaggered)
@@ -364,18 +364,20 @@ namespace TacticalAI
             }
         }
 
-        public void PlayDeathAnimation()
+        public void PlayDeathAnimation()//.....................................................................................................
         {
-            for (int i = 0; i < animator.parameters.Length; i++)
-            {
-                if (animator.parameters[i].name == "Death")
-                {
-                    //   Debug.Break();
-                    animator.SetTrigger(staggerHash);
-                    animator.SetFloat(forwardsMoveHash, 0, 0, Time.deltaTime);
-                    animator.SetFloat(sidewaysMoveHash, 0, 0, Time.deltaTime);
-                }
-            }
+
+            this.animator.SetTrigger("DeathCheckAI");
+            //for (int i = 0; i < animator.parameters.Length; i++)
+            //{
+            //    if (animator.parameters[i].name == "Death")
+            //    {
+            //        //   Debug.Break();
+            //        animator.SetTrigger(staggerHash);
+            //        animator.SetFloat(forwardsMoveHash, 0, 0, Time.deltaTime);
+            //        animator.SetFloat(sidewaysMoveHash, 0, 0, Time.deltaTime);
+            //    }
+            //}
         }
 
         public void PlayGrenadeAnimation()

@@ -13,7 +13,7 @@ public class Shooting : MonoBehaviour
     private GameObject MainCamera;
 
     private bool isShotButtonDown = false;
-
+    private Animator animator;
     private bool isReloadButtonDown = false;
     private int ReloadCount= 0;
     public GameObject bulletPrefab;
@@ -27,6 +27,7 @@ public class Shooting : MonoBehaviour
     private AudioSource audioSource;
     private float waitingTime = 1.0f ;
     private bool reloadcheck;
+    private bool Shot;
     public void GetMyReloadButtonDown()
     {
       
@@ -43,17 +44,19 @@ public class Shooting : MonoBehaviour
     {
         audioSource.PlayOneShot(Sound1);
         this.isShotButtonDown = true;
+        animator.SetBool("shooting", true);
 
     }
     public void GetMyshotButtonUp()
     {
         this.isShotButtonDown = false;
-
+        animator.SetBool("shooting", false);
     }
 
 
     private void Start()
        {
+
 
 
         audioSource = GetComponent<AudioSource>();
@@ -62,7 +65,7 @@ public class Shooting : MonoBehaviour
         mainCameraShock = MainCamera.GetComponent<MainCameraShock>();
        
         Guns = GameObject.Find("shooting");
-
+        animator = Guns.GetComponent<Animator>();
         gunShock = Guns.GetComponent<GunShock>();
 
 

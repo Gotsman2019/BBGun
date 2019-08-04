@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 public class Tairyoku : MonoBehaviour
 {
@@ -18,22 +18,27 @@ public class Tairyoku : MonoBehaviour
     private AudioSource audioSource;
     private bool soundcheck;
     public GameObject plyr;
+    public GameObject ThisAi;
 
     public Tairyoku2 tairyoku2;
-
+    public AIDown AIDown;
+    public TacticalAI.AnimationScript animationScript;
 
     private Animation Anime;
     private Animator animator;
+    private int i;
+    private bool deathcheckcount;
+    private Transform child;
+    private GameObject Doll;
+
+
+
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(2.0f);
     }
 
-        public void DeathAnim()
-    {
-        this.animator.SetBool("DeathCheck",true);
 
-    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -101,47 +106,57 @@ public class Tairyoku : MonoBehaviour
 
     }
     private int deathNo;
-    void Start()
+   
+
+      void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+
+
+
         deathNo = 0;
         audioSource = GetComponent<AudioSource>();
         soundcheck = false;
-
+        deathcheckcount = false;
         plyr = GameObject.Find("Player");
         tairyoku2 = plyr.GetComponent<Tairyoku2>();
-
-
-    }
+        AIDown = ThisAi.GetComponent<AIDown>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+       
+}
 
 
 
     private void LateUpdate()
     {
-
         if (tairyoku <= 0)
 
         {
-            if (!soundcheck)
+            NavMeshAgent agent = GetComponent<NavMeshAgent>();
+           //agent.Stop();//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+            if (!soundcheck )
             {
 
-                audioSource.PlayOneShot(KillSounds);
+              //audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
-                DeathAnim();
+
 
             }
 
            
-           
                 RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
                 LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
                 RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
-               UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+               
                 agent.destination = StartPoint.position;//startPoint Restart
             if (deathNo == 0)
             {
-                StartCoroutine("Wait");
-                this.animator.SetBool("DeathCheck", false);
+                if (!deathcheckcount)
+                {
+                    AIDown.DeathAnim();
+                  // StartCoroutine("Wait");
+                    deathcheckcount = true;
+                }
                 this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
                 this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
                 deathNo += 1;
@@ -154,21 +169,16 @@ public class Tairyoku : MonoBehaviour
     }
     public void backAI()
     {
-
         if (tairyoku <= 0)
         {
-
             if (!soundcheck)
             {
-                audioSource.PlayOneShot(KillSounds);
-
+               audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
-
-
             }
-            audioSource.PlayOneShot(KillSounds);
+          audioSource.PlayOneShot(KillSounds);
 
-       
+            AIDown.DeathAnim();
 
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
@@ -177,9 +187,9 @@ public class Tairyoku : MonoBehaviour
             agent.destination = StartPoint.position;//startPoint Restart
             if (deathNo == 0)
             {
-                DeathAnim();
-                StartCoroutine("Wait");
-                this.animator.SetBool("DeathCheck", false);
+               
+              //  StartCoroutine("Wait");
+             
 
                 this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
                 this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
@@ -189,29 +199,32 @@ public class Tairyoku : MonoBehaviour
     }
     public void backAI2()
     {
-
         if (tairyoku <= 0)
         {
-
             if (!soundcheck)
             {
-
-                audioSource.PlayOneShot(KillSounds);
+              audioSource.PlayOneShot(KillSounds);
                 soundcheck = true;
                 tairyoku2.ScoreCount();
-
             }
-            //audioSource.PlayOneShot(KillSounds);
+
+           audioSource.PlayOneShot(KillSounds);
+
+            AIDown.DeathAnim();
 
             //  Debug.Log(transform.name + tairyoku +"backAI");
             RigthtArm.localRotation = Quaternion.Euler(80, -50, RigthtArm.localRotation.z);
             LeftArm.localRotation = Quaternion.Euler(-50, 50, LeftArm.localRotation.z);
             RArmUPER2.localRotation = Quaternion.Euler(0, RArmUPER2.localRotation.y, 0);
-            UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            agent.destination = StartPoint.position;//startPoint Restart
+           
+           UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+           
+           Debug.Log("AINav");
+
+           agent.destination = StartPoint.position;//startPoint Restart
             if (deathNo == 0)
             {
-                DeathAnim();Debug.Log("tairyoku");
+
                 this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
                 this.GetComponent<TacticalAI.TargetScript>().RemoveMine();
                 deathNo += 1;
