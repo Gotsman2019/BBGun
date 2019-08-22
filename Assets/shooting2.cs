@@ -11,6 +11,9 @@ public class shooting2 : MonoBehaviour
     private bool isReloadButtonDown = false;
     private int ReloadCount = 0;
     public GameObject bulletPrefab;
+
+    public GameObject bulletPrefab2;
+
     public float shotSpeed;
     public int shotCount = 5;
     private float shotInterval;
@@ -80,6 +83,13 @@ void Update()
                     gunShock.GunyureData();
                     gunShock.Gunyure();
                 }
+                GameObject bullet2 = (GameObject)Instantiate(bulletPrefab2, transform.position, Quaternion.Euler(transform.parent.localEulerAngles.x, transform.parent.localEulerAngles.y, 0.5f));
+               
+                 Rigidbody bulletRb2 = bullet2.GetComponent<Rigidbody>();
+                bulletRb2.AddForce(transform.forward * shotSpeed);
+
+
+
                 if (shotCount <= 0)
                     ReloadCount = 0;
             }

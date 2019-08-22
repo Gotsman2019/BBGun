@@ -46,11 +46,13 @@ public class Shooting : MonoBehaviour
         this.isShotButtonDown = true;
         animator.SetBool("shooting", true);
 
+
     }
     public void GetMyshotButtonUp()
     {
         this.isShotButtonDown = false;
         animator.SetBool("shooting", false);
+        Shot = false;
     }
 
 
@@ -58,7 +60,7 @@ public class Shooting : MonoBehaviour
        {
 
 
-
+        Shot = false;
         audioSource = GetComponent<AudioSource>();
         reloadcheck = false;
         MainCamera = GameObject.Find("FirstPersonCharacter");
@@ -93,7 +95,7 @@ public class Shooting : MonoBehaviour
 
                 audioSource.PlayOneShot(shotSound);
 
-                gunShock.MoveGunShock();
+               //gunShock.MoveGunShock();
 
                     
                    
@@ -113,6 +115,7 @@ public class Shooting : MonoBehaviour
                     shotCount = 50;
                     audioSource.PlayOneShot(reloadSound);
                     reloadcheck = true;
+
                 }
                
              }

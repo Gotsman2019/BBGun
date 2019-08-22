@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Tairyoku2 : MonoBehaviour
 {
+    private GameObject gameObject;
+    public ShootingArrow shootingArrow;
+    private bool Shot = true;
     public Transform LeftArm;
     public Transform RigthtArm;
     public Transform RArmUPER2;
@@ -39,22 +42,33 @@ public class Tairyoku2 : MonoBehaviour
     public void ShotAnim()
     {
         this.animator.SetBool("Shot",true);
-        Debug.Log("ShotAnim");
+       
     }
 
     public void ShotStopAnim()
     {
         this.animator.SetBool("Shot", false);
     }
-    public void ShotAnim2()
+    public void ShotAnim2()//SHOTがTRUEなら弓をチャージする
     {
-        this.animator.SetBool("Shooting", true);
-        Debug.Log("ShotAnim");
+
+        if (Shot )
+        {
+            Debug.Log(Shot + "1");
+            ShotArrow();
+            Debug.Log(Shot + "3");
+
+        }
     }
 
     public void ShotStopAnim2()
     {
         this.animator.SetBool("Shooting", false);
+        this.animator.SetBool("Arrow", true);
+        Debug.Log("ArtrowshotAmim");
+        Shot = true;
+       shootingArrow.GetMyshotButtonUp();
+
     }
 
     public void DeathAnim()
@@ -62,11 +76,18 @@ public class Tairyoku2 : MonoBehaviour
         this.animator.SetTrigger("DeathCheck");
         i += 1;
       
+    }
+
+    public void ShotArrow()
+    {
+        this.animator.SetBool("Shooting", true);//チャージアニメ
+        Debug.Log("STOP" + "2");
+
+        Shot = false;
 
     }
 
-
-    void OnCollisionEnter(Collision collision)
+        void OnCollisionEnter(Collision collision)
     {
         if (tairyoku > 0)
         {
@@ -100,6 +121,9 @@ public class Tairyoku2 : MonoBehaviour
 
     void Start()
     {
+        gameObject = GameObject.Find("shooting");
+        shootingArrow = gameObject.GetComponent<ShootingArrow>();
+        Shot = true;
         Anime = GetComponent<Animation>();
         animator = GetComponent<Animator>();
         this.LimitTime = GameObject.Find("LimitTime");

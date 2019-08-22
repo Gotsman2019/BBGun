@@ -110,7 +110,7 @@ public class PlayerAnimController : MonoBehaviour
             anim.SetBool("LeftWalk", true);
             }
 
-        if (Input.GetKeyUp("a") || horizontal > 0 && horizontal < 0.05f )
+        if (Input.GetKeyUp("a") || horizontal > 0 )//&& horizontal < 0.05f )
            {
                 anim.SetBool("LeftWalk", false);
                anim.SetBool("SitAim", false);
@@ -125,15 +125,18 @@ public class PlayerAnimController : MonoBehaviour
             anim.SetBool("RightWalk", true);
             }
 
-        if (Input.GetKeyUp("d") ||horizontal < 0 && horizontal > -0.05f)
+        if (Input.GetKeyUp("d") ||horizontal < 0 )//&& horizontal > -0.05f)
            {
             anim.SetBool("RightWalk", false);
             anim.SetBool("SitAim", false);
+           }
+
+        if (horizontal >-0.01f && horizontal < 0.01f)
+        {
+            anim.SetBool("LeftWalk", false);
+            anim.SetBool("RightWalk", false);
+            anim.SetBool("StandAim", true);
         }
-       
-
-          anim.SetBool("StandAim", true);
-
         if (Input.GetKey("e"))
         {
 
