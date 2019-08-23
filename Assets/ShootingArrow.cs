@@ -11,7 +11,7 @@ public class ShootingArrow : MonoBehaviour
 
 
     private GameObject MainCamera;
-
+    private GameObject bullet;
     private bool isShotButtonDown = false;
     private Animator animator;
     private bool isReloadButtonDown = false;
@@ -28,6 +28,10 @@ public class ShootingArrow : MonoBehaviour
     private float waitingTime = 1.0f;
     private bool reloadcheck;
     private bool Shot = false ;
+    private Transform transformya;
+
+    
+
     public void GetMyReloadButtonDown()
     {
 
@@ -44,27 +48,36 @@ public class ShootingArrow : MonoBehaviour
     {
             this.isShotButtonDown = true;
 
-        }
+     }
+
+    public void Shutsugen() 
+    {
+
+        bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
+    }
+
+
     public void GetMyshotButtonUp()//ボタンが離されると打つ
     {
         this.isShotButtonDown = false;
 
         if (Input.GetKey("e") || (!isShotButtonDown))
         {
-            Debug.Log(isShotButtonDown);
-            //waitingTime -= 0.5f;
+
+         // waitingTime -= 0.2f;
             reloadcheck = false;
             //shotInterval += 1;
 
-            //if (waitingTime <= 0 && shotCount > 0 && shotInterval % 9 == 0)
+            //if (waitingTime <= 0 && shotCount > 0 )
             //{
 
                 shotCount -= 1;
 
-                GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.localEulerAngles.x, transform.parent.localEulerAngles.y, 0));
+               Shutsugen();
+               // GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.localEulerAngles.x, transform.parent.localEulerAngles.y, 0));
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
-                Debug.Log("Arrowshot");
+                
 
 
                 audioSource.PlayOneShot(shotSound);

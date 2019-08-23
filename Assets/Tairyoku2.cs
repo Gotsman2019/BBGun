@@ -54,18 +54,22 @@ public class Tairyoku2 : MonoBehaviour
 
         if (Shot )
         {
-            Debug.Log(Shot + "1");
             ShotArrow();
-            Debug.Log(Shot + "3");
-
+           
         }
     }
+    public void ShotStopAnim3()
+    {
+        this.animator.SetBool("Shooting", false);
+        Shot = true;
+     
 
+    }
     public void ShotStopAnim2()
     {
         this.animator.SetBool("Shooting", false);
         this.animator.SetBool("Arrow", true);
-        Debug.Log("ArtrowshotAmim");
+
         Shot = true;
        shootingArrow.GetMyshotButtonUp();
 
@@ -81,7 +85,7 @@ public class Tairyoku2 : MonoBehaviour
     public void ShotArrow()
     {
         this.animator.SetBool("Shooting", true);//チャージアニメ
-        Debug.Log("STOP" + "2");
+
 
         Shot = false;
 
