@@ -73,6 +73,7 @@ public class CanIdou : MonoBehaviour
             tairyoku = 80;
             UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             agent.destination = FirstPoint.position;//No1Point
+
             this.GetComponent<TacticalAI.TargetScript>().ChangeTeamID();
             this.GetComponent<TacticalAI.TargetScript>().SetMine();
             deathNo = 0;

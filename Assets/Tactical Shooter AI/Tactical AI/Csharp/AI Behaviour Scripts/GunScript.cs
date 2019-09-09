@@ -10,18 +10,23 @@ namespace TacticalAI{
 public class GunScript : MonoBehaviour {
 
         //Stuff
-    public TextUp TextUp;
+   //public TextUp TextUp;
 
     private GameObject Textobject;
     private Transform texttreansform;
     
+
+
 
     public TacticalAI.BaseScript myAIBaseScript;
 	public TacticalAI.AnimationScript animationScript;
     public TacticalAI.SoundScript soundScript;
     public AudioSource audioSource;
     public GameObject bulletPrefab;
-    public float shotSpeed;
+    
+    public GameObject samuraichildtrans;
+    public float shotSpeed= 500.0f ;
+
     public AudioClip shotSound;
 
         int[] enemyTeams;	
@@ -31,7 +36,7 @@ public class GunScript : MonoBehaviour {
 	public AudioClip bulletSound;
 	[Range (0.0f, 1.0f)]
 	public float bulletSoundVolume = 1;	
-	public Transform  bulletSpawn;
+	public Transform  bulletSpawn ;
     
     public GameObject muzzleFlash;
     
@@ -86,9 +91,9 @@ public class GunScript : MonoBehaviour {
 	public float reloadTime = 2;	
 
 	//Accuracy
-	public float inaccuracy = 1;	
+	public float inaccuracy = 1.0f;	
 	[Range (0.0f, 90.0f)]
-	public float maxFiringAngle = 10;	
+	public float maxFiringAngle = 90;	
 	[Range (0.0f, 90.0f)]
 	public float maxSecondaryFireAngle = 40;
 	Quaternion fireRotation;	
@@ -117,7 +122,7 @@ public class GunScript : MonoBehaviour {
 	public float soundRadius = 7;
 
     public float minimumDistToFireGun = 0;
-    public float maximumDistToFireGun = 9999;
+    public float maximumDistToFireGun = 99999;
 
 
 
@@ -154,10 +159,9 @@ public class GunScript : MonoBehaviour {
 		enemyTeams = myAIBaseScript.GetEnemyTeamIDs();
             //textobject = GameObject.Find("WordUp");
 
-            Textobject = transform.Find("WordUp").gameObject;
-            TextUp = Textobject.GetComponent<TextUp>();
-
-
+            // Textobject = transform.Find("WordUp").gameObject;
+            //  TextUp = Textobject.GetComponent<TextUp>();
+        
             }
 
      float timer = 30;
@@ -170,7 +174,7 @@ public class GunScript : MonoBehaviour {
                 //If we're not doing anythingm start the bullet firing cycle
                       if (!isFiring && !isWaiting && bulletObject)
 							{
-                               TextUp.TextShow();
+                              //TextUp.TextShow();
                                StartCoroutine(BulletFiringCycle());
 
                             }	
@@ -189,7 +193,8 @@ public class GunScript : MonoBehaviour {
 	//Shooting////////////////////////////////////////////////////////	
 	IEnumerator BulletFiringCycle()
 	{
-            TextUp.TextShow();
+           
+            //Debug.Log("bullerFiringCycle");
             //Fire
             isFiring = true;
 
@@ -233,7 +238,7 @@ public class GunScript : MonoBehaviour {
                 if (animationScript.currentlyRotating)
 
                 {
-                    TextUp.TextShow();
+               Debug.Log("fire");
 
                     yield return StartCoroutine(Fire());
                 }
@@ -276,8 +281,8 @@ public class GunScript : MonoBehaviour {
 	
 	IEnumerator Fire()//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	{
-           for( int GAA = 5;GAA<0 ;GAA--)
-           TextUp.TextShow();
+           //for( int GAA = 5;GAA<0 ;GAA--)
+           //TextUp.TextShow();
             //Check Distances
             float distSqr = Vector3.SqrMagnitude(bulletSpawn.position - LOSTargetTransform.position);
     if(minimumDistToFireGun <= distSqr && maximumDistToFireGun >= distSqr)
@@ -316,8 +321,8 @@ public class GunScript : MonoBehaviour {
                                         yield return new WaitForSeconds(timeBetweenBurstBullets);
                                     currentBulletsUntilReload--;
                                     FireOneShot();
-                                TextUp.TextShow();
-                                TextUp.TextShow();
+                                //TextUp.TextShow();
+                                //TextUp.TextShow();
 
 
                             }
@@ -338,6 +343,7 @@ public class GunScript : MonoBehaviour {
 		
 	void FireOneShot()
 	{
+     //  Debug.Log("fireoneShot");
 		//Look At Target
 		if(targetTransform && !myAIBaseScript.inParkour)
             {
@@ -353,22 +359,42 @@ public class GunScript : MonoBehaviour {
 					{
                         if (amAtTarget)
                         {
-                            fireRotation.SetLookRotation(targetTransform.position - bulletSpawn.position);
-                        }
+                        fireRotation.SetLookRotation(targetTransform.position - bulletSpawn.position);
+
+
+                    }
                         else
                         {
                             fireRotation = Quaternion.LookRotation(bulletSpawn.forward);
                         }
 
-                    //正確さをシミュレートするために、ランダムな量で目標を変更してください。
-                    fireRotation *= Quaternion.Euler(Random.Range(-inaccuracy, inaccuracy), Random.Range(-inaccuracy, inaccuracy), 0); 
 
-						GameObject bullet = (GameObject)(Instantiate(bulletObject, bulletSpawn.position, fireRotation));
+                    //正確さをシミュレートするために、ランダムな量で目標を変更してください。
+                    // fireRotation *= Quaternion.Euler(Random.Range(-inaccuracy, inaccuracy), Random.Range(-inaccuracy, inaccuracy), 0); 
+
+
+                    Quaternion rote = Quaternion.Euler(90.0f, 90.0f, 0.0f);
+                    fireRotation = fireRotation * rote;
+
+                    GameObject bullet = (GameObject)(Instantiate(bulletObject, bulletSpawn.position,fireRotation));
+
+                  // Debug.Log(fireRotation);
+                    // GameObject bullet = (GameObject)Instantiate(bulletObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0));
+
+                     Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+
+
+                   bulletRb.AddForce(bulletSpawn.transform.forward * shotSpeed);
+
+
+            //      Debug.Log("bullet"+shotSpeed);
                     //これがTacticalAI Bullet Scriptを使用していてロケットランチャーの場合
-                    if (isRocketLauncher && bullet.GetComponent<TacticalAI.BulletScript>())
-							{
-								bullet.GetComponent<TacticalAI.BulletScript>().SetAsHoming(targetTransform);
-							}
+       //             if (isRocketLauncher && bullet.GetComponent<TacticalAI.BulletScript>())
+							//{
+       //                 Debug.Log("Rocket");
+
+							//	bullet.GetComponent<TacticalAI.BulletScript>().SetAsHoming(targetTransform);
+							//}
 					}
 
                 //プレイヤーに聞こえる音を再生する
@@ -376,7 +402,7 @@ public class GunScript : MonoBehaviour {
 					{
                         audioSource.volume = bulletSoundVolume;
                         audioSource.PlayOneShot(bulletSound);
-                        TextUp.TextShow();
+                      // TextUp.TextShow();
 
                    
                 }
@@ -384,7 +410,7 @@ public class GunScript : MonoBehaviour {
 				if(animationScript)	
 					{
 						animationScript.PlayFiringAnimation();
-                        TextUp.TextShow();
+                      //  TextUp.TextShow();
                 }
 
                 //マズルフラッシュを作成してから、一定時間後にそれを破壊する

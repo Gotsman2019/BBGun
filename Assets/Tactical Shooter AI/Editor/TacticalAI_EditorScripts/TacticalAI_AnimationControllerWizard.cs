@@ -87,6 +87,7 @@ public class TacticalAI_AnimationControllerWizard : EditorWindow
         			showOptionalAnimations = EditorGUILayout.ToggleLeft("Show Optional Animations", showOptionalAnimations);
         			if(showOptionalAnimations)
         				{
+            Debug.Log("ShowoptionalAnimations");
 							meleeAnimation = (AnimationClip)EditorGUILayout.ObjectField("Melee", meleeAnimation, typeof(AnimationClip), true);
         					fullBodyMeleeAnimation = EditorGUILayout.Toggle("Full Body Melee Animation", fullBodyMeleeAnimation);
         					
@@ -468,6 +469,7 @@ public class TacticalAI_AnimationControllerWizard : EditorWindow
 			//Fire 	
 			if(fireAnimation)
 				{
+            Debug.Log("Tactical");
 					AnimatorState fireAnim = upperStateMachine.AddState("Fire");
 					fireAnim.motion = fireAnimation;
 					

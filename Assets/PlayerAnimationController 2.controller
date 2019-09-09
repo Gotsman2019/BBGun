@@ -561,7 +561,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerAnimationController 1
+  m_Name: PlayerAnimationController 2
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: StandAim

@@ -139,8 +139,8 @@ public class HealthScript : MonoBehaviour {
 				{
 					if(damage > shields)
 						{
-							if(soundScript && myAIBaseScript.HaveCover() && shields > 0)
-								soundScript.PlaySuppressedAudio();
+							//if(soundScript && myAIBaseScript.HaveCover() && shields > 0)
+								//soundScript.PlaySuppressedAudio();
 
                             //If the agent's shields go down, become suppressed (ie: agent will stay in cover as much as possible, and will avoid standing up to fire)
 							//myAIBaseScript.ShouldFireFromCover(false);

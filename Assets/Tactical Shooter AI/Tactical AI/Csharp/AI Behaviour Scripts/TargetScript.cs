@@ -118,9 +118,18 @@ namespace TacticalAI
                 myAIBaseScript.SetTargetObj(this);
             }
         }
+       public void ChangeID()
+        {
+            if (enemyTeamsIDs[0] == 1 || enemyTeamsIDs[0] == 2)
+                ChangeTeamID();
+            if (enemyTeamsIDs[0] == 3 || enemyTeamsIDs[0] == 4)
+                ChangeTeamID2();
+        }
+
+
         public void ChangeTeamID()
         {
-        //    UnityEngine.Debug.Log(transform.name + enemyTeamsIDs[0]);
+        //  UnityEngine.Debug.Log(transform.name + enemyTeamsIDs[0]);
             if(enemyTeamsIDs[0] == 1)
             {
                 enemyTeamsIDs[0] = 3;
@@ -129,17 +138,21 @@ namespace TacticalAI
             else if(enemyTeamsIDs[0] == 2)
             {
                 enemyTeamsIDs[0] = 4;
-                
             }
-            else if (enemyTeamsIDs[0] == 3)
-             {
+        }
+
+
+        public void ChangeTeamID2()
+        {
+            if (enemyTeamsIDs[0] == 3)
+            {
                 enemyTeamsIDs[0] = 1;
             }
             else if (enemyTeamsIDs[0] == 4)
-             {
+            {
                 enemyTeamsIDs[0] = 2;
             }
-          //  UnityEngine.Debug.Log(transform.name + enemyTeamsIDs[0]);
+       //    UnityEngine.Debug.Log(transform.name + enemyTeamsIDs[0]);
         }
 
         public void SetNewTeam(int newTeam)

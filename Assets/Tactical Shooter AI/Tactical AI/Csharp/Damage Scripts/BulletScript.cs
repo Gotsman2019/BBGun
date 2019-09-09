@@ -17,7 +17,7 @@ namespace TacticalAI
 
         public string damageMethodName = "Damage";
 
-        public float speed = 800;
+        public float speed = 1000;
         public LayerMask layerMask;
         public float maxLifeTime = 3;
 
@@ -25,7 +25,7 @@ namespace TacticalAI
         public float damage = 16;
 
         //use for shotguns
-        public float bulletForce = 100;
+        public float bulletForce = 1000;
 
         //Hit Effects
         public GameObject hitEffect;
@@ -140,6 +140,7 @@ namespace TacticalAI
         //That would not be good.
         void Move()
         {
+          
             //Check to see if we're going to hit anything.  If so, move right to it and deal damage
             if (Physics.Raycast(myTransform.position, myTransform.forward, out hit, speed * Time.deltaTime, layerMask.value))
             {

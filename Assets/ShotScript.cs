@@ -236,7 +236,7 @@ namespace TacticalAI
 
         IEnumerator Fire()
         {
-            Debug.Log(Ute + "Fire");
+           
             //Check Distances
             float distSqr = Vector3.SqrMagnitude(bulletSpawn.position - LOSTargetTransform.position);
             if (Ute)

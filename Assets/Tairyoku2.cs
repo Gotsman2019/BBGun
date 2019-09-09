@@ -52,8 +52,10 @@ public class Tairyoku2 : MonoBehaviour
     public void ShotAnim2()//SHOTがTRUEなら弓をチャージする
     {
 
+
         if (Shot )
         {
+
             ShotArrow();
            
         }
@@ -69,7 +71,7 @@ public class Tairyoku2 : MonoBehaviour
     {
         this.animator.SetBool("Shooting", false);
         this.animator.SetBool("Arrow", true);
-
+        this.animator.SetBool("ArrowCharging", false);
         Shot = true;
        shootingArrow.GetMyshotButtonUp();
 
@@ -84,8 +86,9 @@ public class Tairyoku2 : MonoBehaviour
 
     public void ShotArrow()
     {
+       
         this.animator.SetBool("Shooting", true);//チャージアニメ
-
+        this.animator.SetBool("ArrowCharging", true);
 
         Shot = false;
 
@@ -129,7 +132,7 @@ public class Tairyoku2 : MonoBehaviour
         shootingArrow = gameObject.GetComponent<ShootingArrow>();
         Shot = true;
         Anime = GetComponent<Animation>();
-        animator = GetComponent<Animator>();
+        animator = this.GetComponent<Animator>();
         this.LimitTime = GameObject.Find("LimitTime");
         this.showgameover = GameObject.Find("RedGameover");
         this.restartimage = GameObject.Find("Restart");
