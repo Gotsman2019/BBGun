@@ -174,14 +174,15 @@ public class GunScript : MonoBehaviour {
                 //If we're not doing anythingm start the bullet firing cycle
                       if (!isFiring && !isWaiting && bulletObject)
 							{
+                   
                               //TextUp.TextShow();
                                StartCoroutine(BulletFiringCycle());
 
                             }	
-						else if(!bulletObject)	
-							{
-								Debug.LogWarning("Can't fire because there is no bullet object selected!");
-							}
+						//else if(!bulletObject)	
+							//{
+							//	Debug.LogWarning("Can't fire because there is no bullet object selected!");
+							//}
 					}
             timer--;
 
@@ -203,8 +204,8 @@ public class GunScript : MonoBehaviour {
 			yield return new WaitForSeconds(coverTransitionTime*0.5f);
 
             //エージェントがターゲットに気付いていない場合やターゲットに近接している場合は攻撃しないでください。
-            if (myAIBaseScript.IsEnaging() && !myAIBaseScript.isMeleeing && !myAIBaseScript.inParkour)
-			{
+   //         if (myAIBaseScript.IsEnaging() )//&& !myAIBaseScript.isMeleeing && !myAIBaseScript.inParkour)
+			//{
                 //LOSTargetTransformに明確なLoSがある場合は、発砲します。
                 //ターゲットの頭の真上の位置まで視線を確認したい場合があります（たとえば、
                 //たとえ彼らが目標を見ることができなくても彼はあなたのエージェントが射撃を抑制することを可能にするでしょう。
@@ -242,7 +243,7 @@ public class GunScript : MonoBehaviour {
 
                     yield return StartCoroutine(Fire());
                 }
-			}
+		//}
 		
 		//Transition
 		isWaiting = true;

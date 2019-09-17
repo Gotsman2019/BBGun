@@ -17,7 +17,7 @@ namespace TacticalAI
 
         public bool shouldDebug = false;
 
-        public Vector3 maximumRotationAngles = new Vector3(120, 120, 120);
+        public Vector3 maximumRotationAngles = new Vector3(150, 150, 150);
 
         public float rotationSpeed = 5;
 
