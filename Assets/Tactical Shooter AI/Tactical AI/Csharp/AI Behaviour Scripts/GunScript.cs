@@ -358,16 +358,16 @@ public class GunScript : MonoBehaviour {
                 //ほとんどの弾丸は1つの弾丸を持っています。 しかし、ショットガンやそれに類する武器にはもっと多くのものがあります。
                 for (int j = 0; j < pelletsPerShot; j++)
 					{
-                        if (amAtTarget)
-                        {
-                        fireRotation.SetLookRotation(targetTransform.position - bulletSpawn.position);
+                    //    if (amAtTarget)
+                    //    {
+                    //    fireRotation.SetLookRotation(targetTransform.position - bulletSpawn.position);
 
 
-                    }
-                        else
-                        {
+                    //}
+                        //else
+                        //{
                             fireRotation = Quaternion.LookRotation(bulletSpawn.forward);
-                        }
+                        //}
 
 
                     //正確さをシミュレートするために、ランダムな量で目標を変更してください。
@@ -380,9 +380,10 @@ public class GunScript : MonoBehaviour {
                     GameObject bullet = (GameObject)(Instantiate(bulletObject, bulletSpawn.position,fireRotation));
 
                   // Debug.Log(fireRotation);
-                    // GameObject bullet = (GameObject)Instantiate(bulletObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0));
+                  //  GameObject bullet = (GameObject)Instantiate(bulletObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0));
+                 //  GameObject bullet = (GameObject)Instantiate(bulletObject, transform.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
 
-                     Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+                    Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
 
 
                    bulletRb.AddForce(bulletSpawn.transform.forward * shotSpeed);

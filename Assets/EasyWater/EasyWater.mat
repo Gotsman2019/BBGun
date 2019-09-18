@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EasyWater
+  m_Shader: {fileID: 4800000, guid: 5d29b1d7c19a5d34699f7b90b44b63ee, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap1:
+        m_Texture: {fileID: 2800000, guid: bde54cbe4813165438fd0d27549f6ae7, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap2:
+        m_Texture: {fileID: 2800000, guid: bde54cbe4813165438fd0d27549f6ae7, type: 3}
+        m_Scale: {x: 4, y: 4}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionMap:
+        m_Texture: {fileID: 2800000, guid: 4e1f47d89e2b2a148b30e9ecd0189cea, type: 3}
+        m_Scale: {x: 25, y: 25}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionMap1:
+        m_Texture: {fileID: 2800000, guid: 4e1f47d89e2b2a148b30e9ecd0189cea, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionMap2:
+        m_Texture: {fileID: 2800000, guid: 4e1f47d89e2b2a148b30e9ecd0189cea, type: 3}
+        m_Scale: {x: 19, y: 19}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 2800000, guid: 4a0f0bc87d7824e46aa97f5ca4ac218d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Reflection:
+        m_Texture: {fileID: 8900000, guid: 3dd5c1ebbe64b8045887edb341157668, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture1:
+        m_Texture: {fileID: 2800000, guid: 84085cff9f6023044bc3a8e39991d366, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2:
+        m_Texture: {fileID: 2800000, guid: 84085cff9f6023044bc3a8e39991d366, type: 3}
+        m_Scale: {x: 6, y: 6}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Bump1Speed: 0.21
+    - _Bump2Speed: -0.18
+    - _Cutoff: 0.18928571
+    - _DistortionPower: 0.014603174
+    - _DistortionSpeed: 2.06
+    - _Gloss: 5.4206347
+    - _MainTexSpeed: 0.18
+    - _Opacity: 0.8
+    - _ReflectPower: 0.94
+    - _Specular: 7
+    - _Texture2Speed: -0.21
+    - _teste: 1
+    m_Colors:
+    - _Color: {r: 0, g: 0.50664294, b: 0.71323526, a: 1}
